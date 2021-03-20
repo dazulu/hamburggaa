@@ -6,7 +6,8 @@ import {
 } from 'next';
 import { fetchContent } from '@/utils/contentful';
 import { Meta } from '@/components/meta';
-import { Page as PageProps, NavigationConfig } from '@/types/contentful';
+import { Page as PageProps } from '@/types/contentful';
+import { PathParams } from '@/types/page';
 import { query as pageQuery } from '@/queries/page';
 import { query as pathsQuery } from '@/queries/paths';
 
@@ -24,7 +25,7 @@ export async function getStaticPaths(): Promise<GetStaticPathsResult> {
   const response = await fetchContent(pathsQuery);
 
   const paths = response.navigationConfigCollection.items.map(
-    ({ dir, slug }: Pick<NavigationConfig, 'dir' | 'slug'>) => ({
+    ({ dir, slug }: PathParams) => ({
       params: { dir, slug },
     })
   );
@@ -36,7 +37,7 @@ export async function getStaticPaths(): Promise<GetStaticPathsResult> {
 
 export async function getStaticProps({
   params,
-}: GetStaticPropsContext<Pick<NavigationConfig, 'dir' | 'slug'>>): Promise<
+}: GetStaticPropsContext<PathParams>): Promise<
   GetStaticPropsResult<{ data: PageProps }>
 > {
   const response = await fetchContent(pageQuery, {
