@@ -1,17 +1,18 @@
 {
-  "name": "with-typescript-eslint-jest",
-  "author": "@erikdstock",
-  "license": "MIT",
+  "name": "club-website",
   "version": "1.0.0",
   "scripts": {
+    "predev": "yarn generate-types",
     "dev": "next dev",
-    "build": "next build",
+    "prebuild": "yarn generate-types",
+    "build": "next build && next export",
     "start": "next start",
     "type-check": "tsc --pretty --noEmit",
     "format": "prettier --write .",
     "lint": "eslint . --ext ts --ext tsx --ext js",
     "test": "jest",
-    "test-all": "yarn lint && yarn type-check && yarn test"
+    "test-all": "yarn lint && yarn type-check && yarn test",
+    "generate-types": "graphql-codegen"
   },
   "husky": {
     "hooks": {
@@ -31,6 +32,9 @@
     "react-dom": "^17.0.1"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "^1.21.3",
+    "@graphql-codegen/typescript": "^1.21.1",
+    "@graphql-codegen/typescript-operations": "^1.17.15",
     "@testing-library/react": "^11.2.5",
     "@types/jest": "^26.0.20",
     "@types/node": "^14.14.25",
@@ -38,9 +42,11 @@
     "@typescript-eslint/eslint-plugin": "^4.14.2",
     "@typescript-eslint/parser": "^4.14.2",
     "babel-jest": "^26.6.3",
+    "dotenv": "^8.2.0",
     "eslint": "^7.19.0",
     "eslint-config-prettier": "^7.2.0",
     "eslint-plugin-react": "^7.19.0",
+    "graphql": "^15.5.0",
     "husky": "^4.2.3",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^26.6.3",
