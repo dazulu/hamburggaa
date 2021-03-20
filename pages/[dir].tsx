@@ -7,6 +7,8 @@ import {
 import { fetchContent } from '@/utils/contentful';
 import { Meta } from '@/components/meta';
 import { Page as PageProps, NavigationConfig } from '@/types/contentful';
+import { query as pageQuery } from '@/queries/page';
+import { query as pathsQuery } from '@/queries/paths';
 
 export const Page: React.FC<{ data: PageProps }> = ({ data }) => {
   const { metaInformation } = data;
@@ -19,16 +21,7 @@ export const Page: React.FC<{ data: PageProps }> = ({ data }) => {
 };
 
 export async function getStaticPaths(): Promise<GetStaticPathsResult> {
-  const response = await fetchContent(`
-    {
-      navigationConfigCollection(where: {dir_not_in: "ROOT"}) {
-        items {
-          dir
-          slug
-        }
-      }
-    }
-  `);
+  const response = await fetchContent(pathsQuery);
 
   const paths = response.navigationConfigCollection.items.map(
     ({ dir, slug }: Pick<NavigationConfig, 'dir' | 'slug'>) => ({
@@ -46,27 +39,9 @@ export async function getStaticProps({
 }: GetStaticPropsContext<Pick<NavigationConfig, 'dir' | 'slug'>>): Promise<
   GetStaticPropsResult<{ data: PageProps }>
 > {
-  const response = await fetchContent(
-    `query ($dir: String!)  {
-      navigationConfigCollection(where: {dir: $dir}, limit: 1) {
-        items {
-          linkedFrom {
-            pageCollection(limit: 1) {
-              items {
-                metaInformation {
-                  metaTitle
-                  metaDescription
-                }
-              }
-            }
-          }
-        }
-      }
-    }`,
-    {
-      dir: params.dir,
-    }
-  );
+  const response = await fetchContent(pageQuery, {
+    dir: params.dir,
+  });
   return {
     props: {
       data: {

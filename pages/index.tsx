@@ -3,6 +3,7 @@ import { GetStaticPropsResult } from 'next';
 import { fetchContent } from '@/utils/contentful';
 import { Meta } from '@/components/meta';
 import { Page as PageProps } from '@/types/contentful';
+import { query as pageQuery } from '@/queries/page';
 
 export const Home: React.FC<{ data: PageProps }> = ({ data }) => {
   const { metaInformation } = data;
@@ -42,24 +43,9 @@ export const Home: React.FC<{ data: PageProps }> = ({ data }) => {
 export async function getStaticProps(): Promise<
   GetStaticPropsResult<{ data: PageProps }>
 > {
-  const response = await fetchContent(
-    `{
-      navigationConfigCollection(where: {dir: "ROOT"}, limit: 1) {
-        items {
-          linkedFrom {
-            pageCollection(limit: 1) {
-              items {
-                metaInformation {
-                  metaTitle
-                  metaDescription
-                }
-              }
-            }
-          }
-        }
-      }
-    }`
-  );
+  const response = await fetchContent(pageQuery, {
+    dir: 'ROOT',
+  });
   return {
     props: {
       data: {
