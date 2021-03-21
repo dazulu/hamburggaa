@@ -5,13 +5,13 @@ import {
   GetStaticPathsResult,
 } from 'next';
 import { fetchContent } from '@/utils/contentful';
-import { Page as PageProps } from '@/types/contentful';
-import { PathParams } from '@/types/page';
+import { PageData, PathParams } from '@/types/page';
 import { query as pageQuery } from '@/queries/page';
 import { query as pathsQuery } from '@/queries/paths';
+import { query as navigationQuery } from '@/queries/navigation';
 import { Layout } from '@/components/layout';
 
-export const Page: React.FC<{ data: PageProps }> = ({ data }) => {
+export const Page: React.FC<PageData> = ({ data }) => {
   return <Layout data={data} />;
 };
 
@@ -31,17 +31,22 @@ export async function getStaticPaths(): Promise<GetStaticPathsResult> {
 
 export async function getStaticProps({
   params,
-}: GetStaticPropsContext<PathParams>): Promise<
-  GetStaticPropsResult<{ data: PageProps }>
-> {
+}: GetStaticPropsContext<PathParams>): Promise<GetStaticPropsResult<PageData>> {
   const response = await fetchContent(pageQuery, {
     dir: params.dir,
   });
+  const navigationResponse = await fetchContent(navigationQuery);
   return {
     props: {
       data: {
-        ...response.navigationConfigCollection.items[0].linkedFrom
-          .pageCollection.items[0],
+        page: {
+          ...response.navigationConfigCollection.items[0].linkedFrom
+            .pageCollection.items[0],
+        },
+        navigation: [
+          ...navigationResponse.navigationMenuCollection.items[0]
+            .itemsCollection.items,
+        ],
       },
     },
   };
