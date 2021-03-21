@@ -1,5 +1,12 @@
 html {
   --primary: #e7000b;
   --secondary: #175e9a;
-  --light: #f8f8f8;
+  --light-background: #fdfdfd;
+
+  --sidebar-width: 275px;
+  --base-padding: 10px;
+
+  @media (min-width: 800px) {
+    --base-padding: 20px;
+  }
 }
