@@ -1,4 +1,9 @@
+.link {
+  display: block;
+  align-self: flex-start;
+  margin: calc(var(--base-padding) * 2) 0;
+}
+
 .crest {
   display: block;
-  margin: calc(var(--base-padding) * 2) 0;
 }

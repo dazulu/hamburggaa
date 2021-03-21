@@ -5,7 +5,7 @@ import styles from './styles.module.scss';
 export const Logo: React.FC = () => {
   return (
     <Link href="/">
-      <a>
+      <a className={styles.link}>
         <img
           src="/crest.png"
           className={styles.crest}
