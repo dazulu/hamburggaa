@@ -9,6 +9,13 @@ export const query = `
 								metaTitle
 								metaDescription
 							}
+							modulesCollection {
+								items {
+									sys {
+										id
+									}
+								}
+							}
 						}
 					}
 				}

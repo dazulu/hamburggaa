@@ -5,20 +5,14 @@ import {
   GetStaticPathsResult,
 } from 'next';
 import { fetchContent } from '@/utils/contentful';
-import { Meta } from '@/components/meta';
 import { Page as PageProps } from '@/types/contentful';
 import { PathParams } from '@/types/page';
 import { query as pageQuery } from '@/queries/page';
 import { query as pathsQuery } from '@/queries/paths';
+import { Layout } from '@/components/layout';
 
 export const Page: React.FC<{ data: PageProps }> = ({ data }) => {
-  const { metaInformation } = data;
-  return (
-    <>
-      <Meta data={metaInformation} />
-      <div>Some Page</div>
-    </>
-  );
+  return <Layout data={data} />;
 };
 
 export async function getStaticPaths(): Promise<GetStaticPathsResult> {
