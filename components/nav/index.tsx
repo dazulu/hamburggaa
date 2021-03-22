@@ -15,11 +15,31 @@ export const Navigation: React.FC = () => {
           </Link>
         </li>
         {filteredNavigation.map((item) => {
+          if (item.dir) {
+            return (
+              <li key={item.sys.id} className={styles.item}>
+                <Link href={`/${item.slug}`}>
+                  <a className={styles.link}>{item.menuLabel}</a>
+                </Link>
+              </li>
+            );
+          }
           return (
-            <li key={item.dir} className={styles.item}>
-              <Link href={`/${item.slug}`}>
-                <a className={styles.link}>{item.menuLabel}</a>
-              </Link>
+            <li key={item.sys.id} className={styles.item}>
+              <a
+                href={item.url}
+                target="_blank"
+                className={styles.link}
+                rel="noopener noreferrer"
+              >
+                {item.menuLabel}
+                <img
+                  className={styles.icon}
+                  src="/icons/external.svg"
+                  width="16"
+                  height="16"
+                />
+              </a>
             </li>
           );
         })}

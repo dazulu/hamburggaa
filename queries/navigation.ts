@@ -1,12 +1,24 @@
 export const query = `
   {
-    navigationMenuCollection(where: { location: "main"}) {
+    navigationMenuCollection(where: {location: "main"}) {
       items {
         itemsCollection {
           items {
-            dir
-            slug
-            menuLabel
+            ... on NavigationConfig {
+              sys {
+                id
+              }
+              dir
+              slug
+              menuLabel
+            }
+            ... on ExternalNavigationLink {
+              sys {
+                id
+              }
+              url
+              menuLabel
+            } 
           }
         }
       }
