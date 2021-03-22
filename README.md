@@ -1,14 +1,16 @@
-This is a static [Next.js](https://nextjs.org/) project.
+[![Netlify Status](https://api.netlify.com/api/v1/badges/bc1594ee-13a6-4cf8-bd60-512bcf1ef417/deploy-status)](https://app.netlify.com/sites/kind-shannon-a2568b/deploys)
 
-## Features
+This is a static [Next.js](https://nextjs.org/) project, deployed to [Netlify](https://www.netlify.com/).
+
+## Uses
 
 - NextJS
+- React
 - TypeScript
 - GraphQL
 - Contentful
 - ESLint
 - Prettier
-- Emotion
 - Jest
 
 ## Getting Started
