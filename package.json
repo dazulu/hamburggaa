@@ -1,6 +1,8 @@
 {
   "name": "club-website",
   "version": "1.0.0",
+  "private": true,
+  "author": "Adrian Payne <pro.hamburg.europe@gaa.ie>",
   "scripts": {
     "predev": "yarn generate-types",
     "dev": "next dev",
