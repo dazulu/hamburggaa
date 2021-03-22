@@ -1,0 +1,10 @@
+.links {
+}
+
+.link {
+  color: black;
+  padding: 7px;
+  &:hover {
+    color: var(--primary);
+  }
+}

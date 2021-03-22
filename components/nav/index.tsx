@@ -1,13 +1,13 @@
 import React from 'react';
-import { useNavigation } from '@/context/navigation';
+import { useLinks } from '@/context/links';
 import Link from 'next/link';
 import styles from './styles.module.scss';
 
 export const Navigation: React.FC = () => {
-  const navigation = useNavigation();
+  const { navigation } = useLinks();
   const filteredNavigation = navigation.filter((item) => item.dir !== 'ROOT');
   return (
-    <nav>
+    <nav className={styles.nav}>
       <ul className={styles.list}>
         <li className={styles.item}>
           <Link href="/">

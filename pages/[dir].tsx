@@ -9,6 +9,7 @@ import { PageData, PathParams } from '@/types/page';
 import { query as pageQuery } from '@/queries/page';
 import { query as pathsQuery } from '@/queries/paths';
 import { query as navigationQuery } from '@/queries/navigation';
+import { query as socialMediaQuery } from '@/queries/social';
 import { Layout } from '@/components/layout';
 
 export const Page: React.FC<PageData> = ({ data }) => {
@@ -36,6 +37,8 @@ export async function getStaticProps({
     dir: params.dir,
   });
   const navigationResponse = await fetchContent(navigationQuery);
+  const socialMediaResponse = await fetchContent(socialMediaQuery);
+
   return {
     props: {
       data: {
@@ -43,10 +46,10 @@ export async function getStaticProps({
           ...response.navigationConfigCollection.items[0].linkedFrom
             .pageCollection.items[0],
         },
-        navigation: [
-          ...navigationResponse.navigationMenuCollection.items[0]
-            .itemsCollection.items,
-        ],
+        navigation:
+          navigationResponse.navigationMenuCollection.items[0].itemsCollection
+            .items,
+        social: socialMediaResponse.socialMediaLinkCollection.items,
       },
     },
   };

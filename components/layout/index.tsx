@@ -3,9 +3,11 @@ import styles from './styles.module.scss';
 import { Meta } from '@/components/meta';
 import { Sidebar } from '@/components/sidebar';
 import { PageData } from '@/types/page';
-import { NavigationProvider } from '@/context/navigation';
+import { LinksProvider } from '@/context/links';
 
-export const Layout: React.FC<PageData> = ({ data: { page, navigation } }) => {
+export const Layout: React.FC<PageData> = ({
+  data: { page, navigation, social },
+}) => {
   const { metaInformation } = page;
   const {
     modulesCollection: { items: modules },
@@ -15,9 +17,9 @@ export const Layout: React.FC<PageData> = ({ data: { page, navigation } }) => {
     <div className={styles.layout}>
       <Meta data={metaInformation} />
 
-      <NavigationProvider value={navigation}>
+      <LinksProvider value={{ navigation, social }}>
         <Sidebar />
-      </NavigationProvider>
+      </LinksProvider>
 
       <main className={styles.main}>
         {modules.map((module) => {

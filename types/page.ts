@@ -1,10 +1,25 @@
-import { Page as PageProps, NavigationConfig } from '@/types/contentful';
+import {
+  Page as PageProps,
+  NavigationConfig,
+  SocialMediaLink,
+} from '@/types/contentful';
 
 export type PathParams = Pick<NavigationConfig, 'dir' | 'slug'>;
+
+export interface NavigationItem {
+  sys: {
+    id: string;
+  };
+  menuLabel: string;
+  dir?: string;
+  slug?: string;
+  url?: string;
+}
 
 export interface PageData {
   data: {
     page: PageProps;
-    navigation: NavigationConfig[];
+    navigation: NavigationItem[];
+    social: SocialMediaLink[];
   };
 }
