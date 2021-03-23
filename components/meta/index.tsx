@@ -1,9 +1,9 @@
-import React from 'react'
-import Head from 'next/head'
-import { MetaTags } from '@/types/contentful'
+import React from 'react';
+import Head from 'next/head';
+import { MetaTags } from '@/types/contentful';
 
 export const Meta: React.FC<{ data: MetaTags }> = ({ data }) => {
-  const { metaTitle, metaDescription } = data
+  const { metaTitle, metaDescription } = data;
   return (
     <Head>
       {metaTitle && (
@@ -28,5 +28,5 @@ export const Meta: React.FC<{ data: MetaTags }> = ({ data }) => {
         </>
       )}
     </Head>
-  )
-}
+  );
+};

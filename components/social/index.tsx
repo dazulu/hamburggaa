@@ -25,10 +25,10 @@ const getIconPath = (type: SocialMediaType): JSX.Element => {
 };
 
 export const SocialIcons: React.FC = () => {
-  const { social } = useLinks();
+  const { socialLinks } = useLinks();
   return (
     <div className={styles.links}>
-      {social.map((item) => (
+      {socialLinks.map((item) => (
         <a
           key={item.sys.id}
           className={styles.link}

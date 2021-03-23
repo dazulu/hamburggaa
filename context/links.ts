@@ -4,12 +4,12 @@ import { SocialMediaLink } from '@/types/contentful';
 
 export interface LinksContextProps {
   navigation: NavigationItem[];
-  social: SocialMediaLink[];
+  socialLinks: SocialMediaLink[];
 }
 
 export const LinksContext = React.createContext<LinksContextProps>({
   navigation: [],
-  social: [],
+  socialLinks: [],
 });
 
 export const { Provider: LinksProvider } = LinksContext;
