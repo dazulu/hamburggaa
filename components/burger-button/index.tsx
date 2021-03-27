@@ -1,0 +1,46 @@
+import { useNavigation } from '@/context/navigation';
+import { useEffect, useState } from 'react';
+import styles from './styles.module.scss';
+
+export const BurgerButton: React.FC = () => {
+  const { navIsOpen, setNavIsOpen } = useNavigation();
+  const [resizeThrottle, setResizeThrottle] = useState(false);
+
+  const toggleMenu = () => {
+    setNavIsOpen(!navIsOpen);
+  };
+
+  const onResize = () => {
+    if (!resizeThrottle) {
+      setResizeThrottle(true);
+
+      if (window.innerWidth >= 1024 && navIsOpen) {
+        setNavIsOpen(true);
+      }
+
+      setTimeout(() => {
+        setResizeThrottle(false);
+      }, 200);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('resize', onResize, {
+      passive: true,
+    });
+    return () => {
+      window.removeEventListener('resize', onResize);
+    };
+  });
+
+  return (
+    <button
+      onClick={toggleMenu}
+      className={`${styles.button} ${navIsOpen ? styles.open : ''}`}
+    >
+      <div className={styles.line}></div>
+      <div className={styles.line}></div>
+      <div className={styles.line}></div>
+    </button>
+  );
+};

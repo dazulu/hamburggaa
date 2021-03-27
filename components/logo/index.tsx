@@ -1,21 +1,18 @@
 import React from 'react';
 import Link from 'next/link';
-import styles from './styles.module.scss';
 import { useConfig } from '@/context/config';
 
-export const Logo: React.FC = () => {
+export const Logo: React.FC<{ small?: boolean }> = ({ small }) => {
   const {
     logo: { description, url },
   } = useConfig();
+
+  const src = small ? `${url}?fm=png&w=120&q=75` : `${url}?fm=png&w=280&q=75`;
+
   return (
     <Link href="/">
-      <a className={styles.link}>
-        <img
-          src={`${url}?fm=png&w=280&q=75`}
-          className={styles.crest}
-          alt={description}
-          width="140"
-        />
+      <a>
+        <img src={src} alt={description} width={small ? 60 : 140} />
       </a>
     </Link>
   );

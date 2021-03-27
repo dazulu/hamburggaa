@@ -3,6 +3,7 @@
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
+  z-index: 1;
 
   position: fixed;
   top: 0;
@@ -10,6 +11,7 @@
   bottom: 0;
   width: var(--sidebar-width);
 
+  padding-top: calc(var(--base-padding) * 2);
   padding-bottom: calc(var(--base-padding) * 2);
 
   background: white;
@@ -17,6 +19,12 @@
     rgba(17, 17, 26, 0.03) 0px 8px 32px;
 
   transform: translateX(calc(var(--sidebar-width) * -1));
+  transition: transform 0.3s ease-out;
+}
+
+.open {
+  transform: translate3d(0, 0, 0);
+  transition: transform 0.3s ease-out;
 }
 
 @media (min-width: 1100px) {

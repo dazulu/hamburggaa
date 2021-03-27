@@ -1,10 +1,10 @@
 .layout {
   background-color: var(--light-background);
   position: relative;
-  height: 100%;
 }
 
 .main {
+  height: calc(80%);
   padding: 0 var(--base-padding);
 }
 
@@ -12,4 +12,41 @@
   .main {
     padding-left: calc(var(--sidebar-width) + var(--base-padding));
   }
+}
+
+.grid {
+  margin: 20px 0;
+  display: grid;
+  grid-gap: calc(var(--base-padding) * 2);
+  grid-template-areas:
+    'panel1 panel2 panel3'
+    'panel4 panel4 panel4';
+}
+
+.panel {
+  opacity: 0.3;
+}
+
+.panel1 {
+  grid-area: panel1;
+  background: green;
+  height: 50vh;
+}
+
+.panel2 {
+  grid-area: panel2;
+  background: blue;
+  height: 50vh;
+}
+
+.panel3 {
+  grid-area: panel3;
+  background: orange;
+  height: 50vh;
+}
+
+.panel4 {
+  grid-area: panel4;
+  background: red;
+  height: 30vh;
 }

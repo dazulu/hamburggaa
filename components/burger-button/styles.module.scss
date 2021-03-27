@@ -1,0 +1,71 @@
+.button {
+  cursor: pointer;
+  background: none;
+  border: 0;
+  color: #000;
+  display: block;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -1px;
+  z-index: 11;
+  padding: 6px;
+  transition: all 0.4s ease;
+  outline: 0;
+  transform-origin: center center;
+  justify-self: flex-end;
+  height: 40px;
+  width: 40px;
+
+  &.open {
+    .line {
+      &:nth-child(1) {
+        width: 27px;
+        transform-origin: top right;
+        transform: rotateZ(-45deg);
+      }
+
+      &:nth-child(2) {
+        width: 0;
+        opacity: 0;
+      }
+
+      &:nth-child(3) {
+        width: 27px;
+        transform-origin: bottom right;
+        transform: rotateZ(45deg);
+      }
+    }
+  }
+}
+
+.line {
+  background: #000;
+  height: 3px;
+  border-radius: 3px;
+  clear: both;
+  float: right;
+  transition: all 0.3s ease;
+  margin: 3px 0;
+
+  &:nth-child(1) {
+    width: 25px;
+  }
+
+  &:nth-child(2) {
+    width: 22px;
+  }
+
+  &:nth-child(3) {
+    width: 27px;
+  }
+}
+
+.no-touchy-action {
+  touch-action: none;
+}
+
+@media only screen and (min-width: 1100px) {
+  .button {
+    display: none;
+  }
+}
