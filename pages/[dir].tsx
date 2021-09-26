@@ -41,13 +41,15 @@ export async function getStaticPaths(): Promise<GetStaticPathsResult> {
   });
 
   const pathsEN = navigationEN.reduce(
-    (acc, { dir, slug }) => [...acc, { params: { dir, slug }, locale: 'en' }],
+    (acc, { slug }) => [...acc, { params: { dir: slug }, locale: 'en' }],
     []
   );
   const pathsDE = navigationDE.reduce(
-    (acc, { dir, slug }) => [...acc, { params: { dir, slug }, locale: 'de' }],
+    (acc, { slug }) => [...acc, { params: { dir: slug }, locale: 'de' }],
     []
   );
+
+  console.log([...pathsEN, ...pathsDE]);
 
   return {
     paths: [...pathsEN, ...pathsDE],

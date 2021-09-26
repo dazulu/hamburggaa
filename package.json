@@ -7,7 +7,7 @@
     "predev": "yarn generate-types",
     "dev": "next dev",
     "prebuild": "yarn generate-types",
-    "build": "next build && next export",
+    "build": "next build",
     "start": "next start",
     "type-check": "tsc --pretty --noEmit",
     "format": "prettier --write .",
