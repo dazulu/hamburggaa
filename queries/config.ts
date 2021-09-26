@@ -1,6 +1,8 @@
-export const query = `
-  {
-    themeCollection(limit: 1) {
+import { gql } from '@apollo/client';
+
+export const query = gql`
+  query($locale: String) {
+    themeCollection(limit: 1, locale: $locale) {
       items {
         sys {
           id

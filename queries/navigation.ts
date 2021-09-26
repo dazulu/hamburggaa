@@ -1,6 +1,8 @@
-export const query = `
-  {
-    navigationMenuCollection(where: {location: "main"}) {
+import { gql } from '@apollo/client';
+
+export const query = gql`
+  query($locale: String) {
+    navigationMenuCollection(where: { location: "main" }, locale: $locale) {
       items {
         itemsCollection {
           items {
@@ -18,7 +20,7 @@ export const query = `
               }
               url
               menuLabel
-            } 
+            }
           }
         }
       }

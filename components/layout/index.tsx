@@ -8,20 +8,22 @@ import { LinksProvider } from '@/context/links';
 import { ConfigProvider } from '@/context/config';
 import { NavigationProvider } from '@/context/navigation';
 
-export const Layout: React.FC<PageData> = ({
-  data: { page, navigation, config },
-}) => {
+export const Layout: React.FC<PageData> = ({ data }) => {
+  if (!data) return null;
+
+  const [navIsOpen, setNavIsOpen] = React.useState(false);
+  const { page, navigation, config } = data;
+
   const {
     metaInformation,
     modulesCollection: { items: modules },
   } = page;
+
   const {
     primaryColor,
     secondaryColor,
     socialMediaLinksCollection: { items: socialLinks },
   } = config;
-
-  const [navIsOpen, setNavIsOpen] = React.useState(false);
 
   return (
     <>
@@ -42,15 +44,11 @@ export const Layout: React.FC<PageData> = ({
                 <div className={`${styles.panel} ${styles.panel3}`}></div>
                 <div className={`${styles.panel} ${styles.panel4}`}></div>
               </div>
-              {modules.map((module) => {
-                return (
-                  <>
-                    <pre>
-                      <code>{JSON.stringify(module, null, 2)}</code>
-                    </pre>
-                  </>
-                );
-              })}
+              {modules.map((module) => (
+                <pre key={module.sys.id}>
+                  <code>{JSON.stringify(module, null, 2)}</code>
+                </pre>
+              ))}
             </main>
           </div>
         </NavigationProvider>

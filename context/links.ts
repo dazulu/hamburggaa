@@ -13,4 +13,4 @@ export const LinksContext = React.createContext<LinksContextProps>({
 });
 
 export const { Provider: LinksProvider } = LinksContext;
-export const useLinks = () => React.useContext(LinksContext);
+export const useLinks = (): LinksContextProps => React.useContext(LinksContext);

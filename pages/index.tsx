@@ -1,13 +1,15 @@
+import apolloClient from '@/utils/apollo-client';
+import React, { FC } from 'react';
 import Head from 'next/head';
 import { GetStaticPropsResult } from 'next';
 import { query as pageQuery } from '@/queries/page';
 import { query as navigationQuery } from '@/queries/navigation';
 import { query as configQuery } from '@/queries/config';
 import { PageData } from '@/types/page';
-import { fetchContent } from '@/utils/contentful';
 import { Layout } from '@/components/layout';
+import { GetStaticProps } from 'next';
 
-export const Home: React.FC<PageData> = ({ data }) => {
+export const Home: FC<PageData> = ({ data }) => {
   return (
     <>
       <Head>
@@ -18,14 +20,33 @@ export const Home: React.FC<PageData> = ({ data }) => {
   );
 };
 
-export async function getStaticProps(): Promise<
-  GetStaticPropsResult<PageData>
-> {
-  const response = await fetchContent(pageQuery, {
-    dir: 'ROOT',
+export const getStaticProps: GetStaticProps = async ({
+  locale,
+}): Promise<GetStaticPropsResult<PageData>> => {
+  // Get page data for ROOT home page
+  const { data: response } = await apolloClient.query({
+    query: pageQuery,
+    variables: {
+      dir: 'ROOT',
+      locale,
+    },
   });
-  const navigationResponse = await fetchContent(navigationQuery);
-  const configResponse = await fetchContent(configQuery);
+
+  // Get navigation data from Contentful
+  const { data: navigationResponse } = await apolloClient.query({
+    query: navigationQuery,
+    variables: {
+      locale,
+    },
+  });
+
+  // Get site config theme data from Contentful
+  const { data: configResponse } = await apolloClient.query({
+    query: configQuery,
+    variables: {
+      locale,
+    },
+  });
 
   return {
     props: {
@@ -41,6 +62,6 @@ export async function getStaticProps(): Promise<
       },
     },
   };
-}
+};
 
 export default Home;

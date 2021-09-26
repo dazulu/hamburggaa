@@ -4,4 +4,4 @@ import { Theme } from '@/types/contentful';
 export const ConfigContext = React.createContext<Theme>(null);
 
 export const { Provider: ConfigProvider } = ConfigContext;
-export const useConfig = () => React.useContext(ConfigContext);
+export const useConfig = (): Theme => React.useContext(ConfigContext);
