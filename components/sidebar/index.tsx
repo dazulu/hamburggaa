@@ -4,6 +4,7 @@ import { useNavigation } from '@/context/navigation';
 import { Logo } from '@/components/logo';
 import { Navigation } from '@/components/nav';
 import { SocialIcons } from '@/components/social';
+import { LanguageSwitcher } from '@/components/language-switcher';
 
 export const Sidebar: React.FC = () => {
   const { navIsOpen } = useNavigation();
@@ -11,6 +12,7 @@ export const Sidebar: React.FC = () => {
     <div className={`${styles.sidebar} ${navIsOpen ? styles.open : ''}`}>
       <Logo />
       <Navigation />
+      <LanguageSwitcher />
       <SocialIcons />
     </div>
   );

@@ -49,8 +49,6 @@ export async function getStaticPaths(): Promise<GetStaticPathsResult> {
     []
   );
 
-  console.log([...pathsEN, ...pathsDE]);
-
   return {
     paths: [...pathsEN, ...pathsDE],
     fallback: true,
