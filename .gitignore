@@ -41,3 +41,6 @@ yarn-error.log*
 
 # Contentful generated types
 /types/contentful.ts
+
+# Typescript
+tsconfig.tsbuildinfo
