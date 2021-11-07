@@ -19,6 +19,22 @@ export const query = gql`
                     }
                     title
                   }
+                  ... on ImageText {
+                    sys {
+                      id
+                    }
+                    image {
+                      alt
+                      image {
+                        url
+                        width
+                        height
+                      }
+                    }
+                    text {
+                      json
+                    }
+                  }
                 }
               }
             }

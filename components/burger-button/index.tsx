@@ -1,8 +1,9 @@
+import React, { VFC } from 'react';
 import { useNavigation } from '@/context/navigation';
 import { useEffect, useState } from 'react';
 import styles from './styles.module.scss';
 
-export const BurgerButton: React.FC = () => {
+export const BurgerButton: VFC = () => {
   const { navIsOpen, setNavIsOpen } = useNavigation();
   const [resizeThrottle, setResizeThrottle] = useState(false);
 

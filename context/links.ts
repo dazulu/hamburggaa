@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createContext, useContext } from 'react';
 import { NavigationItem } from '@/types/page';
 import { SocialMediaLink } from '@/types/contentful';
 
@@ -7,10 +7,10 @@ export interface LinksContextProps {
   socialLinks: SocialMediaLink[];
 }
 
-export const LinksContext = React.createContext<LinksContextProps>({
+export const LinksContext = createContext<LinksContextProps>({
   navigation: [],
   socialLinks: [],
 });
 
 export const { Provider: LinksProvider } = LinksContext;
-export const useLinks = (): LinksContextProps => React.useContext(LinksContext);
+export const useLinks = (): LinksContextProps => useContext(LinksContext);

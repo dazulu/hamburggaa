@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { VFC } from 'react';
 import styles from './styles.module.scss';
 import { useLinks } from '@/context/links';
 import { SocialMediaType } from '@/types/navigation';
@@ -24,7 +24,7 @@ const getIconPath = (type: SocialMediaType): JSX.Element => {
   }
 };
 
-export const SocialIcons: React.FC = () => {
+export const SocialIcons: VFC = () => {
   const { socialLinks } = useLinks();
   return (
     <div className={styles.links}>

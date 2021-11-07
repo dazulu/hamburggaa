@@ -1,5 +1,5 @@
 import apolloClient from '@/utils/apollo-client';
-import React from 'react';
+import React, { VFC } from 'react';
 import {
   GetStaticPropsResult,
   GetStaticPropsContext,
@@ -12,7 +12,7 @@ import { query as navigationQuery } from '@/queries/navigation';
 import { query as configQuery } from '@/queries/config';
 import { Layout } from '@/components/layout';
 
-export const Page: React.FC<PageData> = ({ data }) => {
+export const Page: VFC<PageData> = ({ data }) => {
   return <Layout data={data} />;
 };
 

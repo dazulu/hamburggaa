@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { VFC } from 'react';
 import Link from 'next/link';
 import { useConfig } from '@/context/config';
 
-export const Logo: React.FC<{ small?: boolean }> = ({ small }) => {
+export const Logo: VFC<{ small?: boolean }> = ({ small }) => {
   const {
     logo: { description, url },
   } = useConfig();
