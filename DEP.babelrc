@@ -1,0 +1,5 @@
+// Deprecated due to upgrading to Next 12
+// Not sure if will now have Jest issues
+{
+  "presets": ["next/babel"]
+}
