@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { VFC } from 'react';
 import { useLinks } from '@/context/links';
 import Link from 'next/link';
 import styles from './styles.module.scss';
 
-export const Navigation: React.FC = () => {
+export const Navigation: VFC = () => {
   const { navigation } = useLinks();
   const filteredNavigation = navigation.filter((item) => item.dir !== 'ROOT');
   return (

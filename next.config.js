@@ -8,6 +8,10 @@ const nextConfig = {
     defaultLocale: 'en',
     localeDetection: true,
   },
+  images: {
+    domains: ['images.ctfassets.net'],
+    formats: ['image/avif', 'image/webp'],
+  },
 };
 
 module.exports = nextConfig;

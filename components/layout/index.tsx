@@ -1,17 +1,18 @@
-import React from 'react';
+import React, { useState, VFC } from 'react';
 import styles from './styles.module.scss';
 import { Meta } from '@/components/meta';
 import { Sidebar } from '@/components/sidebar';
 import { MobileHeader } from '@/components/mobile-header';
+import { Module } from '@/components/modules';
 import { PageData } from '@/types/page';
 import { LinksProvider } from '@/context/links';
 import { ConfigProvider } from '@/context/config';
 import { NavigationProvider } from '@/context/navigation';
 
-export const Layout: React.FC<PageData> = ({ data }) => {
+export const Layout: VFC<PageData> = ({ data }) => {
   if (!data) return null;
 
-  const [navIsOpen, setNavIsOpen] = React.useState(false);
+  const [navIsOpen, setNavIsOpen] = useState(false);
   const { page, navigation, config } = data;
 
   const {
@@ -38,21 +39,14 @@ export const Layout: React.FC<PageData> = ({ data }) => {
             </LinksProvider>
 
             <main className={styles.main}>
-              <div className={styles.grid}>
-                <div className={`${styles.panel} ${styles.panel1}`}></div>
-                <div className={`${styles.panel} ${styles.panel2}`}></div>
-                <div className={`${styles.panel} ${styles.panel3}`}></div>
-                <div className={`${styles.panel} ${styles.panel4}`}></div>
-              </div>
               {modules.map((module) => (
-                <pre key={module.sys.id}>
-                  <code>{JSON.stringify(module, null, 2)}</code>
-                </pre>
+                <Module key={module.sys.id} module={module} />
               ))}
             </main>
           </div>
         </NavigationProvider>
       </ConfigProvider>
+
       <style jsx global>{`
         :root {
           --primary: ${primaryColor};
