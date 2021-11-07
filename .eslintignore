@@ -1,4 +1,4 @@
 **/node_modules/*
 **/out/*
 **/.next/*
-**/test/testUtils.ts
+**/test/testUtils.ts 

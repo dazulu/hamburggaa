@@ -1,4 +1,4 @@
-import React, { createContext, useContext } from 'react';
+import { createContext, useContext } from 'react';
 import { NavigationItem } from '@/types/page';
 import { SocialMediaLink } from '@/types/contentful';
 

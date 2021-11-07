@@ -1,5 +1,6 @@
-import React, { VFC } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
+import React, { VFC } from 'react';
 import { useConfig } from '@/context/config';
 
 export const Logo: VFC<{ small?: boolean }> = ({ small }) => {
@@ -12,7 +13,12 @@ export const Logo: VFC<{ small?: boolean }> = ({ small }) => {
   return (
     <Link href="/">
       <a>
-        <img src={src} alt={description} width={small ? 60 : 140} />
+        <Image
+          src={src}
+          width={small ? 60 : 140}
+          height={small ? 56 : 135}
+          alt={description}
+        />
       </a>
     </Link>
   );
