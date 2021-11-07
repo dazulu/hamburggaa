@@ -1,4 +1,5 @@
 import React, { VFC } from 'react';
+import Image from 'next/image';
 import { useLinks } from '@/context/links';
 import Link from 'next/link';
 import styles from './styles.module.scss';
@@ -33,11 +34,12 @@ export const Navigation: VFC = () => {
                 rel="noopener noreferrer"
               >
                 {item.menuLabel}
-                <img
+                <Image
                   className={styles.icon}
                   src="/icons/external.svg"
                   width="16"
                   height="16"
+                  alt=""
                 />
               </a>
             </li>

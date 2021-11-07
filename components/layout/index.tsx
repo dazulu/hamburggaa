@@ -10,9 +10,10 @@ import { ConfigProvider } from '@/context/config';
 import { NavigationProvider } from '@/context/navigation';
 
 export const Layout: VFC<PageData> = ({ data }) => {
+  const [navIsOpen, setNavIsOpen] = useState(false);
+
   if (!data) return null;
 
-  const [navIsOpen, setNavIsOpen] = useState(false);
   const { page, navigation, config } = data;
 
   const {
