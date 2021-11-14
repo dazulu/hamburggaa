@@ -3,6 +3,7 @@
  */
 
 const nextConfig = {
+  generateBuildId: () => 'build',
   swcMinify: true,
   i18n: {
     locales: ['en', 'de'],
