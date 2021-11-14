@@ -61,6 +61,7 @@ export const getStaticProps: GetStaticProps = async ({
         config: configResponse.themeCollection.items[0],
       },
     },
+    revalidate: 60, // ISR
   };
 };
 

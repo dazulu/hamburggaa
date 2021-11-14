@@ -51,7 +51,7 @@ export async function getStaticPaths(): Promise<GetStaticPathsResult> {
 
   return {
     paths: [...pathsEN, ...pathsDE],
-    fallback: true,
+    fallback: 'blocking',
   };
 }
 
@@ -110,6 +110,7 @@ export async function getStaticProps({
         config: configResponse.themeCollection.items[0],
       },
     },
+    revalidate: 60, // ISR
   };
 }
 
