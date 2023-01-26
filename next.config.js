@@ -8,11 +8,6 @@ const nextConfig = {
     appDir: true,
   },
   swcMinify: true,
-  i18n: {
-    locales: ['en', 'de'],
-    defaultLocale: 'en',
-    localeDetection: true,
-  },
   images: {
     domains: ['images.ctfassets.net'],
     formats: ['image/avif', 'image/webp'],

@@ -31,6 +31,7 @@
   "dependencies": {
     "@apollo/client": "^3.4.13",
     "@contentful/rich-text-react-renderer": "^15.6.2",
+    "@formatjs/intl-localematcher": "^0.2.32",
     "next": "^13.1.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
