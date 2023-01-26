@@ -12,14 +12,12 @@ export const Logo: VFC<{ small?: boolean }> = ({ small }) => {
 
   return (
     <Link href="/">
-      <a>
-        <Image
-          src={src}
-          width={small ? 60 : 140}
-          height={small ? 56 : 135}
-          alt={description}
-        />
-      </a>
+      <Image
+        src={src}
+        width={small ? 60 : 140}
+        height={small ? 56 : 135}
+        alt={description}
+      />
     </Link>
   );
 };

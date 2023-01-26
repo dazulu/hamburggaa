@@ -35,15 +35,16 @@ export const LanguageSwitcher: FC = () => {
       {locales.map(({ locale, name }) => {
         const image = locale === Locale.EN ? flagEN : flagDE;
         return (
-          <Link key={locale} href="/" locale={locale}>
-            <a
-              className={`${styles.link} ${
-                router.locale === locale && styles.active
-              }`}
-              title={name}
-            >
-              <Image alt="" src={image} width={30} height={30} />
-            </a>
+          <Link
+            key={locale}
+            href="/"
+            locale={locale}
+            className={`${styles.link} ${
+              router.locale === locale && styles.active
+            }`}
+            title={name}
+          >
+            <Image alt="" src={image} width={30} height={30} />
           </Link>
         );
       })}

@@ -11,16 +11,16 @@ export const Navigation: VFC = () => {
     <nav className={styles.nav}>
       <ul className={styles.list}>
         <li className={styles.item}>
-          <Link href="/">
-            <a className={styles.link}>Home</a>
+          <Link href="/" className={styles.link}>
+            Home
           </Link>
         </li>
         {filteredNavigation.map((item) => {
           if (item.dir) {
             return (
               <li key={item.sys.id} className={styles.item}>
-                <Link href={`/${item.slug}`}>
-                  <a className={styles.link}>{item.menuLabel}</a>
+                <Link href={`/${item.slug}`} className={styles.link}>
+                  {item.menuLabel}
                 </Link>
               </li>
             );
