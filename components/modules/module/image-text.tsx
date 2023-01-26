@@ -12,7 +12,6 @@ export const ModuleImageText: VFC<{ module: ImageText }> = ({ module }) => {
     <>
       {documentToReactComponents(text.json)}
       <Image
-        fill
         alt={alt}
         src={image.url}
         width={image.width}
