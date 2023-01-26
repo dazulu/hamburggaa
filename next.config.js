@@ -4,6 +4,9 @@
 
 const nextConfig = {
   generateBuildId: () => 'build',
+  experimental: {
+    appDir: true,
+  },
   swcMinify: true,
   i18n: {
     locales: ['en', 'de'],
