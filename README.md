@@ -6,14 +6,13 @@ This is a static [Next.js](https://nextjs.org/) project, deployed to [Netlify](h
 
 ## Uses
 
-- NextJS
-- React
+- Next.js 13
+- React 18
 - TypeScript
 - GraphQL
 - Contentful
 - ESLint
 - Prettier
-- Jest
 
 ## Getting Started
 
@@ -44,6 +43,6 @@ yarn generate-types
 Required environment variables to fetch data from the Contentful API
 
 ```env
-NEXT_PUBLIC_CONTENTFUL_SPACE_ID
-NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN
+CONTENTFUL_SPACE_ID
+CONTENTFUL_ACCESS_TOKEN
 ```
