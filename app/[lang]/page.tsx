@@ -10,18 +10,15 @@ import type {
   ThemeCollection,
 } from '@/types/contentful';
 
-const SPACE = process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID;
-const ACCESS_TOKEN = process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN;
-const endpoint = `https://graphql.contentful.com/content/v1/spaces/${SPACE}/environments/master`;
-const headers = {
-  'content-type': 'application/json',
-  Authorization: `Bearer ${ACCESS_TOKEN}`,
-};
+const endpoint = `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}/environments/master`;
 
 function getOptions(options) {
   return {
     method: 'POST',
-    headers: headers,
+    headers: {
+      'content-type': 'application/json',
+      Authorization: `Bearer ${process.env.CONTENTFUL_ACCESS_TOKEN}`,
+    },
     body: JSON.stringify(options),
   };
 }
