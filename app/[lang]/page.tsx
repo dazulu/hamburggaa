@@ -23,6 +23,11 @@ function getOptions(options) {
   };
 }
 async function getData(lang) {
+  console.log(
+    'CONTENTFUL:',
+    process.env.CONTENTFUL_SPACE_ID,
+    process.env.CONTENTFUL_ACCESS_TOKEN
+  );
   const pageResponse = await fetch(
     endpoint,
     getOptions({ query: pageQuery, variables: { dir: 'ROOT', locale: lang } })
