@@ -1,6 +1,4 @@
-import { gql } from '@apollo/client';
-
-export const query = gql`
+export const query = `
   query($locale: String) {
     navigationMenuCollection(where: { location: "main" }, locale: $locale) {
       items {

@@ -1,6 +1,4 @@
-import { gql } from '@apollo/client';
-
-export const query = gql`
+export const query = `
   query($locale: String) {
     themeCollection(limit: 1, locale: $locale) {
       items {

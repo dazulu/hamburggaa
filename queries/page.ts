@@ -1,6 +1,4 @@
-import { gql } from '@apollo/client';
-
-export const query = gql`
+export const query = `
   query($dir: String!, $locale: String) {
     navigationConfigCollection(where: { dir: $dir }, limit: 1) {
       items {

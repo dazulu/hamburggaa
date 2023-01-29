@@ -1,44 +1,77 @@
-import apolloClient from '@/utils/apollo-client';
 import { query as pageQuery } from '@/queries/page';
 import { query as navigationQuery } from '@/queries/navigation';
 import { query as configQuery } from '@/queries/config';
 
 import HomePage from './homePage';
 
+import type {
+  NavigationMenuCollection,
+  NavigationConfigCollection,
+  ThemeCollection,
+} from '@/types/contentful';
+
+const SPACE = process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID;
+const ACCESS_TOKEN = process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN;
+const endpoint = `https://graphql.contentful.com/content/v1/spaces/${SPACE}/environments/master`;
+const headers = {
+  'content-type': 'application/json',
+  Authorization: `Bearer ${ACCESS_TOKEN}`,
+};
+
+function getOptions(options) {
+  return {
+    method: 'POST',
+    headers: headers,
+    body: JSON.stringify(options),
+  };
+}
 async function getData(lang) {
-  const { data: response } = await apolloClient.query({
-    query: pageQuery,
-    variables: {
-      dir: 'ROOT',
-      locale: lang,
-    },
-  });
+  const pageResponse = await fetch(
+    endpoint,
+    getOptions({ query: pageQuery, variables: { dir: 'ROOT', locale: lang } })
+  );
+  const page = await pageResponse
+    .json()
+    .then(
+      ({ data }) =>
+        (data.navigationConfigCollection as NavigationConfigCollection).items[0]
+          .linkedFrom.pageCollection.items[0]
+    );
 
-  // Get navigation data from Contentful
-  const { data: navigationResponse } = await apolloClient.query({
-    query: navigationQuery,
-    variables: {
-      locale: lang,
-    },
-  });
+  const navigationResponse = await fetch(
+    endpoint,
+    getOptions({
+      query: navigationQuery,
+      variables: {
+        locale: lang,
+      },
+    })
+  );
+  const navigation = await navigationResponse
+    .json()
+    .then(
+      ({ data }) =>
+        (data.navigationMenuCollection as NavigationMenuCollection).items[0]
+          .itemsCollection.items
+    );
 
-  // Get site config theme data from Contentful
-  const { data: configResponse } = await apolloClient.query({
-    query: configQuery,
-    variables: {
-      locale: lang,
-    },
-  });
+  const themeResponse = await fetch(
+    endpoint,
+    getOptions({
+      query: configQuery,
+      variables: {
+        locale: lang,
+      },
+    })
+  );
+  const theme = await themeResponse
+    .json()
+    .then(({ data }) => (data.themeCollection as ThemeCollection).items[0]);
 
   return {
-    page: {
-      ...response.navigationConfigCollection.items[0].linkedFrom.pageCollection
-        .items[0],
-    },
-    navigation:
-      navigationResponse.navigationMenuCollection.items[0].itemsCollection
-        .items,
-    config: configResponse.themeCollection.items[0],
+    page,
+    navigation,
+    theme,
   };
 }
 
