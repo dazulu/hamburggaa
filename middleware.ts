@@ -1,8 +1,7 @@
 import { NextResponse } from 'next/server';
 import { match } from '@formatjs/intl-localematcher';
 
-const locales = ['en', 'de'];
-const defaultLocale = 'de';
+import { DEFAULT_LOCALE, LOCALES } from './i18n';
 
 // Get the preferred locale, similar to above or using a library
 function getLocale(request) {
@@ -12,13 +11,13 @@ function getLocale(request) {
     language.split(';')[0].trim()
   );
 
-  return match(cleanedLocales, locales, defaultLocale);
+  return match(cleanedLocales, LOCALES, DEFAULT_LOCALE);
 }
 
 export function middleware(request) {
   // Check if there is any supported locale in the pathname
   const pathname = request.nextUrl.pathname;
-  const pathnameIsMissingLocale = locales.every(
+  const pathnameIsMissingLocale = LOCALES.every(
     (locale) => !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`
   );
 

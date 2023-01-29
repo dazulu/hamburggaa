@@ -3,6 +3,7 @@ import { query as navigationQuery } from '@/queries/navigation';
 import { query as configQuery } from '@/queries/config';
 
 import HomePage from './homePage';
+import { LOCALES } from '../../i18n';
 
 import type {
   NavigationMenuCollection,
@@ -23,11 +24,6 @@ function getOptions(options) {
   };
 }
 async function getData(lang) {
-  console.log(
-    'CONTENTFUL:',
-    process.env.CONTENTFUL_SPACE_ID,
-    process.env.CONTENTFUL_ACCESS_TOKEN
-  );
   const pageResponse = await fetch(
     endpoint,
     getOptions({ query: pageQuery, variables: { dir: 'ROOT', locale: lang } })
@@ -75,6 +71,10 @@ async function getData(lang) {
     navigation,
     theme,
   };
+}
+
+export async function generateStaticParams() {
+  return LOCALES.map((lang) => ({ lang }));
 }
 
 export default async function Page({ params: { lang } }): Promise<JSX.Element> {
