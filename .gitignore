@@ -30,13 +30,14 @@ yarn-error.log*
 .env.test.local
 .env.production.local
 
-# vercel
+# services
 .vercel
+.netlify
 
 # env
 .env
 
-# IDEs and editors
+# ditors
 .vscode
 .idea
 
