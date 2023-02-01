@@ -1,7 +1,6 @@
 import React, { useState, VFC } from 'react';
 import styles from './styles.module.scss';
 import { Meta } from '@/components/meta';
-import { Sidebar } from '@/components/sidebar';
 import { MobileHeader } from '@/components/mobile-header';
 import { Module } from '@/components/modules';
 import { PageData } from '@/types/page';
@@ -36,7 +35,7 @@ export const Layout: VFC<PageData> = ({ data }) => {
             <MobileHeader />
 
             <LinksProvider value={{ navigation, socialLinks }}>
-              <Sidebar />
+              {/* ToDo: can this be repurposed/reused? */}
             </LinksProvider>
 
             <main className={styles.main}>
