@@ -1,48 +1,26 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { FC } from 'react';
-import { useRouter } from 'next/router';
+
 import styles from './styles.module.scss';
 import flagEN from '../../public/images/flag_en.png';
 import flagDE from '../../public/images/flag_de.png';
 
-export enum Locale {
-  EN = 'en',
-  DE = 'de',
-}
+import { LOCALES } from 'i18n';
 
-export interface Locales {
-  locale: Locale;
-  name: string;
-}
+import { Locale } from '@/types/i18n';
 
-const localeNames: Record<Locale, string> = {
-  [Locale.EN]: 'Website in English',
-  [Locale.DE]: 'Website auf Deutsch',
-};
-
-export const LanguageSwitcher: FC = () => {
-  const router = useRouter();
-  const locales = router.locales.map(
-    (locale: Locale): Locales => ({
-      locale,
-      name: localeNames[locale],
-    })
-  );
-
+export const LanguageSwitcher: FC<{ lang: Locale }> = ({ lang }) => {
   return (
     <div className={styles.links}>
-      {locales.map(({ locale, name }) => {
+      {LOCALES.map((locale) => {
         const image = locale === Locale.EN ? flagEN : flagDE;
         return (
           <Link
             key={locale}
-            href="/"
-            locale={locale}
-            className={`${styles.link} ${
-              router.locale === locale && styles.active
-            }`}
-            title={name}
+            href={`/${locale}`}
+            className={`${styles.link} ${lang === locale && styles.active}`}
+            title={locale.toUpperCase()}
           >
             <Image alt="" src={image} width={30} height={30} />
           </Link>
