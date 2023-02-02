@@ -2,13 +2,13 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "@/utils/*": ["utils/*"],
       "@/components/*": ["components/*"],
       "@/types/*": ["types/*"],
-      "@/pages/*": ["pages/*"],
+      "@/app/*": ["app/*"],
       "@/queries/*": ["queries/*"],
       "@/styles/*": ["styles/*"],
-      "@/context/*": ["context/*"]
+      "@/context/*": ["context/*"],
+      "@/ui/*": ["ui/*"]
     },
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
