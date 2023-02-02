@@ -2,12 +2,14 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "@/components/*": ["components/*"],
-      "@/types/*": ["types/*"],
       "@/app/*": ["app/*"],
+      "@/components/*": ["components/*"],
+      "@/context/*": ["context/*"],
+      "@/hooks/*": ["hooks/*"],
+      "@/public/*": ["public/*"],
       "@/queries/*": ["queries/*"],
       "@/styles/*": ["styles/*"],
-      "@/context/*": ["context/*"],
+      "@/types/*": ["types/*"],
       "@/ui/*": ["ui/*"]
     },
     "target": "es5",

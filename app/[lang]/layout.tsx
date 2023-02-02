@@ -2,7 +2,6 @@ import '@/styles/global.scss';
 import '@/styles/variables.scss';
 
 import { Header } from '@/ui/header/';
-import { LanguageSwitcher } from '@/components/language-switcher';
 
 export default function RootLayout({
   // Layouts must accept a children prop.
@@ -18,8 +17,7 @@ export default function RootLayout({
     <html lang={lang}>
       <body>
         {/* ToDo: Consider how to access active locale for Link href */}
-        <Header />
-        <LanguageSwitcher lang={lang} />
+        <Header lang={lang} />
         {children}
       </body>
     </html>
