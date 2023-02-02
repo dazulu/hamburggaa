@@ -14,7 +14,21 @@ function getLocale(request) {
   return match(cleanedLocales, LOCALES, DEFAULT_LOCALE);
 }
 
+const PUBLIC_FILE = /\.(.*)$/;
+function testPublicFile(pathname: string): boolean {
+  return PUBLIC_FILE.test(pathname) && !pathname.includes('sitemap.xml');
+}
+
 export function middleware(request) {
+  const shouldHandleLocale =
+    !testPublicFile(request.nextUrl.pathname) &&
+    !request.nextUrl.pathname.includes('/api/') &&
+    !request.headers.get('x-middleware-preflight');
+
+  if (!shouldHandleLocale) {
+    return undefined;
+  }
+
   // Check if there is any supported locale in the pathname
   const pathname = request.nextUrl.pathname;
   const pathnameIsMissingLocale = LOCALES.every(
