@@ -1,4 +1,4 @@
-import React, { useState, VFC } from 'react';
+import React, { useState } from 'react';
 import styles from './styles.module.scss';
 import { Meta } from '@/components/meta';
 import { MobileHeader } from '@/components/mobile-header';
@@ -8,7 +8,7 @@ import { LinksProvider } from '@/context/links';
 import { ConfigProvider } from '@/context/config';
 import { NavigationProvider } from '@/context/navigation';
 
-export const Layout: VFC<PageData> = ({ data }) => {
+export const Layout = ({ data }: PageData) => {
   const [navIsOpen, setNavIsOpen] = useState(false);
 
   if (!data) return null;

@@ -2,7 +2,7 @@ import { query as pageQuery } from '@/queries/page';
 import { query as navigationQuery } from '@/queries/navigation';
 import { query as configQuery } from '@/queries/config';
 
-import HomePage from './homePage';
+import HomePage from './home-page';
 import { LOCALES } from '../../i18n';
 
 import type {

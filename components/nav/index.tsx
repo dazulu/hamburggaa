@@ -1,10 +1,10 @@
-import React, { VFC } from 'react';
+import React from 'react';
 import Image from 'next/image';
 import { useLinks } from '@/context/links';
 import Link from 'next/link';
 import styles from './styles.module.scss';
 
-export const Navigation: VFC = () => {
+export const Navigation = () => {
   const { navigation } = useLinks();
   const filteredNavigation = navigation.filter((item) => item.dir !== 'ROOT');
   return (
