@@ -4,9 +4,6 @@
 
 const nextConfig = {
   generateBuildId: () => 'build',
-  experimental: {
-    appDir: true,
-  },
   swcMinify: true,
   images: {
     domains: ['images.ctfassets.net'],
