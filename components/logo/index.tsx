@@ -1,9 +1,9 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { VFC } from 'react';
+import React from 'react';
 import { useConfig } from '@/context/config';
 
-export const Logo: VFC<{ small?: boolean }> = ({ small }) => {
+export const Logo = ({ small }: { small?: boolean }) => {
   const {
     logo: { description, url },
   } = useConfig();

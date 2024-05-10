@@ -1,8 +1,8 @@
-import React, { VFC } from 'react';
+import React from 'react';
 import Head from 'next/head';
 import { MetaTags } from '@/types/contentful';
 
-export const Meta: VFC<{ data: MetaTags }> = ({ data }) => {
+export const Meta = ({ data }: { data: MetaTags }) => {
   const { metaTitle, metaDescription } = data;
   return (
     <Head>
