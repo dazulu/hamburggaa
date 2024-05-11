@@ -3,8 +3,9 @@ import { LOCALES } from '../../../i18n';
 import { query as pageQuery } from '@/queries/page';
 
 import type { NavigationConfigCollection } from '@/types/contentful';
+import { Locale } from '@/types/i18n';
 
-async function getData(lang, route) {
+async function getData(locale: Locale, route: string) {
   const pageResponse = await fetch(
     `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}/environments/master`,
     {
@@ -15,7 +16,7 @@ async function getData(lang, route) {
       },
       body: JSON.stringify({
         query: pageQuery,
-        variables: { dir: route, locale: lang },
+        variables: { dir: route, locale },
       }),
     }
   );
@@ -37,10 +38,12 @@ export async function generateStaticParams() {
 }
 
 export default async function Page({
-  params: { lang, route },
+  params: { lang: locale, route },
+}: {
+  params: { lang: Locale; route: string };
 }): Promise<JSX.Element> {
   // Fetch data directly in a Server Component
-  const data = await getData(lang, route);
+  const data = await getData(locale, route);
   // Forward fetched data to your Client Component
   return <Template data={data} />;
 }
