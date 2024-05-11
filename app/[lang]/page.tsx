@@ -1,15 +1,8 @@
-import { query as pageQuery } from '@/queries/page';
-import { query as navigationQuery } from '@/queries/navigation';
-import { query as configQuery } from '@/queries/config';
-
-import HomePage from './home-page';
+import Template from '@/ui/template/page';
 import { LOCALES } from '../../i18n';
+import { query as pageQuery } from '@/queries/page';
 
-import type {
-  NavigationMenuCollection,
-  NavigationConfigCollection,
-  ThemeCollection,
-} from '@/types/contentful';
+import type { NavigationConfigCollection } from '@/types/contentful';
 
 const endpoint = `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}/environments/master`;
 
@@ -36,40 +29,8 @@ async function getData(lang) {
           .linkedFrom.pageCollection.items[0]
     );
 
-  const navigationResponse = await fetch(
-    endpoint,
-    getOptions({
-      query: navigationQuery,
-      variables: {
-        locale: lang,
-      },
-    })
-  );
-  const navigation = await navigationResponse
-    .json()
-    .then(
-      ({ data }) =>
-        (data.navigationMenuCollection as NavigationMenuCollection).items[0]
-          .itemsCollection.items
-    );
-
-  const themeResponse = await fetch(
-    endpoint,
-    getOptions({
-      query: configQuery,
-      variables: {
-        locale: lang,
-      },
-    })
-  );
-  const theme = await themeResponse
-    .json()
-    .then(({ data }) => (data.themeCollection as ThemeCollection).items[0]);
-
   return {
     page,
-    navigation,
-    theme,
   };
 }
 
@@ -81,5 +42,5 @@ export default async function Page({ params: { lang } }): Promise<JSX.Element> {
   // Fetch data directly in a Server Component
   const data = await getData(lang);
   // Forward fetched data to your Client Component
-  return <HomePage data={data} />;
+  return <Template data={data} />;
 }

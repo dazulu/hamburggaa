@@ -1,13 +1,16 @@
 import { LanguageSwitcher } from './language-switcher';
+import { Locale } from '@/types/i18n';
 import { Navigation } from './navigation';
+import { SocialIcons } from '../social';
 
-import type { Locale } from '@/types/i18n';
-
-export const Header: React.FC<{ lang: Locale }> = () => {
+export const Header = ({ lang }: { lang: Locale }): JSX.Element => {
   return (
-    <div>
-      <Navigation />
+    <header>
+      {/* @ts-expect-error Async Server Component */}
+      <Navigation lang={lang} />
       <LanguageSwitcher />
-    </div>
+      {/* @ts-expect-error Async Server Component */}
+      <SocialIcons />
+    </header>
   );
 };

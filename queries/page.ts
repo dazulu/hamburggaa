@@ -11,6 +11,7 @@ export const query = `
               }
               modulesCollection(locale: $locale) {
                 items {
+                  __typename
                   ... on Faqs {
                     sys {
                       id

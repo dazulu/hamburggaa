@@ -6,8 +6,10 @@
   padding: 0;
 }
 
-.item {
-}
-
 .link {
+  color: black;
+  padding: 7px;
+  &:hover {
+    color: var(--primary);
+  }
 }

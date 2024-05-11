@@ -16,15 +16,6 @@ export const query = `
         }
         primaryColor
         secondaryColor
-        socialMediaLinksCollection {
-          items {
-            sys {
-              id
-            }
-            type
-            link
-          }
-        }
       }
     }
   }

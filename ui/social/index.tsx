@@ -1,7 +1,29 @@
 import React from 'react';
 import styles from './styles.module.scss';
-import { useLinks } from '@/context/links';
 import { SocialMediaType } from '@/types/navigation';
+import { query } from '@/queries/social-media';
+import { SocialMediaLink } from '@/types/contentful';
+
+const endpoint = `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}/environments/master`;
+
+async function getData() {
+  const response = await fetch(endpoint, {
+    method: 'POST',
+    headers: {
+      'content-type': 'application/json',
+      Authorization: `Bearer ${process.env.CONTENTFUL_ACCESS_TOKEN}`,
+    },
+    body: JSON.stringify({ query }),
+  });
+
+  return response
+    .json()
+    .then(
+      ({ data }) =>
+        data.themeCollection.items[0].socialMediaLinksCollection
+          .items as SocialMediaLink[]
+    );
+}
 
 const getIconPath = (type: SocialMediaType) => {
   switch (type) {
@@ -24,29 +46,31 @@ const getIconPath = (type: SocialMediaType) => {
   }
 };
 
-export const SocialIcons = () => {
-  const { socialLinks } = useLinks();
+export const SocialIcons = async (): Promise<JSX.Element> => {
+  const data = await getData();
+
   return (
-    <div className={styles.links}>
-      {socialLinks.map((item) => (
-        <a
-          key={item.sys.id}
-          className={styles.link}
-          href={item.link}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <svg
-            fill="currentColor"
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
+    <ul className={styles.list}>
+      {data.map((item) => (
+        <li key={item.sys.id} className={styles.item}>
+          <a
+            className={styles.link}
+            href={item.link}
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            <title>Instagram logo</title>
-            {getIconPath(item.type as SocialMediaType)}
-          </svg>
-        </a>
+            <svg
+              fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+            >
+              <title>Instagram logo</title>
+              {getIconPath(item.type as SocialMediaType)}
+            </svg>
+          </a>
+        </li>
       ))}
-    </div>
+    </ul>
   );
 };
