@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react';
 import styles from './styles.module.scss';
 import { Locale } from '@/types/i18n';
 import { query } from '@/queries/navigation';

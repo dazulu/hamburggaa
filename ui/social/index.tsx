@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './styles.module.scss';
 import { SocialMediaType } from '@/types/navigation';
 import { query } from '@/queries/social-media';

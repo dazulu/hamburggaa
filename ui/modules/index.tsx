@@ -1,4 +1,3 @@
-import React from 'react';
 import { ModuleImageText } from './module/image-text';
 import { PageModulesItem } from '@/types/contentful';
 

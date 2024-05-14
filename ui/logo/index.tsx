@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react';
 import { useConfig } from '@/context/config';
 
 export const Logo = ({ small }: { small?: boolean }) => {

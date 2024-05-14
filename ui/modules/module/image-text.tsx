@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import React from 'react';
 import { ImageText } from '@/types/contentful';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 

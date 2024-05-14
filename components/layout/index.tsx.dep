@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import styles from './styles.module.scss';
 import { Meta } from '@/components/meta';
 import { MobileHeader } from '@/components/mobile-header';
