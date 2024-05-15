@@ -1,15 +1,15 @@
 export const query = `
-  query($dir: String!, $locale: String) {
-    navigationConfigCollection(where: { dir: $dir }, limit: 1) {
+  query($slug: String!, $locale: String!) {
+    navigationConfigCollection(where: { slug: $slug }, limit: 1, locale: $locale) {
       items {
-        linkedFrom {
+        linkedFrom(allowedLocales: ["en","de"]) {
           pageCollection(limit: 1) {
             items {
-              metaInformation(locale: $locale) {
+              metaInformation {
                 metaTitle
                 metaDescription
               }
-              modulesCollection(locale: $locale) {
+              modulesCollection {
                 items {
                   __typename
                   ... on Faqs {

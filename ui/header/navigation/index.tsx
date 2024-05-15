@@ -41,7 +41,7 @@ async function getData(locale: string) {
 const isNavigationConfig = (
   item: NavigationMenuItemsItem
 ): item is NavigationConfig => {
-  return "dir" in item;
+  return "slug" in item;
 };
 
 export const Navigation = async ({ lang }: { lang: Locale }) => {
@@ -53,10 +53,11 @@ export const Navigation = async ({ lang }: { lang: Locale }) => {
         {data.map((item) => {
           // Internal routing links
           if (isNavigationConfig(item)) {
-            const href = item.dir === "ROOT" ? "/" : `/${item.slug}`;
+            const href =
+              item.dir === "ROOT" ? `/${lang}` : `${lang}/${item.slug}`;
             return (
               <li key={item.sys.id} className={styles.item}>
-                <Link href={href} className={styles.link}>
+                <Link locale={false} href={href} className={styles.link}>
                   {item.menuLabel}
                 </Link>
               </li>
