@@ -1,5 +1,5 @@
-import { PageData } from '@/types/page';
-import { Modules } from '@/ui/modules';
+import { PageData } from "@/types/page";
+import { Modules } from "@/ui/modules";
 
 export default function Page({ data }: PageData): JSX.Element {
   return (

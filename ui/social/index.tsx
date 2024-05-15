@@ -1,15 +1,15 @@
-import styles from './styles.module.scss';
-import { SocialMediaType } from '@/types/navigation';
-import { query } from '@/queries/social-media';
-import { SocialMediaLink } from '@/types/contentful';
+import styles from "./styles.module.scss";
+import { SocialMediaType } from "@/types/navigation";
+import { query } from "@/queries/social-media";
+import { SocialMediaLink } from "@/types/contentful";
 
 const endpoint = `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}/environments/master`;
 
 async function getData() {
   const response = await fetch(endpoint, {
-    method: 'POST',
+    method: "POST",
     headers: {
-      'content-type': 'application/json',
+      "content-type": "application/json",
       Authorization: `Bearer ${process.env.CONTENTFUL_ACCESS_TOKEN}`,
     },
     body: JSON.stringify({ query }),

@@ -1,14 +1,14 @@
-import { NextResponse } from 'next/server';
-import { match } from '@formatjs/intl-localematcher';
+import { NextResponse } from "next/server";
+import { match } from "@formatjs/intl-localematcher";
 
-import { DEFAULT_LOCALE, LOCALES } from './i18n';
+import { DEFAULT_LOCALE, LOCALES } from "./i18n";
 
 // Get the preferred locale, similar to above or using a library
 function getLocale(request) {
-  const acceptLangaugeHeader = request.headers.get('accept-language');
-  const rawHeaderLocales = acceptLangaugeHeader.split(',');
+  const acceptLangaugeHeader = request.headers.get("accept-language");
+  const rawHeaderLocales = acceptLangaugeHeader.split(",");
   const cleanedLocales = rawHeaderLocales.map((language) =>
-    language.split(';')[0].trim()
+    language.split(";")[0].trim()
   );
 
   return match(cleanedLocales, LOCALES, DEFAULT_LOCALE);
@@ -16,14 +16,14 @@ function getLocale(request) {
 
 const PUBLIC_FILE = /\.(.*)$/;
 function testPublicFile(pathname: string): boolean {
-  return PUBLIC_FILE.test(pathname) && !pathname.includes('sitemap.xml');
+  return PUBLIC_FILE.test(pathname) && !pathname.includes("sitemap.xml");
 }
 
 export function middleware(request) {
   const shouldHandleLocale =
     !testPublicFile(request.nextUrl.pathname) &&
-    !request.nextUrl.pathname.includes('/api/') &&
-    !request.headers.get('x-middleware-preflight');
+    !request.nextUrl.pathname.includes("/api/") &&
+    !request.headers.get("x-middleware-preflight");
 
   if (!shouldHandleLocale) {
     return undefined;
@@ -50,7 +50,7 @@ export function middleware(request) {
 export const config = {
   matcher: [
     // Skip all internal paths (_next)
-    '/((?!_next).*)',
+    "/((?!_next).*)",
     // Optional: only run on root (/) URL
     // '/',
   ],

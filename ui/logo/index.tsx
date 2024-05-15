@@ -1,6 +1,6 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import { useConfig } from '@/context/config';
+import Image from "next/image";
+import Link from "next/link";
+import { useConfig } from "@/context/config";
 
 export const Logo = ({ small }: { small?: boolean }) => {
   const {

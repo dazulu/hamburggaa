@@ -1,17 +1,17 @@
-'use client';
+"use client";
 
-import Image from 'next/image';
-import Link from 'next/link';
+import Image from "next/image";
+import Link from "next/link";
 
-import styles from './styles.module.scss';
-import flagEN from '@/public/images/flag_en.png';
-import flagDE from '@/public/images/flag_de.png';
+import styles from "./styles.module.scss";
+import flagEN from "@/public/images/flag_en.png";
+import flagDE from "@/public/images/flag_de.png";
 
-import { LOCALES } from 'i18n';
+import { LOCALES } from "i18n";
 
-import { useLang } from '@/hooks/use-lang';
+import { useLang } from "@/hooks/use-lang";
 
-import { Locale } from '@/types/i18n';
+import { Locale } from "@/types/i18n";
 
 export const LanguageSwitcher: React.FC = () => {
   const lang = useLang();

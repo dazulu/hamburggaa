@@ -1,6 +1,6 @@
-import { Header } from '@/ui/header';
-import '@/styles/global.scss';
-import '@/styles/variables.scss';
+import { Header } from "@/ui/header";
+import "@/styles/global.scss";
+import "@/styles/variables.scss";
 
 export default function RootLayout({
   children,

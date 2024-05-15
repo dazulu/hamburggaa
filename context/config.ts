@@ -1,5 +1,5 @@
-import { createContext, useContext } from 'react';
-import { Theme } from '@/types/contentful';
+import { createContext, useContext } from "react";
+import { Theme } from "@/types/contentful";
 
 export const ConfigContext = createContext<Theme>(null);
 

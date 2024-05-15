@@ -1,4 +1,4 @@
-import { Page as PageProps } from '@/types/contentful';
+import { Page as PageProps } from "@/types/contentful";
 
 export interface PageData {
   data: {

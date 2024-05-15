@@ -1,5 +1,5 @@
-import { ModuleImageText } from './module/image-text';
-import { PageModulesItem } from '@/types/contentful';
+import { ModuleImageText } from "./module/image-text";
+import { PageModulesItem } from "@/types/contentful";
 
 export const Modules = ({
   modules,
@@ -10,7 +10,7 @@ export const Modules = ({
     <>
       {modules.map((module) => {
         switch (module.__typename) {
-          case 'ImageText': {
+          case "ImageText": {
             return <ModuleImageText key={module.sys.id} module={module} />;
           }
           default:

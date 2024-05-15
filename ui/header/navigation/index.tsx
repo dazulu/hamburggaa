@@ -1,22 +1,22 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import styles from './styles.module.scss';
-import { Locale } from '@/types/i18n';
-import { query } from '@/queries/navigation';
+import Image from "next/image";
+import Link from "next/link";
+import styles from "./styles.module.scss";
+import { Locale } from "@/types/i18n";
+import { query } from "@/queries/navigation";
 
 import {
   NavigationConfig,
   NavigationMenuItemsItem,
   NavigationMenuCollection,
-} from '@/types/contentful';
+} from "@/types/contentful";
 
 const endpoint = `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}/environments/master`;
 
 async function getData(locale: string) {
   const response = await fetch(endpoint, {
-    method: 'POST',
+    method: "POST",
     headers: {
-      'content-type': 'application/json',
+      "content-type": "application/json",
       Authorization: `Bearer ${process.env.CONTENTFUL_ACCESS_TOKEN}`,
     },
     body: JSON.stringify({
@@ -41,7 +41,7 @@ async function getData(locale: string) {
 const isNavigationConfig = (
   item: NavigationMenuItemsItem
 ): item is NavigationConfig => {
-  return 'dir' in item;
+  return "dir" in item;
 };
 
 export const Navigation = async ({ lang }: { lang: Locale }) => {
@@ -53,7 +53,7 @@ export const Navigation = async ({ lang }: { lang: Locale }) => {
         {data.map((item) => {
           // Internal routing links
           if (isNavigationConfig(item)) {
-            const href = item.dir === 'ROOT' ? '/' : `/${item.slug}`;
+            const href = item.dir === "ROOT" ? "/" : `/${item.slug}`;
             return (
               <li key={item.sys.id} className={styles.item}>
                 <Link href={href} className={styles.link}>
