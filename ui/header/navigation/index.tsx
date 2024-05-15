@@ -44,8 +44,8 @@ const isNavigationConfig = (
   return "slug" in item;
 };
 
-export const Navigation = async ({ lang }: { lang: Locale }) => {
-  const data = await getData(lang);
+export const Navigation = async ({ locale }: { locale: Locale }) => {
+  const data = await getData(locale);
 
   return (
     <nav>
@@ -54,7 +54,7 @@ export const Navigation = async ({ lang }: { lang: Locale }) => {
           // Internal routing links
           if (isNavigationConfig(item)) {
             const href =
-              item.dir === "ROOT" ? `/${lang}` : `${lang}/${item.slug}`;
+              item.dir === "ROOT" ? `/${locale}` : `${locale}/${item.slug}`;
             return (
               <li key={item.sys.id} className={styles.item}>
                 <Link locale={false} href={href} className={styles.link}>

@@ -14,7 +14,7 @@ import { useLang } from "@/hooks/use-lang";
 import { Locale } from "@/types/i18n";
 
 export const LanguageSwitcher: React.FC = () => {
-  const lang = useLang();
+  const activeLocale = useLang();
 
   return (
     <div className={styles.links}>
@@ -24,7 +24,9 @@ export const LanguageSwitcher: React.FC = () => {
           <Link
             key={locale}
             href={`/${locale}`}
-            className={`${styles.link} ${lang === locale && styles.active}`}
+            className={`${styles.link} ${
+              activeLocale === locale && styles.active
+            }`}
             title={locale.toUpperCase()}
           >
             <Image alt="" src={image} width={30} height={30} />

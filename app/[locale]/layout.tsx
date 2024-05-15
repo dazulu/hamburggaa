@@ -9,12 +9,12 @@ export default function RootLayout({
   children: React.ReactNode;
   params: Record<string, any>;
 }): JSX.Element {
-  const { lang } = params;
+  const { locale } = params;
 
   return (
-    <html lang={lang}>
+    <html lang={locale}>
       <body>
-        <Header lang={lang} />
+        <Header locale={locale} />
         {children}
       </body>
     </html>

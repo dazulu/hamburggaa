@@ -33,13 +33,13 @@ async function getData(locale: Locale, slug: string) {
 }
 
 export async function generateStaticParams() {
-  return LOCALES.map((lang) => ({ lang }));
+  return LOCALES.map((locale) => ({ locale }));
 }
 
 export default async function Page({
-  params: { lang: locale, route },
+  params: { locale, route },
 }: {
-  params: { lang: Locale; route: string };
+  params: { locale: Locale; route: string };
 }): Promise<JSX.Element> {
   const data = await getData(locale, route);
 

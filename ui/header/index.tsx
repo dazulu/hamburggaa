@@ -3,11 +3,11 @@ import { Locale } from "@/types/i18n";
 import { Navigation } from "./navigation";
 import { SocialIcons } from "../social";
 
-export const Header = ({ lang }: { lang: Locale }): JSX.Element => {
+export const Header = ({ locale }: { locale: Locale }): JSX.Element => {
   return (
     <header>
       {/* @ts-expect-error Async Server Component */}
-      <Navigation lang={lang} />
+      <Navigation locale={locale} />
       <LanguageSwitcher />
       {/* @ts-expect-error Async Server Component */}
       <SocialIcons />
