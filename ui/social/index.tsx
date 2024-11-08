@@ -1,4 +1,4 @@
-import styles from "./styles.module.scss";
+import styles from "./styles.module.css";
 import { SocialMediaType } from "@/types/navigation";
 import { query } from "@/queries/social-media";
 import { SocialMediaLink } from "@/types/contentful";

@@ -1,14 +1,15 @@
 import { Header } from "@/ui/header";
-import "@/styles/global.scss";
-import "@/styles/variables.scss";
+import "@/styles/global.css";
+import "@/styles/variables.css";
 
-export default function RootLayout({
-  children,
-  params,
-}: {
+export default async function RootLayout(props: {
   children: React.ReactNode;
-  params: Record<string, any>;
-}): JSX.Element {
+  params: Promise<Record<string, any>>;
+}): Promise<JSX.Element> {
+  const params = await props.params;
+
+  const { children } = props;
+
   const { locale } = params;
 
   return (

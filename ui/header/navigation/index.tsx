@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import styles from "./styles.module.scss";
+import styles from "./styles.module.css";
 import { Locale } from "@/types/i18n";
 import { query } from "@/queries/navigation";
 

@@ -6,8 +6,8 @@ This is a static [Next.js](https://nextjs.org/) project, deployed to [Netlify](h
 
 ## Uses
 
-- Next.js 13
-- React 18
+- Next.js
+- React
 - TypeScript
 - GraphQL
 - Contentful

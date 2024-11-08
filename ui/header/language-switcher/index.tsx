@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import styles from "./styles.module.scss";
+import styles from "./styles.module.css";
 import flagEN from "@/public/images/flag_en.png";
 import flagDE from "@/public/images/flag_de.png";
 

@@ -2,9 +2,9 @@ import SharedPage, { generateStaticParams } from "@/app/shared-page";
 
 export { generateStaticParams };
 
-export default function Page(props: any): Promise<JSX.Element> {
+export default async function Page(props: any): Promise<JSX.Element> {
+  const resolvedParams = await props.params;
   return SharedPage({
-    ...props,
-    params: { ...props.params, route: "ROOT" },
+    params: { ...resolvedParams, route: "ROOT" },
   });
 }

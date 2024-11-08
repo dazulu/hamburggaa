@@ -4,7 +4,6 @@
 
 const nextConfig = {
   generateBuildId: () => "build",
-  swcMinify: true,
   images: {
     remotePatterns: [
       {

@@ -5,7 +5,7 @@
   "author": "Adrian Payne <pro.hamburg.europe@gaa.ie>",
   "scripts": {
     "predev": "yarn generate-types",
-    "dev": "next dev",
+    "dev": "next dev --turbopack",
     "prebuild": "yarn generate-types",
     "build": "next build",
     "start": "next start",
@@ -30,10 +30,10 @@
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^15.6.2",
     "@formatjs/intl-localematcher": "^0.2.32",
-    "@types/react-dom": "^18.3.0",
-    "next": "^14.2.3",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
+    "@types/react-dom": "npm:types-react-dom@19.0.0-rc.1",
+    "next": "15.0.3",
+    "react": "19.0.0-rc-66855b96-20241106",
+    "react-dom": "19.0.0-rc-66855b96-20241106",
     "sharp": "^0.33.3"
   },
   "devDependencies": {
@@ -41,7 +41,7 @@
     "@graphql-codegen/typescript": "^1.21.1",
     "@graphql-codegen/typescript-operations": "^1.17.15",
     "@types/node": "^14.14.25",
-    "@types/react": "^18.3.2",
+    "@types/react": "npm:types-react@19.0.0-rc.1",
     "@typescript-eslint/eslint-plugin": "^4.14.2",
     "@typescript-eslint/parser": "^8.13.0",
     "dotenv": "^8.2.0",
@@ -53,7 +53,10 @@
     "husky": "^4.2.3",
     "lint-staged": "^10.0.10",
     "prettier": "^2.0.2",
-    "sass": "^1.32.8",
     "typescript": "^4.5.2"
+  },
+  "resolutions": {
+    "@types/react": "npm:types-react@19.0.0-rc.1",
+    "@types/react-dom": "npm:types-react-dom@19.0.0-rc.1"
   }
 }
