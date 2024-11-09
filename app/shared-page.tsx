@@ -1,10 +1,8 @@
 import Template from "@/ui/template/page";
-import { LOCALES } from "../i18n";
 import { query } from "@/queries/page";
-import { Locale } from "@/types/i18n";
 import type { NavigationConfigCollection } from "@/types/contentful";
 
-async function getData(locale: Locale, slug: string) {
+async function getData(locale: string, slug: string) {
   const pageResponse = await fetch(
     `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}/environments/master`,
     {
@@ -32,15 +30,11 @@ async function getData(locale: Locale, slug: string) {
   };
 }
 
-export async function generateStaticParams() {
-  return LOCALES.map((locale) => ({ locale }));
-}
-
 export default async function Page({
   params: { locale, route },
 }: {
-  params: { locale: Locale; route: string };
-}): Promise<JSX.Element> {
+  params: { locale: string; route: string };
+}) {
   const data = await getData(locale, route);
 
   return <Template data={data} />;

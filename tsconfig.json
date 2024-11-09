@@ -10,7 +10,8 @@
       "@/queries/*": ["queries/*"],
       "@/styles/*": ["styles/*"],
       "@/types/*": ["types/*"],
-      "@/ui/*": ["ui/*"]
+      "@/ui/*": ["ui/*"],
+      "@/i18n/*": ["i18n/*"]
     },
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
@@ -38,6 +39,7 @@
     "**/*.ts",
     "**/*.tsx",
     "**/*.js",
+    "**/*.mjs",
     ".next/types/**/*.ts"
   ]
 }

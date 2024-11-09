@@ -1,23 +1,19 @@
 import { Header } from "@/ui/header";
+import { getLocale } from "next-intl/server";
+
 import "@/styles/global.css";
 import "@/styles/variables.css";
 
-export default async function RootLayout(props: {
+export default async function LocaleLayout({
+  children,
+}: {
   children: React.ReactNode;
-  params: Promise<Record<string, any>>;
-}): Promise<JSX.Element> {
-  const params = await props.params;
-
-  const { children } = props;
-
-  const { locale } = params;
-
+}) {
+  const locale = await getLocale();
   return (
-    <html lang={locale}>
-      <body>
-        <Header locale={locale} />
-        {children}
-      </body>
-    </html>
+    <>
+      <Header locale={locale} />
+      {children}
+    </>
   );
 }

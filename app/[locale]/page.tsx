@@ -1,10 +1,17 @@
-import SharedPage, { generateStaticParams } from "@/app/shared-page";
+import SharedPage from "@/app/shared-page";
+import { getLocale } from "next-intl/server";
 
-export { generateStaticParams };
+export async function generateStaticParams() {
+  return [
+    { locale: "en", route: "ROOT" },
+    { locale: "de", route: "ROOT" },
+  ];
+}
 
-export default async function Page(props: any): Promise<JSX.Element> {
-  const resolvedParams = await props.params;
+export default async function Page() {
+  const locale = await getLocale();
+
   return SharedPage({
-    params: { ...resolvedParams, route: "ROOT" },
+    params: { locale, route: "ROOT" },
   });
 }

@@ -45,7 +45,7 @@ const getIconPath = (type: SocialMediaType) => {
   }
 };
 
-export const SocialIcons = async (): Promise<JSX.Element> => {
+export const SocialIcons = async (): Promise<React.ReactElement> => {
   const data = await getData();
 
   return (

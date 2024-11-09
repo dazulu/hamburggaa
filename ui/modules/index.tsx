@@ -1,11 +1,7 @@
 import { ModuleImageText } from "./module/image-text";
 import { PageModulesItem } from "@/types/contentful";
 
-export const Modules = ({
-  modules,
-}: {
-  modules: PageModulesItem[];
-}): JSX.Element => {
+export const Modules = ({ modules }: { modules: PageModulesItem[] }) => {
   return (
     <>
       {modules.map((module) => {

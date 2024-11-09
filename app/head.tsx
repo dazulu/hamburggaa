@@ -1,4 +1,4 @@
-export default function Head(): JSX.Element {
+export default function Head() {
   return (
     <>
       <title>My Next.js App</title>

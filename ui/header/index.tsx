@@ -1,15 +1,15 @@
+import { SocialIcons } from "@/ui/social";
 import { LanguageSwitcher } from "./language-switcher";
-import { Locale } from "@/types/i18n";
 import { Navigation } from "./navigation";
-import { SocialIcons } from "../social";
 
-export const Header = ({ locale }: { locale: Locale }): JSX.Element => {
+export const Header = async ({ locale }: { locale: string }) => {
   return (
     <header>
+      {/* TypeScript limitation: async components receiving props need the expect-error,
+          while prop-less async components like SocialIcons work fine */}
       {/* @ts-expect-error Async Server Component */}
       <Navigation locale={locale} />
       <LanguageSwitcher />
-      {/* @ts-expect-error Async Server Component */}
       <SocialIcons />
     </header>
   );

@@ -1,7 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
-import styles from "./styles.module.css";
-import { Locale } from "@/types/i18n";
+import { Link } from "@/i18n/routing";
 import { query } from "@/queries/navigation";
 
 import {
@@ -9,6 +7,9 @@ import {
   NavigationMenuItemsItem,
   NavigationMenuCollection,
 } from "@/types/contentful";
+import { Locale } from "@/types/i18n";
+
+import styles from "./styles.module.css";
 
 const endpoint = `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}/environments/master`;
 
@@ -44,7 +45,11 @@ const isNavigationConfig = (
   return "slug" in item;
 };
 
-export const Navigation = async ({ locale }: { locale: Locale }) => {
+export const Navigation = async ({
+  locale,
+}: {
+  locale: Locale;
+}): Promise<React.ReactElement> => {
   const data = await getData(locale);
 
   return (
@@ -53,11 +58,10 @@ export const Navigation = async ({ locale }: { locale: Locale }) => {
         {data.map((item) => {
           // Internal routing links
           if (isNavigationConfig(item)) {
-            const href =
-              item.dir === "ROOT" ? `/${locale}` : `${locale}/${item.slug}`;
+            const href = item.dir === "ROOT" ? `/` : `/${item.slug}`;
             return (
               <li key={item.sys.id} className={styles.item}>
-                <Link locale={false} href={href} className={styles.link}>
+                <Link locale={locale} href={href} className={styles.link}>
                   {item.menuLabel}
                 </Link>
               </li>
