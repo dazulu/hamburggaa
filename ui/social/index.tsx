@@ -19,8 +19,9 @@ async function getData() {
     .json()
     .then(
       ({ data }) =>
-        data.themeCollection.items[0].socialMediaLinksCollection
-          .items as SocialMediaLink[]
+        data.themeCollection.items[0].socialMediaLinksCollection.items.filter(
+          Boolean
+        ) as SocialMediaLink[]
     );
 }
 

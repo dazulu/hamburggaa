@@ -30,10 +30,10 @@ async function getData(locale: string) {
 
   const data = await response
     .json()
-    .then(
-      ({ data }) =>
-        (data.navigationMenuCollection as NavigationMenuCollection).items[0]
-          .itemsCollection.items
+    .then(({ data }) =>
+      (
+        data.navigationMenuCollection as NavigationMenuCollection
+      ).items[0].itemsCollection.items.filter(Boolean)
     );
 
   return data;
