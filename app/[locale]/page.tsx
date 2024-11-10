@@ -1,11 +1,9 @@
 import SharedPage from "@/app/shared-page";
+import { LOCALES } from "@/i18n/locales";
 import { getLocale } from "next-intl/server";
 
 export async function generateStaticParams() {
-  return [
-    { locale: "en", route: "ROOT" },
-    { locale: "de", route: "ROOT" },
-  ];
+  return LOCALES.map((locale) => ({ locale, route: "/" }));
 }
 
 export default async function Page() {
