@@ -30,11 +30,10 @@
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^15.6.2",
     "@formatjs/intl-localematcher": "^0.2.32",
-    "@types/react-dom": "npm:types-react-dom@19.0.0-rc.1",
-    "next": "15.0.3",
+    "next": "^15.2.3",
     "next-intl": "^3.25.0",
-    "react": "19.0.0-rc-66855b96-20241106",
-    "react-dom": "19.0.0-rc-66855b96-20241106",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
     "sharp": "^0.33.3"
   },
   "devDependencies": {
@@ -43,6 +42,7 @@
     "@graphql-codegen/typescript-operations": "^1.17.15",
     "@types/node": "^14.14.25",
     "@types/react": "npm:types-react@19.0.0-rc.1",
+    "@types/react-dom": "npm:types-react-dom@19.0.0-rc.1",
     "@typescript-eslint/eslint-plugin": "^4.14.2",
     "@typescript-eslint/parser": "^8.13.0",
     "dotenv": "^8.2.0",
