@@ -37,6 +37,23 @@ export const query = `
                     text {
                       json
                     }
+                    callToActionLink {
+                      ... on NavigationConfig {
+                        sys {
+                          id
+                        }
+                        dir
+                        slug
+                        menuLabel
+                      }
+                      ... on ExternalNavigationLink {
+                        sys {
+                          id
+                        }
+                        url
+                        menuLabel
+                      }
+                    }
                   }
                 }
               }

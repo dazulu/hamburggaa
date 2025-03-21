@@ -1,14 +1,10 @@
+import { getInternalLinkSlug, isNavigationConfig } from "@/utils/navigation";
+
 import Image from "next/image";
 import { Link } from "@/i18n/routing";
-import { query } from "@/queries/navigation";
-
-import {
-  NavigationConfig,
-  NavigationMenuItemsItem,
-  NavigationMenuCollection,
-} from "@/types/contentful";
 import { Locale } from "@/types/i18n";
-
+import { NavigationMenuCollection } from "@/types/contentful";
+import { query } from "@/queries/navigation";
 import styles from "./styles.module.css";
 
 const endpoint = `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}/environments/master`;
@@ -39,12 +35,6 @@ async function getData(locale: string) {
   return data;
 }
 
-const isNavigationConfig = (
-  item: NavigationMenuItemsItem
-): item is NavigationConfig => {
-  return "slug" in item;
-};
-
 export const Navigation = async ({
   locale,
 }: {
@@ -58,7 +48,8 @@ export const Navigation = async ({
         {data.map((item) => {
           // Internal routing links
           if (isNavigationConfig(item)) {
-            const href = item.dir === "ROOT" ? `/` : `/${item.slug}`;
+            const href = getInternalLinkSlug(item);
+
             return (
               <li key={item.sys.id} className={styles.item}>
                 <Link locale={locale} href={href} className={styles.link}>
