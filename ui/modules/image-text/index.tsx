@@ -5,21 +5,19 @@ import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import styles from "./styles.module.css";
 
 export const ModuleImageText = ({ module }: { module: ImageText }) => {
-  const {
-    image: { alt, image },
-    text,
-    callToActionLink,
-  } = module;
+  const { image, text, callToActionLink } = module;
 
   return (
     <div className={styles.container}>
       {documentToReactComponents(text.json)}
-      <Image
-        alt={alt}
-        src={image.url}
-        width={image.width}
-        height={image.height}
-      />
+      {image && (
+        <Image
+          alt={image.description}
+          src={image.url}
+          width={image.width}
+          height={image.height}
+        />
+      )}
       {callToActionLink && <ButtonLink {...callToActionLink} />}
     </div>
   );

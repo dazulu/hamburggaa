@@ -15,9 +15,9 @@ export const ModuleHero = ({ module }: { module: Hero }) => {
         <Image
           fill
           priority
-          alt={image.alt}
+          alt={image.description}
           className={styles.image}
-          src={image.image.url}
+          src={image.url}
         />
       )}
       {callToActionLink && <ButtonLink {...callToActionLink} />}
