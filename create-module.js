@@ -19,13 +19,14 @@ if (!fs.existsSync(moduleDirPath)) {
 
 // Create index.tsx
 const capitalisedName = moduleName[0].toUpperCase() + moduleName.substring(1);
+const componentName = `Module${capitalisedName}`;
 const indexContent = `
 import styles from './styles.module.css';
 
-export const ${capitalisedName} = ({ module }: { module: any }) => {
+export const ${componentName} = ({ module }: { module: any }) => {
   return (
     <div className={styles.container}>
-      <h1>${capitalisedName}</h1>
+      <h1>${componentName}</h1>
       <pre>
         <code>{JSON.stringify(module, null, 2)}</code>
       </pre>
@@ -63,7 +64,7 @@ try {
     `${newCase}\n\t\t\t\t\tdefault:`
   );
 
-  const newImport = `import { ${capitalisedName} } from './${moduleName}';\n`;
+  const newImport = `import { ${componentName} } from './${moduleName}';\n`;
   const updatedContentWithImport = newImport + updatedModulesContentWithSwitch;
 
   // Write the updated content back to the file
