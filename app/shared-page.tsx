@@ -1,6 +1,6 @@
+import type { NavigationConfigCollection } from "@/types/contentful";
 import Template from "@/ui/template/page";
 import { query } from "@/queries/page";
-import type { NavigationConfigCollection } from "@/types/contentful";
 
 async function getData(locale: string, slug: string) {
   const pageResponse = await fetch(

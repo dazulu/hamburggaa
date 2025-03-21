@@ -34,14 +34,14 @@ export const query = `
                 metaTitle
                 metaDescription
               }
-              modulesCollection {
+              modulesCollection(limit: 10) {
                 items {
                   __typename
                   ... on Header {
                     sys {
                       id
                     }
-                    navigationLinksCollection {
+                    navigationLinksCollection(limit: 7) {
                       items {
                         ... on NavigationConfig {
                           ...NavigationConfigFields
@@ -98,13 +98,48 @@ export const query = `
                         ...ExternalNavigationLinkFields
                       }
                     }
-                  }                   
+                  }
+                  ... on Person {
+                    sys {
+                      id
+                    }
+                    name
+                    role
+                    image {
+                      url
+                      width
+                      height
+                    }
+                  }
+                  ... on PersonList {
+                    sys {
+                      id
+                    }
+                    headline
+                    text {
+                      json
+                    }
+                    peopleCollection(limit: 10) {
+                      items {
+                        sys {
+                          id
+                        }
+                        name
+                        role
+                        image {
+                          url
+                          width
+                          height
+                        }
+                      }
+                    }
+                  }
                   ... on Footer {
                     sys {
                       id
                     }
                     headline
-                    navigationLinksCollection {
+                    navigationLinksCollection(limit: 10) {
                       items {
                         ... on NavigationConfig {
                           ...NavigationConfigFields
