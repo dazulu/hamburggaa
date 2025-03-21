@@ -1,3 +1,4 @@
+import { ModulePersonList } from "./personList";
 import { ModuleFaq } from "./faq";
 import { ModuleFooter } from "./footer";
 import { ModuleHeader } from "./header";
@@ -24,6 +25,9 @@ export const Modules = ({ modules }: { modules: PageModulesItem[] }) => {
           }
           case "Footer": {
             return <ModuleFooter key={module.sys.id} module={module} />;
+          }
+          case "PersonList": {
+            return <ModulePersonList key={module.sys.id} module={module} />;
           }
           default: {
             return (
