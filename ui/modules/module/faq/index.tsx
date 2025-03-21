@@ -7,9 +7,6 @@ export const ModuleFaq = ({ module }: { module: Faqs }) => {
 
   return (
     <div>
-      <pre>
-        <code>{JSON.stringify(module, null, 2)}</code>
-      </pre>
       <h2>{title}</h2>
       {documentToReactComponents(description.json)}
       <dl>
