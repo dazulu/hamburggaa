@@ -1,6 +1,6 @@
-import { SocialIcons } from "@/ui/social";
 import { LanguageSwitcher } from "./language-switcher";
 import { Navigation } from "./navigation";
+import { SocialIcons } from "@/ui/social";
 
 export const Header = async ({ locale }: { locale: string }) => {
   return (

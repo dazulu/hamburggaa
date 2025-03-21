@@ -54,6 +54,30 @@ export const query = `
                         menuLabel
                       }
                     }
+                  }                   
+                  ... on Footer {
+                    sys {
+                      id
+                    }
+                    headline
+                    navigationLinksCollection {
+                      items {
+                        ... on NavigationConfig {
+                          sys {
+                            id
+                          }
+                          slug
+                          menuLabel
+                        }
+                        ... on ExternalNavigationLink {
+                          sys {
+                            id
+                          }
+                          url
+                          menuLabel
+                        }
+                      }
+                    }
                   }
                 }
               }

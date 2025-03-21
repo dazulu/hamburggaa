@@ -1,7 +1,6 @@
 import "@/styles/global.css";
 import "@/styles/variables.css";
 
-import Footer from "@/ui/footer";
 import { Header } from "@/ui/header";
 import { getLocale } from "next-intl/server";
 
@@ -15,7 +14,6 @@ export default async function LocaleLayout({
     <>
       <Header locale={locale} />
       {children}
-      <Footer locale={locale} />
     </>
   );
 }

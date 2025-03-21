@@ -1,4 +1,5 @@
 import { ModuleFaq } from "./faq";
+import { ModuleFooter } from "./footer";
 import { ModuleImageText } from "./image-text";
 import { PageModulesItem } from "@/types/contentful";
 
@@ -12,6 +13,9 @@ export const Modules = ({ modules }: { modules: PageModulesItem[] }) => {
           }
           case "Faqs": {
             return <ModuleFaq key={module.sys.id} module={module} />;
+          }
+          case "Footer": {
+            return <ModuleFooter key={module.sys.id} module={module} />;
           }
           default:
             return (

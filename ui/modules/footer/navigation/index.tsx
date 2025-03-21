@@ -1,51 +1,21 @@
 import { getInternalLinkSlug, isNavigationConfig } from "@/utils/navigation";
 
+import { FooterNavigationLinksCollection } from "@/types/contentful";
 import Image from "next/image";
 import { Link } from "@/i18n/routing";
-import { Locale } from "@/types/i18n";
-import { NavigationMenuCollection } from "@/types/contentful";
-import { query } from "@/queries/navigation";
+import { getLocale } from "next-intl/server";
 import styles from "./styles.module.css";
 
-const endpoint = `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}/environments/master`;
-
-async function getData(locale: string) {
-  const response = await fetch(endpoint, {
-    method: "POST",
-    headers: {
-      "content-type": "application/json",
-      Authorization: `Bearer ${process.env.CONTENTFUL_ACCESS_TOKEN}`,
-    },
-    body: JSON.stringify({
-      query,
-      variables: {
-        location: "footer",
-        locale,
-      },
-    }),
-  });
-
-  const data = await response
-    .json()
-    .then(({ data }) =>
-      (
-        data.navigationMenuCollection as NavigationMenuCollection
-      ).items[0].itemsCollection.items.filter(Boolean)
-    );
-
-  return data;
-}
-
 export const Navigation = async ({
-  locale,
+  navigationLinksCollection,
 }: {
-  locale: Locale;
+  navigationLinksCollection: FooterNavigationLinksCollection;
 }): Promise<React.ReactElement> => {
-  const data = await getData(locale);
+  const locale = await getLocale();
 
   return (
     <ul className={styles.list}>
-      {data.map((item) => {
+      {navigationLinksCollection.items.map((item) => {
         // Internal routing links
         if (isNavigationConfig(item)) {
           const href = getInternalLinkSlug(item);
