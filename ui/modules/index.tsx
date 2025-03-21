@@ -1,5 +1,5 @@
-import { ModuleFaq } from "./module/faq";
-import { ModuleImageText } from "./module/image-text";
+import { ModuleFaq } from "./faq";
+import { ModuleImageText } from "./image-text";
 import { PageModulesItem } from "@/types/contentful";
 
 export const Modules = ({ modules }: { modules: PageModulesItem[] }) => {
