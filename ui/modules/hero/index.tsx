@@ -14,6 +14,7 @@ export const ModuleHero = ({ module }: { module: Hero }) => {
       {image && (
         <Image
           fill
+          priority
           alt={image.alt}
           className={styles.image}
           src={image.image.url}
