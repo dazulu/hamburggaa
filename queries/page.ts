@@ -17,6 +17,10 @@ export const query = `
                       id
                     }
                     title
+                    description {
+                      json
+                    }
+                    questions
                   }
                   ... on ImageText {
                     sys {
