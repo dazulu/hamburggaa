@@ -1,9 +1,9 @@
-import { ModulePersonList } from "./personList";
 import { ModuleFaq } from "./faq";
 import { ModuleFooter } from "./footer";
 import { ModuleHeader } from "./header";
 import { ModuleHero } from "./hero";
 import { ModuleImageText } from "./image-text";
+import { ModulePersonList } from "./person-list";
 import { PageModulesItem } from "@/types/contentful";
 
 export const Modules = ({ modules }: { modules: PageModulesItem[] }) => {

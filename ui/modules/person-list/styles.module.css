@@ -1,0 +1,39 @@
+.container {
+}
+
+.people {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1rem;
+}
+
+.person {
+}
+
+.imageWrapper {
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+  width: 150px;
+  height: 150px;
+}
+
+.person figure {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  margin: 0;
+}
+
+.person figcaption {
+  order: -1;
+  text-align: center;
+}
+
+.person img {
+  object-fit: cover;
+}
