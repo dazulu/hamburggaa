@@ -1,7 +1,7 @@
-import { NavigationConfig, NavigationMenuItemsItem } from "@/types/contentful";
+import { ExternalNavigationLink, NavigationConfig } from "@/types/contentful";
 
 export const isNavigationConfig = (
-  item: NavigationMenuItemsItem
+  item: ExternalNavigationLink | NavigationConfig
 ): item is NavigationConfig => {
   return "slug" in item;
 };
