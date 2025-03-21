@@ -58,7 +58,7 @@ try {
   const modulesContentData = fs.readFileSync(modulesFilePath, "utf-8");
 
   // Add a new switch case for the module
-  const newCase = `case "${capitalisedName}":\n\t\t\t\t\t\treturn <${capitalisedName} module={module} />;`;
+  const newCase = `case "${capitalisedName}": {\n\t\t\t\t\t\treturn <${componentName} key={module.sys.id} module={module} />;\n\t\t\t\t\t}`;
   const updatedModulesContentWithSwitch = modulesContentData.replace(
     /default:/,
     `${newCase}\n\t\t\t\t\tdefault:`
