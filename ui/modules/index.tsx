@@ -1,6 +1,7 @@
 import { ModuleFaq } from "./faq";
 import { ModuleFooter } from "./footer";
 import { ModuleHeader } from "./header";
+import { ModuleHero } from "./hero";
 import { ModuleImageText } from "./image-text";
 import { PageModulesItem } from "@/types/contentful";
 
@@ -12,8 +13,8 @@ export const Modules = ({ modules }: { modules: PageModulesItem[] }) => {
           case "Header": {
             return <ModuleHeader key={module.sys.id} module={module} />;
           }
-          case "Footer": {
-            return <ModuleFooter key={module.sys.id} module={module} />;
+          case "Hero": {
+            return <ModuleHero key={module.sys.id} module={module} />;
           }
           case "ImageText": {
             return <ModuleImageText key={module.sys.id} module={module} />;
@@ -21,7 +22,10 @@ export const Modules = ({ modules }: { modules: PageModulesItem[] }) => {
           case "Faqs": {
             return <ModuleFaq key={module.sys.id} module={module} />;
           }
-          default:
+          case "Footer": {
+            return <ModuleFooter key={module.sys.id} module={module} />;
+          }
+          default: {
             return (
               <pre key={index}>
                 <code>
@@ -31,6 +35,7 @@ export const Modules = ({ modules }: { modules: PageModulesItem[] }) => {
                 </code>
               </pre>
             );
+          }
         }
       })}
     </>

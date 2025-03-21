@@ -1,0 +1,19 @@
+.container {
+  position: relative;
+}
+
+.full {
+}
+
+.reduced {
+}
+
+.headline {
+  position: relative;
+  z-index: 1;
+}
+
+.image {
+  object-fit: cover;
+  position: absolute;
+}

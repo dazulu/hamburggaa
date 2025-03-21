@@ -15,6 +15,15 @@ export const query = `
     menuLabel
   }
 
+  fragment ImageFields on Image {
+    alt
+    image {
+      url
+      width
+      height
+    }
+  }
+
   query($slug: String!, $locale: String!) {
     navigationConfigCollection(where: { slug: $slug }, limit: 1, locale: $locale) {
       items {
@@ -28,7 +37,6 @@ export const query = `
               modulesCollection {
                 items {
                   __typename
-                   
                   ... on Header {
                     sys {
                       id
@@ -43,6 +51,24 @@ export const query = `
                         }
                       }
                     }
+                  }
+                  ... on Hero {
+                    sys {
+                      id
+                    }
+                    headline
+                    image {
+                      ...ImageFields
+                    }
+                    callToActionLink {
+                      ... on NavigationConfig {
+                        ...NavigationConfigFields
+                      }
+                      ... on ExternalNavigationLink {
+                        ...ExternalNavigationLinkFields
+                      }
+                    }
+                    type
                   }
                   ... on Faqs {
                     sys {
@@ -59,12 +85,7 @@ export const query = `
                       id
                     }
                     image {
-                      alt
-                      image {
-                        url
-                        width
-                        height
-                      }
+                      ...ImageFields
                     }
                     text {
                       json
