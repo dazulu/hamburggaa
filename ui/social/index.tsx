@@ -1,7 +1,7 @@
-import styles from "./styles.module.css";
+import { SocialMediaLink } from "@/types/contentful";
 import { SocialMediaType } from "@/types/navigation";
 import { query } from "@/queries/social-media";
-import { SocialMediaLink } from "@/types/contentful";
+import styles from "./styles.module.css";
 
 const endpoint = `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}/environments/master`;
 
@@ -43,6 +43,10 @@ const getIconPath = (type: SocialMediaType) => {
       return (
         <path d="M10 15l5.19-3L10 9v6m11.56-7.83c.13.47.22 1.1.28 1.9.07.8.1 1.49.1 2.09L22 12c0 2.19-.16 3.8-.44 4.83-.25.9-.83 1.48-1.73 1.73-.47.13-1.33.22-2.65.28-1.3.07-2.49.1-3.59.1L12 19c-4.19 0-6.8-.16-7.83-.44a2.34 2.34 0 01-1.73-1.73c-.13-.47-.22-1.1-.28-1.9-.07-.8-.1-1.49-.1-2.09L2 12c0-2.19.16-3.8.44-4.83.25-.9.83-1.48 1.73-1.73a14.1 14.1 0 012.65-.28c1.3-.07 2.49-.1 3.59-.1L12 5c4.19 0 6.8.16 7.83.44.9.25 1.48.83 1.73 1.73z" />
       );
+    case SocialMediaType.bluesky:
+      return (
+        <path d="M5.769,3.618C8.291,5.512,11.004,9.352,12,11.412c0.996-2.06,3.709-5.9,6.231-7.793C20.051,2.252,23,1.195,23,4.559	c0,0.672-0.385,5.644-0.611,6.451c-0.785,2.806-3.647,3.522-6.192,3.089c4.449,0.757,5.581,3.265,3.137,5.774	c-4.643,4.764-6.672-1.195-7.193-2.722c-0.095-0.28-0.14-0.411-0.14-0.3c-0.001-0.112-0.045,0.019-0.14,0.3	c-0.521,1.527-2.55,7.486-7.193,2.722c-2.445-2.509-1.313-5.017,3.137-5.774c-2.546,0.433-5.407-0.282-6.192-3.089	C1.385,10.203,1,5.231,1,4.559C1,1.195,3.949,2.252,5.769,3.618L5.769,3.618z"></path>
+      );
   }
 };
 
@@ -65,7 +69,7 @@ export const SocialIcons = async (): Promise<React.ReactElement> => {
               width="24"
               height="24"
             >
-              <title>Instagram logo</title>
+              <title>${item.type} logo</title>
               {getIconPath(item.type as SocialMediaType)}
             </svg>
           </a>
