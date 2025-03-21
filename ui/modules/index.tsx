@@ -1,5 +1,6 @@
 import { ModuleFaq } from "./faq";
 import { ModuleFooter } from "./footer";
+import { ModuleHeader } from "./header";
 import { ModuleImageText } from "./image-text";
 import { PageModulesItem } from "@/types/contentful";
 
@@ -8,14 +9,17 @@ export const Modules = ({ modules }: { modules: PageModulesItem[] }) => {
     <>
       {modules.map((module, index) => {
         switch (module.__typename) {
+          case "Header": {
+            return <ModuleHeader key={module.sys.id} module={module} />;
+          }
+          case "Footer": {
+            return <ModuleFooter key={module.sys.id} module={module} />;
+          }
           case "ImageText": {
             return <ModuleImageText key={module.sys.id} module={module} />;
           }
           case "Faqs": {
             return <ModuleFaq key={module.sys.id} module={module} />;
-          }
-          case "Footer": {
-            return <ModuleFooter key={module.sys.id} module={module} />;
           }
           default:
             return (

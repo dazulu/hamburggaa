@@ -6,7 +6,7 @@ import { Link } from "@/i18n/routing";
 import { getLocale } from "next-intl/server";
 import styles from "./styles.module.css";
 
-export const Navigation = async ({
+export const FooterNavigation = async ({
   navigationLinksCollection,
 }: {
   navigationLinksCollection: FooterNavigationLinksCollection;
