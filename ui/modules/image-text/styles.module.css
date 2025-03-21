@@ -1,6 +1,4 @@
-.container {
-  img {
-    max-width: 300px;
-    height: auto;
-  }
+.container > img {
+  max-width: 300px;
+  height: auto;
 }
