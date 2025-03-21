@@ -46,3 +46,9 @@ Required environment variables to fetch data from the Contentful API
 CONTENTFUL_SPACE_ID
 CONTENTFUL_ACCESS_TOKEN
 ```
+
+## Utils
+
+To speed up bootstrapping new page module components, you can run `node create-module.js name`, where `name` should be replaced with your component name.
+
+This will create a new folder inside `/ui/modules/` including a skeleton `index.tsx`and `styles.module.css`.
