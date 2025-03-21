@@ -1,6 +1,6 @@
 export const query = `
-  query($locale: String) {
-    navigationMenuCollection(where: { location: "main" }, locale: $locale) {
+  query($locale: String, $location: String) {
+    navigationMenuCollection(where: { location: $location }, locale: $locale) {
       items {
         itemsCollection {
           items {

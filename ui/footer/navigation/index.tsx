@@ -19,7 +19,7 @@ async function getData(locale: string) {
     body: JSON.stringify({
       query,
       variables: {
-        location: "main",
+        location: "footer",
         locale,
       },
     }),
@@ -44,44 +44,42 @@ export const Navigation = async ({
   const data = await getData(locale);
 
   return (
-    <nav>
-      <ul className={styles.list}>
-        {data.map((item) => {
-          // Internal routing links
-          if (isNavigationConfig(item)) {
-            const href = getInternalLinkSlug(item);
+    <ul className={styles.list}>
+      {data.map((item) => {
+        // Internal routing links
+        if (isNavigationConfig(item)) {
+          const href = getInternalLinkSlug(item);
 
-            return (
-              <li key={item.sys.id} className={styles.item}>
-                <Link locale={locale} href={href} className={styles.link}>
-                  {item.menuLabel}
-                </Link>
-              </li>
-            );
-          }
-
-          // External links
           return (
             <li key={item.sys.id} className={styles.item}>
-              <a
-                href={item.url}
-                target="_blank"
-                className={styles.link}
-                rel="noopener noreferrer"
-              >
+              <Link locale={locale} href={href} className={styles.link}>
                 {item.menuLabel}
-                <Image
-                  className={styles.icon}
-                  src="/icons/external.svg"
-                  width="16"
-                  height="16"
-                  alt=""
-                />
-              </a>
+              </Link>
             </li>
           );
-        })}
-      </ul>
-    </nav>
+        }
+
+        // External links
+        return (
+          <li key={item.sys.id} className={styles.item}>
+            <a
+              href={item.url}
+              target="_blank"
+              className={styles.link}
+              rel="noopener noreferrer"
+            >
+              {item.menuLabel}
+              <Image
+                className={styles.icon}
+                src="/icons/external.svg"
+                width="16"
+                height="16"
+                alt=""
+              />
+            </a>
+          </li>
+        );
+      })}
+    </ul>
   );
 };
