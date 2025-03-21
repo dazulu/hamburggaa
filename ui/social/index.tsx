@@ -69,7 +69,7 @@ export const SocialIcons = async (): Promise<React.ReactElement> => {
               width="24"
               height="24"
             >
-              <title>${item.type} logo</title>
+              <title>{`${item.type} logo`}</title>
               {getIconPath(item.type as SocialMediaType)}
             </svg>
           </a>
