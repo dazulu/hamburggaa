@@ -1,10 +1,14 @@
 :root {
   --light-background: #fdfdfd;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
 
   --sidebar-width: 275px;
   --base-padding: 10px;
 
   @media (min-width: 800px) {
-    --base-padding: 20px;
+    --base-padding: 16px;
   }
 }

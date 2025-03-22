@@ -12,6 +12,8 @@ export const CSSVariables = ({
       :root {
         --primary: ${primaryColour};
         --secondary: ${secondaryColour};
+
+        accent-color: var(--primary);
       }
     `}</style>
   );

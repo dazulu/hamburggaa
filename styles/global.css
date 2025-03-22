@@ -10,14 +10,27 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
-html,
-body,
-#__next {
-  height: 100%;
+body {
+  background-color: var(--light-background);
 }
 
 *,
 *:before,
 *:after {
   box-sizing: inherit;
+}
+
+pre {
+  overflow-wrap: break-word;
+  word-break: break-all;
+  white-space: normal;
+}
+
+h1:first-child,
+h2:first-child,
+h3:first-child,
+h4:first-child,
+h5:first-child,
+p:first-child {
+  margin-top: 0;
 }
