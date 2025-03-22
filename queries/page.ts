@@ -3,6 +3,7 @@ export const query = `
       sys {
       id
     }
+    dir
     slug
     menuLabel
   }
