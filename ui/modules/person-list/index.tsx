@@ -23,7 +23,7 @@ export const ModulePersonList = ({ module }: { module: PersonList }) => {
                     <Image
                       fill
                       src={`${person.image.url}?fit=fill&w=400&fm=avif&q=80`}
-                      alt={person.image.description}
+                      alt={person.image.description || ""}
                     />
                   </div>
                 )}

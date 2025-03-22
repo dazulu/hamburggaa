@@ -15,7 +15,7 @@ export const ModuleHero = ({ module }: { module: Hero }) => {
         <Image
           fill
           priority
-          alt={image.description}
+          alt={image.description || ""}
           className={styles.image}
           src={image.url}
         />

@@ -103,6 +103,7 @@ export const query = `
                     name
                     role
                     image {
+                      description
                       url
                       width
                       height
@@ -124,6 +125,7 @@ export const query = `
                         name
                         role
                         image {
+                          description
                           url
                           width
                           height

@@ -12,7 +12,7 @@ export const ModuleImageText = ({ module }: { module: ImageText }) => {
       {documentToReactComponents(text.json)}
       {image && (
         <Image
-          alt={image.description}
+          alt={image.description || ""}
           src={image.url}
           width={image.width}
           height={image.height}
