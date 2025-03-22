@@ -14,8 +14,8 @@ export const query = `
           width
           height
         }
-        primaryColor
-        secondaryColor
+        primaryColour
+        secondaryColour
       }
     }
   }
