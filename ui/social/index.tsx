@@ -1,29 +1,8 @@
-import { SocialMediaLink } from "@/types/contentful";
 import { SocialMediaType } from "@/types/navigation";
+import { ThemeCollection } from "@/types/contentful";
+import { getData } from "@/services/get-data";
 import { query } from "@/queries/social-media";
 import styles from "./styles.module.css";
-
-const endpoint = `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}/environments/master`;
-
-async function getData() {
-  const response = await fetch(endpoint, {
-    method: "POST",
-    headers: {
-      "content-type": "application/json",
-      Authorization: `Bearer ${process.env.CONTENTFUL_ACCESS_TOKEN}`,
-    },
-    body: JSON.stringify({ query }),
-  });
-
-  return response
-    .json()
-    .then(
-      ({ data }) =>
-        data.themeCollection.items[0].socialMediaLinksCollection.items.filter(
-          Boolean
-        ) as SocialMediaLink[]
-    );
-}
 
 const getIconPath = (type: SocialMediaType) => {
   switch (type) {
@@ -51,11 +30,15 @@ const getIconPath = (type: SocialMediaType) => {
 };
 
 export const SocialIcons = async (): Promise<React.ReactElement> => {
-  const data = await getData();
+  const data = await getData<ThemeCollection>({ query });
+  const links =
+    data.themeCollection.items?.[0].socialMediaLinksCollection.items?.filter(
+      Boolean
+    ) || [];
 
   return (
     <ul className={styles.list}>
-      {data.map((item) => (
+      {links.map((item) => (
         <li key={item.sys.id} className={styles.item}>
           <a
             className={styles.link}
