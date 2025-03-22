@@ -139,6 +139,12 @@ export const query = `
                       id
                     }
                     headline
+                    image {
+                      description
+                      url
+                      width
+                      height
+                    }
                     navigationLinksCollection(limit: 10) {
                       items {
                         ... on NavigationConfig {

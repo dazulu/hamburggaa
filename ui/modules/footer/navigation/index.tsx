@@ -14,7 +14,7 @@ export const FooterNavigation = async ({
   const locale = await getLocale();
 
   return (
-    <ul className={styles.list}>
+    <ul className={styles.container}>
       {navigationLinksCollection.items.map((item) => {
         // Internal routing links
         if (isNavigationConfig(item)) {

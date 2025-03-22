@@ -34,3 +34,9 @@ h5:first-child,
 p:first-child {
   margin-top: 0;
 }
+
+p,
+li,
+dd {
+  font-weight: 400;
+}

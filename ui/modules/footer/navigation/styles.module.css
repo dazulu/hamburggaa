@@ -1,2 +1,19 @@
 .container {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 12px;
+}
+
+.item a {
+  color: #fff;
+  text-decoration: none;
+  text-underline-offset: 4px;
+  transition: all 100ms ease-out;
+
+  &:hover {
+    text-decoration: underline;
+    text-underline-offset: 8px;
+  }
 }

@@ -1,2 +1,45 @@
 .container {
+  background: var(--primary);
+  border-radius: var(--radius-lg);
+  color: #fff;
+
+  /* height: calc(50vw); */
+
+  margin: 0 var(--base-padding) var(--base-padding);
+  padding: 20px;
+
+  position: relative;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+
+  @media (min-width: 768px) {
+  }
+}
+
+.headline {
+  font-family: "Oswald";
+  color: #fff;
+  font-size: 20vw;
+  text-align: center;
+  margin: 0;
+  position: relative;
+  top: -3vw;
+  left: 0;
+  right: 0;
+  user-select: none;
+
+  @media (min-width: 768px) {
+    font-size: 21vw;
+  }
+}
+
+.image {
+  max-width: 400px;
+  width: 100%;
+  height: auto;
+  padding: calc(var(--base-padding) * 2) calc(var(--base-padding) * 4);
 }
