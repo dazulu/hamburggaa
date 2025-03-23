@@ -14,10 +14,6 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  align-items: center;
-
-  @media (min-width: 768px) {
-  }
 }
 
 .headline {
@@ -27,7 +23,7 @@
   text-align: center;
   margin: 0;
   position: relative;
-  top: -3vw;
+  top: -5vw;
   left: 0;
   right: 0;
   user-select: none;
@@ -37,7 +33,22 @@
   }
 }
 
-.image {
+.content {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  gap: 36px;
+
+  @media (min-width: 768px) {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 20px;
+  }
+}
+
+.content .image {
   max-width: 400px;
   width: 100%;
   height: auto;
