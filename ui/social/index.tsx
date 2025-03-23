@@ -29,7 +29,11 @@ const getIconPath = (type: SocialMediaType) => {
   }
 };
 
-export const SocialIcons = async (): Promise<React.ReactElement> => {
+export const SocialIcons = async ({
+  type = "horizontal",
+}: {
+  type?: "horizontal" | "vertical";
+}) => {
   const data = await getData<ThemeCollection>({ query });
   const links =
     data.themeCollection.items?.[0].socialMediaLinksCollection.items?.filter(
@@ -37,7 +41,7 @@ export const SocialIcons = async (): Promise<React.ReactElement> => {
     ) || [];
 
   return (
-    <ul className={styles.list}>
+    <ul className={`${styles.list} ${styles[type]}`}>
       {links.map((item) => (
         <li key={item.sys.id} className={styles.item}>
           <a
@@ -49,8 +53,9 @@ export const SocialIcons = async (): Promise<React.ReactElement> => {
             <svg
               fill="currentColor"
               xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
+              viewBox="0 0 24 24"
+              width="36"
+              height="36"
             >
               <title>{`${item.type} logo`}</title>
               {getIconPath(item.type as SocialMediaType)}

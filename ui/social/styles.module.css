@@ -6,11 +6,24 @@
   padding: 0;
 }
 
+.horizontal {
+  display: flex;
+  gap: 20px;
+}
+
+.vertical {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
 .link {
-  color: black;
-  padding: 7px;
+  display: flex;
+  align-items: center;
+  color: inherit;
+  transition: transform 120ms ease-out;
 
   &:hover {
-    color: var(--primary);
+    transform: scale(1.2);
   }
 }
