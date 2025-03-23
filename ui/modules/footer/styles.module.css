@@ -3,8 +3,8 @@
   /* border-radius: var(--radius-lg); */
   color: #fff;
 
-  height: 70vh;
-  height: 70svh;
+  height: calc(100vh - 40px);
+  height: calc(100svh - 40px);
 
   /* margin: 0 var(--base-padding) var(--base-padding); */
   padding: 20px;
@@ -26,13 +26,13 @@
 .headline {
   font-family: "Oswald";
   color: #fff;
-  font-size: 11vh;
-  font-size: 11svh;
+  font-size: 12vh;
+  font-size: 12svh;
   text-align: center;
   margin: 0;
   position: absolute;
   left: 0;
-  top: 2.5svh;
+  bottom: 2.5vh;
   bottom: 2.5svh;
   user-select: none;
   z-index: 0;
