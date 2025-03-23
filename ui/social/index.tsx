@@ -1,5 +1,5 @@
+import { ConfigCollection } from "@/types/contentful";
 import { SocialMediaType } from "@/types/navigation";
-import { ThemeCollection } from "@/types/contentful";
 import { getData } from "@/services/get-data";
 import { query } from "@/queries/social-media";
 import styles from "./styles.module.css";
@@ -34,9 +34,9 @@ export const SocialIcons = async ({
 }: {
   type?: "horizontal" | "vertical";
 }) => {
-  const data = await getData<ThemeCollection>({ query });
+  const data = await getData<ConfigCollection>({ query });
   const links =
-    data.themeCollection.items?.[0].socialMediaLinksCollection.items?.filter(
+    data.configCollection.items?.[0].socialMediaLinksCollection.items?.filter(
       Boolean
     ) || [];
 

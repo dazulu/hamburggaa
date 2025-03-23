@@ -1,8 +1,7 @@
-import { getInternalLinkSlug, isNavigationConfig } from "@/utils/navigation";
-
 import { FooterNavigationLinksCollection } from "@/types/contentful";
 import Image from "next/image";
 import { Link } from "@/i18n/routing";
+import { getInternalLinkSlug } from "@/utils/navigation";
 import { getLocale } from "next-intl/server";
 import styles from "./styles.module.css";
 
@@ -17,7 +16,7 @@ export const FooterNavigation = async ({
     <ul className={styles.list}>
       {navigationLinksCollection.items.map((item) => {
         // Internal routing links
-        if (isNavigationConfig(item)) {
+        if (item.__typename === "Page") {
           const href = getInternalLinkSlug(item);
 
           return (

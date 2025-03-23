@@ -1,6 +1,6 @@
 export const query = `
   query {
-    themeCollection(limit: 1) {
+    configCollection(limit: 1) {
       items {
         socialMediaLinksCollection {
           items {

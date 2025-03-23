@@ -1,8 +1,8 @@
+import { Page as ContentfulPage } from "@/types/contentful";
+import { LOCALES } from "@/i18n/locales";
 import SharedPage from "@/app/shared-page";
 import { getLocale } from "next-intl/server";
 import { query } from "@/queries/static-params";
-import { LOCALES } from "@/i18n/locales";
-import type { NavigationConfigCollection } from "@/types/contentful";
 
 async function getData(locale: string) {
   try {
@@ -21,15 +21,17 @@ async function getData(locale: string) {
       }
     );
 
-    return await response.json().then(({ data }) =>
-      (data.navigationConfigCollection as NavigationConfigCollection).items
-        .filter(({ slug }) => slug !== "ROOT")
-        .reduce((acc, { slug }) => {
-          return [...acc, { locale, route: slug === "ROOT" ? "/" : slug }];
-        }, [])
-    );
-  } catch {
-    console.error("Failed to fetch data for [route] generateStaticParams");
+    const { data } = await response.json();
+
+    const staticParams = data.pageCollection.items
+      .filter((item: ContentfulPage) => Boolean(item?.slug))
+      .reduce((acc, { slug }) => {
+        return [...acc, { locale, slug }];
+      }, []);
+
+    return staticParams;
+  } catch (error) {
+    console.error("Failed to fetch data for generateStaticParams");
     return [];
   }
 }
@@ -41,7 +43,7 @@ export async function generateStaticParams() {
 }
 
 export default async function Page({ params }) {
-  const { route } = await params;
+  const { slug } = await params;
   const locale = await getLocale();
-  return SharedPage({ params: { locale, route } });
+  return SharedPage({ params: { locale, slug } });
 }

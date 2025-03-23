@@ -1,8 +1,7 @@
-import { getInternalLinkSlug, isNavigationConfig } from "@/utils/navigation";
-
 import Image from "next/image";
 import { ImageTextCallToActionLink } from "@/types/contentful";
 import Link from "next/link";
+import { getInternalLinkSlug } from "@/utils/navigation";
 import { getLocale } from "next-intl/server";
 import styles from "./styles.module.css";
 
@@ -10,7 +9,7 @@ export const ButtonLink = async (item: ImageTextCallToActionLink) => {
   const locale = await getLocale();
 
   // Internal Nextjs routing links
-  if (isNavigationConfig(item)) {
+  if (item.__typename === "Page") {
     const href = getInternalLinkSlug(item);
 
     return (

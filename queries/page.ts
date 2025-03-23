@@ -1,14 +1,6 @@
 export const query = `
-  fragment NavigationConfigFields on NavigationConfig {
-      sys {
-      id
-    }
-    dir
-    slug
-    menuLabel
-  }
-
   fragment ExternalNavigationLinkFields on ExternalNavigationLink {
+    __typename
     sys {
       id
     }
@@ -16,145 +8,157 @@ export const query = `
     menuLabel
   }
 
+  fragment PageLinkFields on Page {
+    __typename
+    sys {
+      id
+    }
+    menuLabel
+    slug
+  }
+
+
   query($slug: String!, $locale: String!) {
-    navigationConfigCollection(where: { slug: $slug }, limit: 1, locale: $locale) {
-      items {
-        linkedFrom(allowedLocales: ["en","de"]) {
-          pageCollection(limit: 1) {
-            items {
-              metaInformation {
-                metaTitle
-                metaDescription
+    pageCollection(where: { slug: $slug }, limit: 1, locale: $locale) {
+      items{
+        sys {
+          id
+        }
+        slug
+        seoTitle
+        seoDescription
+        seoImage {
+          description
+          url
+          width
+          height
+        }
+        modulesCollection(limit: 10) {
+          items {
+            __typename
+            ... on Header {
+              sys {
+                id
               }
-              modulesCollection(limit: 10) {
+              navigationLinksCollection(limit: 7) {
                 items {
-                  __typename
-                  ... on Header {
-                    sys {
-                      id
-                    }
-                    navigationLinksCollection(limit: 7) {
-                      items {
-                        ... on NavigationConfig {
-                          ...NavigationConfigFields
-                        }
-                        ... on ExternalNavigationLink {
-                          ...ExternalNavigationLinkFields
-                        }
-                      }
-                    }
+                  ... on Page {
+                    ...PageLinkFields
                   }
-                  ... on Hero {
-                    sys {
-                      id
-                    }
-                    headline
-                    image {
-                      description
-                      url
-                      width
-                      height
-                    }
-                    callToActionLink {
-                      ... on NavigationConfig {
-                        ...NavigationConfigFields
-                      }
-                      ... on ExternalNavigationLink {
-                        ...ExternalNavigationLinkFields
-                      }
-                    }
-                    type
+                  ... on ExternalNavigationLink {
+                    ...ExternalNavigationLinkFields
                   }
-                  ... on Faqs {
-                    sys {
-                      id
-                    }
-                    title
-                    description {
-                      json
-                    }
-                    questions
+                }
+              }
+            }
+            ... on Hero {
+              sys {
+                id
+              }
+              headline
+              image {
+                description
+                url
+                width
+                height
+              }
+              callToActionLink {
+                ... on Page {
+                  ...PageLinkFields
+                }
+                ... on ExternalNavigationLink {
+                  ...ExternalNavigationLinkFields
+                }
+              }
+              type
+            }
+            ... on Faqs {
+              sys {
+                id
+              }
+              title
+              description {
+                json
+              }
+              questions
+            }
+            ... on ImageText {
+              sys {
+                id
+              }
+              image {
+                description
+                url
+                width
+                height
+              }
+              text {
+                json
+              }
+              callToActionLink {
+                ... on Page {
+                  ...PageLinkFields
+                }
+                ... on ExternalNavigationLink {
+                  ...ExternalNavigationLinkFields
+                }
+              }
+            }
+            ... on Person {
+              sys {
+                id
+              }
+              name
+              role
+              image {
+                description
+                url
+                width
+                height
+              }
+            }
+            ... on PersonList {
+              sys {
+                id
+              }
+              headline
+              text {
+                json
+              }
+              peopleCollection(limit: 10) {
+                items {
+                  sys {
+                    id
                   }
-                  ... on ImageText {
-                    sys {
-                      id
-                    }
-                    image {
-                      description
-                      url
-                      width
-                      height
-                    }
-                    text {
-                      json
-                    }
-                    callToActionLink {
-                      ... on NavigationConfig {
-                        ...NavigationConfigFields
-                      }
-                      ... on ExternalNavigationLink {
-                        ...ExternalNavigationLinkFields
-                      }
-                    }
+                  name
+                  role
+                  image {
+                    description
+                    url
+                    width
+                    height
                   }
-                  ... on Person {
-                    sys {
-                      id
-                    }
-                    name
-                    role
-                    image {
-                      description
-                      url
-                      width
-                      height
-                    }
+                }
+              }
+            }
+            ... on Footer {
+              sys {
+                id
+              }
+              headline
+              image {
+                description
+                url
+                width
+                height
+              }
+              navigationLinksCollection(limit: 10) {
+                items {
+                  ... on Page {
+                    ...PageLinkFields
                   }
-                  ... on PersonList {
-                    sys {
-                      id
-                    }
-                    headline
-                    text {
-                      json
-                    }
-                    peopleCollection(limit: 10) {
-                      items {
-                        sys {
-                          id
-                        }
-                        name
-                        role
-                        image {
-                          description
-                          url
-                          width
-                          height
-                        }
-                      }
-                    }
-                  }
-                  ... on Footer {
-                    sys {
-                      id
-                    }
-                    headline
-                    image {
-                      description
-                      url
-                      width
-                      height
-                    }
-                    navigationLinksCollection(limit: 10) {
-                      items {
-                        ... on NavigationConfig {
-                          ...NavigationConfigFields
-                        }
-                        ... on ExternalNavigationLink {
-                          ...ExternalNavigationLinkFields
-                        }
-                      }
-                    }
+                  ... on ExternalNavigationLink {
+                    ...ExternalNavigationLinkFields
                   }
                 }
               }

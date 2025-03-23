@@ -1,10 +1,4 @@
-import { ExternalNavigationLink, NavigationConfig } from "@/types/contentful";
+import { Page } from "@/types/contentful";
 
-export const isNavigationConfig = (
-  item: ExternalNavigationLink | NavigationConfig
-): item is NavigationConfig => {
-  return "slug" in item;
-};
-
-export const getInternalLinkSlug = (item: NavigationConfig) =>
-  item.dir === "ROOT" ? "/" : `/${item.slug}`;
+export const getInternalLinkSlug = (item: Page) =>
+  item.slug === "ROOT" ? "/" : `/${item.slug}`;

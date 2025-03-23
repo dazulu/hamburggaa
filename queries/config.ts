@@ -1,6 +1,6 @@
 export const query = `
   query($locale: String) {
-    themeCollection(limit: 1, locale: $locale) {
+    configCollection(limit: 1, locale: $locale) {
       items {
         sys {
           id

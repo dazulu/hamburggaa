@@ -1,20 +1,19 @@
-import type { NavigationConfigCollection } from "@/types/contentful";
+import type { PageCollection } from "@/types/contentful";
 import Template from "@/ui/template/page";
 import { getData } from "@/services/get-data";
 import { query } from "@/queries/page";
 
 export default async function Page({
-  params: { locale, route },
+  params: { locale, slug },
 }: {
-  params: { locale: string; route: string };
+  params: { locale: string; slug: string };
 }) {
-  const data = await getData<NavigationConfigCollection>({
+  const data = await getData<PageCollection>({
     query,
-    variables: { locale, slug: route },
+    variables: { locale, slug },
   });
 
-  const pageData =
-    data.navigationConfigCollection.items[0].linkedFrom.pageCollection.items[0];
+  const pageData = data.pageCollection.items[0];
 
   return <Template data={pageData} />;
 }
