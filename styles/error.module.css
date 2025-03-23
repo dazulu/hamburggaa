@@ -16,12 +16,10 @@
   font-size: 2rem;
   font-weight: 700;
   margin-bottom: 1rem;
-  color: #333;
 }
 
 .message {
   font-size: 1rem;
-  color: #666;
   margin-bottom: 2rem;
 }
 
@@ -33,17 +31,16 @@
   font-weight: 500;
   cursor: pointer;
   text-decoration: none;
-  transition: background-color 0.2s, color 0.2s;
 }
 
 .link {
   background-color: var(--secondary);
   color: white;
-  transition: all 0.1s ease;
+  transition: all 120ms ease-out;
 }
 
 .link:hover {
-  transform: scale(1.03);
+  transform: scale(1.05);
 }
 
 @media (min-width: 640px) {

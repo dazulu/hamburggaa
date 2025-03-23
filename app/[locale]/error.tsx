@@ -17,10 +17,7 @@ export default function Error({
     <div className={styles.container}>
       <div className={styles.content}>
         <h1 className={styles.title}>Something went wrong!</h1>
-        <p className={styles.message}>
-          We apologize for the inconvenience. Please try again or return to the
-          homepage.
-        </p>
+        <p className={styles.message}>We apologize for the inconvenience.</p>
         <div className={styles.actions}>
           <Link href="/" className={styles.link}>
             Return to homepage
