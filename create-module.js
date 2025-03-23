@@ -26,7 +26,7 @@ import styles from './styles.module.css';
 export const ${componentName} = ({ module }: { module: any }) => {
   return (
     <div className={styles.container}>
-      <h1>${componentName}</h1>
+      <h2>${componentName}</h2>
       <pre>
         <code>{JSON.stringify(module, null, 2)}</code>
       </pre>

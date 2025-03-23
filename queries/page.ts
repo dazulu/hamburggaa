@@ -86,14 +86,15 @@ export const query = `
               sys {
                 id
               }
+              headline
+              text {
+                json
+              }
               image {
                 description
                 url
                 width
                 height
-              }
-              text {
-                json
               }
               callToActionLink {
                 ... on Page {
@@ -103,6 +104,24 @@ export const query = `
                   ...ExternalNavigationLinkFields
                 }
               }
+            }
+            ... on Images {
+              sys {
+                id
+              }
+              headline
+              text {
+                json
+              }
+              imagesCollection(limit: 10) {
+                items {
+                  description
+                  url
+                  width
+                  height
+                }
+              }
+              displayType
             }
             ... on Person {
               sys {
