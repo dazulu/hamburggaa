@@ -9,5 +9,5 @@ export const headlineFont = Oswald({
 export const bodyFont = Roboto({
   subsets: ["latin"],
   variable: "--font-body",
-  weight: "300",
+  weight: ["300"],
 });

@@ -8,9 +8,6 @@ export const ModuleHero = ({ module }: { module: Hero }) => {
 
   return (
     <div className={`${styles.container} ${styles[type]}`}>
-      <div className={styles.headline}>
-        {headline && <h1>{module.headline}</h1>}
-      </div>
       {image && (
         <Image
           fill
@@ -20,7 +17,10 @@ export const ModuleHero = ({ module }: { module: Hero }) => {
           src={image.url}
         />
       )}
-      {callToActionLink && <ButtonLink {...callToActionLink} />}
+      <div className={styles.content}>
+        {headline && <h1 className={styles.headline}>{module.headline}</h1>}
+        {callToActionLink && <ButtonLink {...callToActionLink} />}
+      </div>
     </div>
   );
 };

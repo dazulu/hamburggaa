@@ -1,14 +1,10 @@
-html,
 body {
-  padding: 0;
-  margin: 0;
+  background-color: var(--light-background);
+  box-sizing: border-box;
   font-family: var(--font-body), -apple-system, sans-serif;
   font-weight: 300;
   font-size: 17px;
-}
-
-body {
-  background-color: var(--light-background);
+  margin: 0;
 }
 
 *,

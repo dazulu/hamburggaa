@@ -1,16 +1,17 @@
 import { Header } from "@/types/contentful";
 import { HeaderNavigation } from "./navigation";
 import { LanguageSwitcher } from "./language-switcher";
-import { SocialIcons } from "@/ui/social";
+import { Logo } from "@/ui/logo";
+import styles from "./styles.module.css";
 
 export const ModuleHeader = async ({ module }: { module: Header }) => {
   return (
-    <header>
+    <header className={styles.container}>
+      <Logo />
       <HeaderNavigation
         navigationLinksCollection={module.navigationLinksCollection}
       />
       <LanguageSwitcher />
-      <SocialIcons />
     </header>
   );
 };

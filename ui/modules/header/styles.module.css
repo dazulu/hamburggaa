@@ -1,0 +1,19 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 10px auto 0;
+
+  height: 80px;
+
+  position: fixed;
+  top: var(--base-padding);
+  left: var(--base-padding);
+  right: var(--base-padding);
+
+  z-index: 1;
+
+  @media (min-width: 800px) {
+  }
+}
