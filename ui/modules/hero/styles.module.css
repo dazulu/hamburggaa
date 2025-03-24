@@ -28,11 +28,16 @@
   text-align: right;
 
   color: #fff;
-  font-size: 140px;
-  line-height: 130px;
+  font-size: 70px;
+  line-height: 70px;
 
   width: 1px;
   z-index: 1;
+
+  @media (min-width: 800px) {
+    font-size: 140px;
+    line-height: 130px;
+  }
 }
 
 .image {
