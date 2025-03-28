@@ -128,6 +128,14 @@ export const query = `
                 }
               }
             }
+            ... on Text {
+              sys {
+                id
+              }
+              text {
+                json
+              }
+            }
             ... on Images {
               sys {
                 id
