@@ -105,6 +105,29 @@ export const query = `
                 }
               }
             }
+            ... on Showcase {
+              sys {
+                id
+              }
+              headline
+              text {
+                json
+              }
+              image {
+                description
+                url
+                width
+                height
+              }
+              callToActionLink {
+                ... on Page {
+                  ...PageLinkFields
+                }
+                ... on ExternalNavigationLink {
+                  ...ExternalNavigationLinkFields
+                }
+              }
+            }
             ... on Images {
               sys {
                 id

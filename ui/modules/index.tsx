@@ -1,3 +1,4 @@
+import { ModuleShowcase } from "./showcase";
 import { ModuleFaq } from "./faq";
 import { ModuleFooter } from "./footer";
 import { ModuleHeader } from "./header";
@@ -32,6 +33,9 @@ export const Modules = ({ modules }: { modules: PageModulesItem[] }) => {
           }
           case "PersonList": {
             return <ModulePersonList key={module.sys.id} module={module} />;
+          }
+          case "Showcase": {
+            return <ModuleShowcase key={module.sys.id} module={module} />;
           }
           default: {
             return (
