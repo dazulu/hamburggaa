@@ -37,6 +37,10 @@ h5 {
   margin: 0 0 0.5rem 0;
 }
 
+h2 {
+  font-size: 2.5rem;
+}
+
 p,
 dl {
   margin: 0 0 1rem 0;

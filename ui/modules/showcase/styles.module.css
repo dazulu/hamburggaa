@@ -1,4 +1,55 @@
-.container > img {
-  max-width: 300px;
-  height: auto;
+.container {
+  position: relative;
+  height: 80svh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  margin: 100px 0;
+
+  @media (min-width: 800px) {
+    justify-content: flex-end;
+  }
+}
+
+.headline {
+  font-family: Oswald;
+  color: #fff;
+  user-select: none;
+  z-index: 1;
+}
+
+.content {
+  font-size: 20px;
+  color: #fff;
+  padding: calc(var(--base-padding) * 2);
+  position: relative;
+  z-index: 1;
+
+  @media (min-width: 800px) {
+    margin-right: 5vw;
+    max-width: 500px;
+  }
+}
+
+.imageWrapper {
+  clip-path: polygon(0 10%, 100% 0%, 100% 90%, 0% 100%);
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  overflow: hidden;
+  z-index: 0;
+
+  @media (min-width: 800px) {
+    clip-path: polygon(0 15%, 100% 0%, 100% 85%, 0% 100%);
+    justify-content: flex-end;
+  }
+}
+
+.image {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
 }

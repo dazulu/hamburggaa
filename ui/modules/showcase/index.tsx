@@ -6,24 +6,28 @@ import styles from "./styles.module.css";
 
 export const ModuleShowcase = ({ module }: { module: Showcase }) => {
   const { callToActionLink, headline, image, text } = module;
+
   return (
     <div className={styles.container}>
-      {headline && <p>{headline}</p>}
-      <div>
+      {headline && <p className={styles.headline}>{headline}</p>}
+      <div className={styles.content}>
         {text && documentToReactComponents(text.json)}{" "}
         {callToActionLink && <ButtonLink {...callToActionLink} />}
       </div>
       {image && (
-        <Image
-          alt={image.description || ""}
-          src={image.url}
-          width={image.width}
-          height={image.height}
-        />
+        <div className={styles.imageWrapper}>
+          <Image
+            alt={image.description || ""}
+            className={styles.image}
+            src={image.url}
+            width={image.width}
+            height={image.height}
+          />
+        </div>
       )}
-      <pre>
+      {/* <pre>
         <code>{JSON.stringify(module, null, 2)}</code>
-      </pre>
+      </pre> */}
     </div>
   );
 };
