@@ -14,10 +14,10 @@
 
   &[open] {
     gap: 10px;
+  }
 
-    > summary:before {
-      transform: rotate(90deg);
-    }
+  &[open] > summary:before {
+    transform: rotate(90deg);
   }
 
   &:not(:last-child) {
@@ -33,10 +33,6 @@
   position: relative;
   padding-left: 16px;
 
-  ::marker {
-    display: none;
-  }
-
   &:before {
     content: "";
     border-color: transparent transparent transparent #000;
@@ -51,4 +47,8 @@
     transform-origin: 0.2rem 50%;
     transition: transform 175ms ease;
   }
+}
+
+.summary::marker {
+  display: none;
 }
