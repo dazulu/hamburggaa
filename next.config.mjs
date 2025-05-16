@@ -4,6 +4,7 @@ const withNextIntl = createNextIntlPlugin();
 
 const nextConfig = {
   generateBuildId: () => "build",
+  devIndicators: false,
   images: {
     remotePatterns: [
       {
