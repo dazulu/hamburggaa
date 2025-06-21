@@ -5,19 +5,18 @@
 
   @media (min-width: 800px) {
     display: flex;
-    align-items: center;
-    gap: 32px;
-
-    backdrop-filter: blur(10px);
-    background: #fff;
-
-    height: 60px;
-    border-radius: 100px;
-    padding: 0 32px;
+    /* grid-template-columns: 1fr 1fr 1fr 150px 1fr 1fr 1fr; */
+    justify-content: space-between;
+    gap: 20px;
   }
 }
 
 .item {
+  display: flex;
+  justify-content: center;
+}
+
+.logoItem {
 }
 
 .link {
@@ -27,4 +26,6 @@
   color: #000;
   text-decoration: none;
   font-weight: bold;
+  font-family: var(--font-headline);
+  text-transform: uppercase;
 }
