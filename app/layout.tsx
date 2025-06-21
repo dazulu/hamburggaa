@@ -7,6 +7,7 @@ import { CSSVariables } from "@/components/css-variables";
 import { ConfigCollection } from "@/types/contentful";
 import { getData } from "@/services/get-data";
 import { query } from "@/queries/config";
+import { BoxShadowToggler } from "@/utils/debug";
 
 export default async function RootLayout(props: { children: React.ReactNode }) {
   const data = await getData<ConfigCollection>({ query });
@@ -20,6 +21,7 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
           secondaryColour={secondaryColour}
         />
         {props.children}
+        <BoxShadowToggler />
       </body>
     </html>
   );
