@@ -19,6 +19,14 @@ pre {
   white-space: normal;
 }
 
+a, button, input, textarea {
+  &:focus-visible {
+    border-radius: var(--radius-xs);
+    outline: 3px solid dodgerblue;
+    outline-offset: 2px;
+  }
+}
+
 h1,
 h2,
 h3,

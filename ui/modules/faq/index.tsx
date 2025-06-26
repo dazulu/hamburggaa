@@ -1,6 +1,6 @@
 import { Faqs } from "@/types/contentful";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
-import React, { Fragment } from "react";
+import React from "react";
 
 import styles from "./styles.module.css";
 
