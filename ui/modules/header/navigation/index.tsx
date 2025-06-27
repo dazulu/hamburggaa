@@ -1,10 +1,10 @@
 import { HeaderNavigationLinksCollection } from "@/types/contentful";
 import Image from "next/image";
 import { Link } from "@/i18n/routing";
+import { Logo } from "@/ui/logo";
 import { getInternalLinkSlug } from "@/utils/navigation";
 import { getLocale } from "next-intl/server";
 import styles from "./styles.module.css";
-import { Logo } from "@/ui/logo";
 
 export const HeaderNavigation = async ({
   navigationLinksCollection,
