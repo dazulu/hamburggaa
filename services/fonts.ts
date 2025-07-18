@@ -1,4 +1,4 @@
-import { Oswald, Roboto } from "next/font/google";
+import { Jost, Oswald } from "next/font/google";
 
 export const headlineFont = Oswald({
 	subsets: ["latin"],
@@ -6,7 +6,7 @@ export const headlineFont = Oswald({
 	variable: "--font-headline",
 });
 
-export const bodyFont = Roboto({
+export const bodyFont = Jost({
 	subsets: ["latin"],
 	variable: "--font-body",
 	weight: ["300"],
