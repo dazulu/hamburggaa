@@ -1,14 +1,17 @@
 "use client";
 
 export const CSSVariables = ({
-  primaryColour,
-  secondaryColour,
+	primaryColour,
+	secondaryColour,
 }: {
-  primaryColour: string;
-  secondaryColour: string;
+	primaryColour: string;
+	secondaryColour: string;
 }) => {
-  return (
-    <style jsx global>{`
+	return (
+		<style
+			jsx
+			global
+		>{`
       :root {
         --primary: ${primaryColour};
         --secondary: ${secondaryColour};
@@ -16,5 +19,5 @@ export const CSSVariables = ({
         accent-color: var(--primary);
       }
     `}</style>
-  );
+	);
 };

@@ -1,18 +1,18 @@
 .container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 80px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 80px;
 
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
 
-  z-index: 10;
+	z-index: 10;
 
-  background-color: white;
+	background-color: white;
 
-  @media (min-width: 800px) {
-  }
+	@media (min-width: 800px) {
+	}
 }

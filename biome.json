@@ -1,0 +1,58 @@
+{
+	"$schema": "https://biomejs.dev/schemas/2.0.6/schema.json",
+	"vcs": {
+		"enabled": false,
+		"clientKind": "git",
+		"useIgnoreFile": false
+	},
+	"files": {
+		"ignoreUnknown": false,
+		"includes": ["**/*.tsx", "**/*.ts", "**/*.json", "**/*.css", "!**/node_modules/**", "!**/.next/**", "!**/public/**"]
+	},
+	"formatter": {
+		"enabled": true,
+		"indentStyle": "tab",
+		"lineWidth": 120,
+		"attributePosition": "multiline"
+	},
+	"linter": {
+		"enabled": true,
+		"rules": {
+			"recommended": true,
+			"a11y": {
+				"noSvgWithoutTitle": "warn",
+				"useSemanticElements": "warn",
+				"useValidAnchor": "off"
+			},
+			"complexity": {
+				"noUselessSwitchCase": "off"
+			},
+			"correctness": {
+				"useExhaustiveDependencies": "off"
+			},
+			"suspicious": {
+				"noShadowRestrictedNames": "warn",
+				"noDuplicateProperties": "warn"
+			}
+		}
+	},
+	"javascript": {
+		"formatter": {
+			"quoteStyle": "double"
+		},
+		"jsxRuntime": "reactClassic"
+	},
+	"assist": {
+		"enabled": true,
+		"actions": {
+			"source": {
+				"organizeImports": {
+					"level": "on",
+					"options": {
+						"groups": ["react", ":BLANK_LINE:", ":NODE:", ":PACKAGE:", ":BLANK_LINE:", "@/**", ":BLANK_LINE:", ":PATH:"]
+					}
+				}
+			}
+		}
+	}
+}

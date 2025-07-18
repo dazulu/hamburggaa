@@ -1,33 +1,33 @@
 body {
-  background-color: var(--light-background);
-  box-sizing: border-box;
-  font-family: var(--font-body), -apple-system, sans-serif;
-  font-weight: 300;
-  font-size: 17px;
-  margin: 0;
+	background-color: var(--light-background);
+	box-sizing: border-box;
+	font-family: var(--font-body), -apple-system, sans-serif;
+	font-weight: 300;
+	font-size: 17px;
+	margin: 0;
 }
 
 *,
 *:before,
 *:after {
-  box-sizing: inherit;
+	box-sizing: inherit;
 }
 
 pre {
-  overflow-wrap: break-word;
-  word-break: break-all;
-  white-space: normal;
+	overflow-wrap: break-word;
+	word-break: break-all;
+	white-space: normal;
 }
 
 a,
 button,
 input,
 textarea {
-  &:focus-visible {
-    border-radius: var(--radius-xs);
-    outline: 3px solid dodgerblue;
-    outline-offset: 2px;
-  }
+	&:focus-visible {
+		border-radius: var(--radius-xs);
+		outline: 3px solid dodgerblue;
+		outline-offset: 2px;
+	}
 }
 
 h1,
@@ -35,9 +35,9 @@ h2,
 h3,
 h4,
 h5 {
-  font-family: var(--font-headline);
-  text-transform: uppercase;
-  margin: 0;
+	font-family: var(--font-headline);
+	text-transform: uppercase;
+	margin: 0;
 }
 
 h1,
@@ -45,22 +45,22 @@ h2,
 h3,
 h4,
 h5 {
-  margin: 0 0 0.5rem 0;
+	margin: 0 0 0.5rem 0;
 }
 
 h2 {
-  font-size: 2.5rem;
+	font-size: 2.5rem;
 }
 
 p,
 dl {
-  margin: 0 0 1rem 0;
+	margin: 0 0 1rem 0;
 }
 
 dt {
-  margin: 0 0 0.5rem 0;
+	margin: 0 0 0.5rem 0;
 }
 
 dd {
-  margin: 0;
+	margin: 0;
 }

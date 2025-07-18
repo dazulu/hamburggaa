@@ -1,5 +1,5 @@
-import { Page } from "@/types/contentful";
+import type { Page } from "@/types/contentful";
 
 export interface PageData {
-  data: Page;
+	data: Page;
 }

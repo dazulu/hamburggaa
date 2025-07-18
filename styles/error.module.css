@@ -1,50 +1,50 @@
 .container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 80vh;
-  padding: 0 20px;
-  text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	min-height: 80vh;
+	padding: 0 20px;
+	text-align: center;
 }
 
 .content {
-  max-width: 500px;
+	max-width: 500px;
 }
 
 .title {
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
+	font-size: 2rem;
+	font-weight: 700;
+	margin-bottom: 1rem;
 }
 
 .message {
-  font-size: 1rem;
-  margin-bottom: 2rem;
+	font-size: 1rem;
+	margin-bottom: 2rem;
 }
 
 .link {
-  display: inline-block;
-  padding: 10px 20px;
-  border-radius: 4px;
-  font-size: 1rem;
-  font-weight: 500;
-  cursor: pointer;
-  text-decoration: none;
+	display: inline-block;
+	padding: 10px 20px;
+	border-radius: 4px;
+	font-size: 1rem;
+	font-weight: 500;
+	cursor: pointer;
+	text-decoration: none;
 }
 
 .link {
-  background-color: var(--secondary);
-  color: white;
-  transition: all 120ms ease-out;
+	background-color: var(--secondary);
+	color: white;
+	transition: all 120ms ease-out;
 }
 
 .link:hover {
-  transform: scale(1.05);
+	transform: scale(1.05);
 }
 
 @media (min-width: 640px) {
-  .title {
-    font-size: 2.5rem;
-  }
+	.title {
+		font-size: 2.5rem;
+	}
 }

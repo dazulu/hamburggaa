@@ -1,4 +1,3 @@
-import { Page } from "@/types/contentful";
+import type { Page } from "@/types/contentful";
 
-export const getInternalLinkSlug = (item: Page) =>
-  item.slug === "ROOT" ? "/" : `/${item.slug}`;
+export const getInternalLinkSlug = (item: Page) => (item.slug === "ROOT" ? "/" : `/${item.slug}`);
