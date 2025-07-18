@@ -1,16 +1,19 @@
 .container {
 	--header-height: 70px;
 	--clip-angle: 30px;
+	--border-radius: calc(var(--header-height) / 2);
 
 	display: flex;
 	position: fixed;
 	left: 50%;
 	transform: translateX(-50%);
 
+	margin-top: 50px;
 	height: var(--header-height);
 	max-width: 1024px;
 	width: 100%;
-	margin-top: 50px;
+
+	filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.2));
 
 	z-index: 3;
 }
@@ -21,19 +24,24 @@
 }
 
 .container > div:first-of-type {
-	clip-path: polygon(0 0, 100% 0, calc(100% - var(--clip-angle)) var(--header-height), 0 var(--header-height));
+	border-top-left-radius: var(--border-radius);
+	border-bottom-left-radius: var(--border-radius);
 
-	border-top-left-radius: calc(var(--header-height) / 2);
-	border-bottom-left-radius: calc(var(--header-height) / 2);
+	clip-path: polygon(0 0, 100% 0, calc(100% - var(--clip-angle)) var(--header-height), 0 var(--header-height));
 
 	flex: 1;
 }
 
 .container > div:last-of-type {
-	clip-path: polygon(var(--clip-angle) 0, 100% 0, 100% var(--header-height), 0 var(--header-height));
-
-	border-top-right-radius: calc(var(--header-height) / 2);
-	border-bottom-right-radius: calc(var(--header-height) / 2);
+	display: grid;
+	place-items: center;
+	box-sizing: border-box;
+	padding-left: 10px;
 	margin-left: calc(var(--clip-angle) * -0.5);
-	width: calc(100px + var(--clip-angle));
+	width: calc(80px + var(--clip-angle));
+
+	border-top-right-radius: var(--border-radius);
+	border-bottom-right-radius: var(--border-radius);
+
+	clip-path: polygon(var(--clip-angle) 0, 100% 0, 100% var(--header-height), 0 var(--header-height));
 }
