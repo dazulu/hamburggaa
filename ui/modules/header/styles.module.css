@@ -1,18 +1,39 @@
 .container {
+	--header-height: 70px;
+	--clip-angle: 30px;
+
 	display: flex;
-	align-items: center;
-	justify-content: center;
-	height: 80px;
-
 	position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
+	left: 50%;
+	transform: translateX(-50%);
 
-	z-index: 10;
+	height: var(--header-height);
+	max-width: 1024px;
+	width: 100%;
+	margin-top: 50px;
 
+	z-index: 3;
+}
+
+.container > div {
 	background-color: white;
+	height: var(--header-height);
+}
 
-	@media (min-width: 800px) {
-	}
+.container > div:first-of-type {
+	clip-path: polygon(0 0, 100% 0, calc(100% - var(--clip-angle)) var(--header-height), 0 var(--header-height));
+
+	border-top-left-radius: calc(var(--header-height) / 2);
+	border-bottom-left-radius: calc(var(--header-height) / 2);
+
+	flex: 1;
+}
+
+.container > div:last-of-type {
+	clip-path: polygon(var(--clip-angle) 0, 100% 0, 100% var(--header-height), 0 var(--header-height));
+
+	border-top-right-radius: calc(var(--header-height) / 2);
+	border-bottom-right-radius: calc(var(--header-height) / 2);
+	margin-left: calc(var(--clip-angle) * -0.5);
+	width: calc(100px + var(--clip-angle));
 }

@@ -1,12 +1,15 @@
 import type { Header } from "@/types/contentful";
 
+import { LanguageSwitcher } from "./language-switcher";
 import { HeaderNavigation } from "./navigation";
 import styles from "./styles.module.css";
 
 export const ModuleHeader = async ({ module }: { module: Header }) => {
 	return (
 		<header className={styles.container}>
-			<HeaderNavigation navigationLinksCollection={module.navigationLinksCollection} />
+			<div className={styles.left}>left</div>
+			<div className={styles.right}>right</div>
+
 			{/* <LanguageSwitcher /> */}
 		</header>
 	);
