@@ -14,27 +14,23 @@ import styles from "./styles.module.css";
 export const LanguageSwitcher = () => {
 	const activeLocale = useLocale();
 
-	return (
-		<div className={styles.links}>
-			{LOCALES.map((locale) => {
-				const image = locale === Locale.EN ? flagEN : flagDE;
-				return (
-					<Link
-						key={locale}
-						href="/"
-						className={`${styles.link} ${activeLocale === locale && styles.active}`}
-						title={locale.toUpperCase()}
-						locale={locale}
-					>
-						<Image
-							alt=""
-							src={image}
-							width={30}
-							height={30}
-						/>
-					</Link>
-				);
-			})}
-		</div>
-	);
+	return LOCALES.filter((locale) => locale !== activeLocale).map((locale) => {
+		const image = locale === Locale.EN ? flagEN : flagDE;
+		return (
+			<Link
+				key={locale}
+				href="/"
+				className={styles.link}
+				title={locale.toUpperCase()}
+				locale={locale}
+			>
+				<Image
+					alt=""
+					src={image}
+					width={38}
+					height={38}
+				/>
+			</Link>
+		);
+	});
 };

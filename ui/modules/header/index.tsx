@@ -7,10 +7,10 @@ import styles from "./styles.module.css";
 export const ModuleHeader = async ({ module }: { module: Header }) => {
 	return (
 		<header className={styles.container}>
-			<div className={styles.left}>left</div>
-			<div className={styles.right}>right</div>
-
-			{/* <LanguageSwitcher /> */}
+			<div className={styles.left}></div>
+			<div className={styles.right}>
+				<LanguageSwitcher />
+			</div>
 		</header>
 	);
 };
