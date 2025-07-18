@@ -2,15 +2,15 @@ import type { Header } from "@/types/contentful";
 
 import { LanguageSwitcher } from "./language-switcher";
 import { HeaderNavigation } from "./navigation";
-import styles from "./styles.module.css";
+import { ScrollHeader } from "./scroll-handler";
 
-export const ModuleHeader = async ({ module }: { module: Header }) => {
+export const ModuleHeader = async ({ module: _module }: { module: Header }) => {
 	return (
-		<header className={styles.container}>
-			<div className={styles.left}></div>
-			<div className={styles.right}>
+		<ScrollHeader>
+			<div></div>
+			<div>
 				<LanguageSwitcher />
 			</div>
-		</header>
+		</ScrollHeader>
 	);
 };

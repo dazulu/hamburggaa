@@ -18,6 +18,16 @@
 	z-index: 3;
 }
 
+@media (prefers-reduced-motion: no-preference) {
+	.container {
+		transition: transform 0.25s ease-out;
+	}
+}
+
+.hidden {
+	transform: translateX(-50%) translateY(-50%) scale(0.9);
+}
+
 .container > div {
 	background-color: white;
 	height: var(--header-height);
@@ -26,9 +36,7 @@
 .container > div:first-of-type {
 	border-top-left-radius: var(--border-radius);
 	border-bottom-left-radius: var(--border-radius);
-
 	clip-path: polygon(0 0, 100% 0, calc(100% - var(--clip-angle)) var(--header-height), 0 var(--header-height));
-
 	flex: 1;
 }
 
