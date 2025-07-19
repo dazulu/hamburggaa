@@ -10,7 +10,8 @@
 
 	margin-top: 50px;
 	height: var(--header-height);
-	max-width: 1024px;
+	max-width: 90vw;
+	max-width: 90dvw;
 	width: 100%;
 
 	filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.2));
@@ -52,4 +53,11 @@
 	border-bottom-right-radius: var(--border-radius);
 
 	clip-path: polygon(var(--clip-angle) 0, 100% 0, 100% var(--header-height), 0 var(--header-height));
+}
+
+@container (max-width: 600px) {
+	.container {
+		--header-height: 50px;
+		--clip-angle: 18px;
+	}
 }
