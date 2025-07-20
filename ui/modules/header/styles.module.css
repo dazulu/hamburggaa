@@ -1,6 +1,6 @@
 .container {
-	--header-height: 70px;
-	--clip-angle: 30px;
+	--header-height: 50px;
+	--clip-angle: 18px;
 	--border-radius: calc(var(--header-height) / 2);
 
 	display: flex;
@@ -11,7 +11,7 @@
 	margin-top: 50px;
 	padding: 0 20px;
 	height: var(--header-height);
-	max-width: 1044px;
+	max-width: 1000px;
 	width: 100%;
 
 	filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.2));
@@ -21,12 +21,12 @@
 
 @media (prefers-reduced-motion: no-preference) {
 	.container {
-		transition: transform 0.25s ease-out;
+		transition: transform 0.25s ease-in-out;
 	}
 }
 
 .hidden {
-	transform: translateX(-50%) translateY(-50%) scale(0.9);
+	transform: translateX(-50%) translateY(-30%) scale(0.9);
 }
 
 .container > div {
@@ -55,9 +55,20 @@
 	clip-path: polygon(var(--clip-angle) 0, 100% 0, 100% var(--header-height), 0 var(--header-height));
 }
 
-@container (max-width: 600px) {
+.logo {
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	top: -70%;
+	z-index: 1;
+}
+
+@container (min-width: 1024px) {
 	.container {
-		--header-height: 50px;
-		--clip-angle: 18px;
+		--header-height: 70px;
+		--clip-angle: 30px;
+	}
+	.logo {
+		top: -40%;
 	}
 }

@@ -3,7 +3,6 @@ import { getLocale } from "next-intl/server";
 
 import { Link } from "@/i18n/routing";
 import type { HeaderNavigationLinksCollection } from "@/types/contentful";
-import { Logo } from "@/ui/logo";
 import { getInternalLinkSlug } from "@/utils/navigation";
 
 import styles from "./styles.module.css";
@@ -16,113 +15,89 @@ export const HeaderNavigation = async ({
 	const locale = await getLocale();
 
 	const navigationCollectionItems = navigationLinksCollection.items ?? [];
-	const leftLinks = navigationCollectionItems.slice(0, 3);
-	const rightLinks = navigationCollectionItems.slice(3);
+	const leftLinks = navigationCollectionItems.slice(0, 4);
+	const rightLinks = navigationCollectionItems.slice(4);
 
 	return (
-		<nav>
-			<ul className={styles.list}>
+		<nav className={styles.list}>
+			<div className={styles.left}>
 				{leftLinks.map((item) => {
 					// Internal routing links
 					if (item.__typename === "Page") {
 						const href = getInternalLinkSlug(item);
 
 						return (
-							<li
+							<Link
 								key={item.sys.id}
-								className={styles.item}
+								locale={locale}
+								href={href}
+								className={styles.link}
 							>
-								<Link
-									locale={locale}
-									href={href}
-									className={styles.link}
-								>
-									{item.menuLabel}
-								</Link>
-							</li>
+								{item.menuLabel}
+							</Link>
 						);
 					}
 
 					// External links
 					return (
-						<li
+						<a
 							key={item.sys.id}
-							className={styles.item}
+							href={item.url}
+							target="_blank"
+							className={styles.link}
+							rel="noopener noreferrer"
 						>
-							<a
-								href={item.url}
-								target="_blank"
-								className={styles.link}
-								rel="noopener noreferrer"
-							>
-								{item.menuLabel}
-								<Image
-									className={styles.icon}
-									src="/icons/external.svg"
-									width="16"
-									height="16"
-									alt=""
-								/>
-							</a>
-						</li>
+							{item.menuLabel}
+							<Image
+								className={styles.icon}
+								src="/icons/external.svg"
+								width="16"
+								height="16"
+								alt=""
+							/>
+						</a>
 					);
 				})}
-
-				<li className={styles.logoItem}>
-					<Link
-						locale={locale}
-						href="/"
-					>
-						<Logo />
-					</Link>
-				</li>
-
+			</div>
+			<div className={styles.right}>
 				{rightLinks.map((item) => {
 					// Internal routing links
 					if (item.__typename === "Page") {
 						const href = getInternalLinkSlug(item);
 
 						return (
-							<li
+							<Link
 								key={item.sys.id}
-								className={styles.item}
+								locale={locale}
+								href={href}
+								className={styles.link}
 							>
-								<Link
-									locale={locale}
-									href={href}
-									className={styles.link}
-								>
-									{item.menuLabel}
-								</Link>
-							</li>
+								{item.menuLabel}
+							</Link>
 						);
 					}
 
 					// External links
 					return (
-						<li
+						<a
 							key={item.sys.id}
-							className={styles.item}
+							href={item.url}
+							target="_blank"
+							className={styles.link}
+							rel="noopener noreferrer"
 						>
-							<a
-								href={item.url}
-								target="_blank"
-								className={styles.link}
-								rel="noopener noreferrer"
-							>
-								{item.menuLabel}
-								<Image
-									className={styles.icon}
-									src="/icons/external.svg"
-									width="16"
-									height="16"
-									alt=""
-								/>
-							</a>
-						</li>
+							{item.menuLabel}
+							<Image
+								className={styles.icon}
+								src="/icons/external.svg"
+								width="16"
+								height="16"
+								alt=""
+							/>
+						</a>
 					);
 				})}
-			</ul>
+			</div>
 		</nav>
 	);
 };
