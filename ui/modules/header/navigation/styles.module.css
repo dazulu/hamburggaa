@@ -21,6 +21,26 @@
 	font-family: var(--font-body);
 	text-transform: uppercase;
 	border-radius: var(--radius-sm);
+	transition: color 0.1s ease-out;
+	position: relative;
+
+	&:hover {
+		color: var(--primary);
+	}
+
+	&[data-current] {
+		&::after {
+			content: "";
+			position: absolute;
+			bottom: -2px;
+			left: 50%;
+			transform: translateX(-50%);
+			width: calc(100% - 16px);
+			height: 2px;
+			background-color: var(--primary);
+			border-radius: 1px;
+		}
+	}
 }
 
 @media (min-width: 1024px) {

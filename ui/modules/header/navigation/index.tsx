@@ -1,18 +1,21 @@
-import Image from "next/image";
-import { getLocale } from "next-intl/server";
+"use client";
 
-import { Link } from "@/i18n/routing";
+import Image from "next/image";
+import { useLocale } from "next-intl";
+
+import { Link, usePathname } from "@/i18n/routing";
 import type { HeaderNavigationLinksCollection } from "@/types/contentful";
 import { getInternalLinkSlug } from "@/utils/navigation";
 
 import styles from "./styles.module.css";
 
-export const HeaderNavigation = async ({
+export const HeaderNavigation = ({
 	navigationLinksCollection,
 }: {
 	navigationLinksCollection: HeaderNavigationLinksCollection;
-}): Promise<React.ReactElement> => {
-	const locale = await getLocale();
+}): React.ReactElement => {
+	const locale = useLocale();
+	const pathname = usePathname();
 
 	const navigationCollectionItems = navigationLinksCollection.items ?? [];
 	const leftLinks = navigationCollectionItems.slice(0, 4);
@@ -25,6 +28,7 @@ export const HeaderNavigation = async ({
 					// Internal routing links
 					if (item.__typename === "Page") {
 						const href = getInternalLinkSlug(item);
+						const isCurrent = pathname === href;
 
 						return (
 							<Link
@@ -32,13 +36,14 @@ export const HeaderNavigation = async ({
 								locale={locale}
 								href={href}
 								className={styles.link}
+								data-current={isCurrent || undefined}
 							>
 								{item.menuLabel}
 							</Link>
 						);
 					}
 
-					// External links
+					// External links (never current page)
 					return (
 						<a
 							key={item.sys.id}
@@ -64,6 +69,7 @@ export const HeaderNavigation = async ({
 					// Internal routing links
 					if (item.__typename === "Page") {
 						const href = getInternalLinkSlug(item);
+						const isCurrent = pathname === href;
 
 						return (
 							<Link
@@ -71,13 +77,14 @@ export const HeaderNavigation = async ({
 								locale={locale}
 								href={href}
 								className={styles.link}
+								data-current={isCurrent || undefined}
 							>
 								{item.menuLabel}
 							</Link>
 						);
 					}
 
-					// External links
+					// External links (never current page)
 					return (
 						<a
 							key={item.sys.id}
