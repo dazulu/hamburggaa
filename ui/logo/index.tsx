@@ -1,34 +1,39 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { query } from "@/queries/logo";
-import { getData } from "@/services/get-data";
-import type { ConfigCollection } from "@/types/contentful";
-
 import styles from "./styles.module.css";
 import type { LogoProps } from "./types";
 
-export const Logo = async ({ className, baseResolutionWidth = 400 }: LogoProps) => {
-	const data = await getData<ConfigCollection>({ query });
-	const { logo } = data.configCollection.items[0];
-	const { url } = logo;
+export const Logo = ({ asset, className, baseResolutionWidth = 400, static: isStatic = false }: LogoProps) => {
+	if (!asset.url) {
+		return null;
+	}
 
-	// Use configurable resolution for better quality at various sizes
-	const src = `${url}?fm=png&w=${baseResolutionWidth}&q=90`;
+	const src = `${asset.url}?fm=png&w=${baseResolutionWidth}&q=90`;
+
+	const logoImage = (
+		<Image
+			priority
+			unoptimized
+			src={src}
+			alt={isStatic ? asset.description : "Home "}
+			height={135}
+			width={140}
+		/>
+	);
+
+	const logoClassName = `${styles.logo} ${className || ""}`;
+
+	if (isStatic) {
+		return <div className={logoClassName}>{logoImage}</div>;
+	}
 
 	return (
 		<Link
 			href="/"
-			className={`${styles.logo} ${className || ""}`}
+			className={logoClassName}
 		>
-			<Image
-				priority
-				unoptimized
-				src={src}
-				alt="Club Logo: Homepage"
-				height={135}
-				width={140}
-			/>
+			{logoImage}
 		</Link>
 	);
 };

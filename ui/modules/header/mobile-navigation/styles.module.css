@@ -27,7 +27,6 @@
 	outline: 3px solid dodgerblue;
 }
 
-/* Mobile Menu Dialog */
 .dialog {
 	border: none;
 	margin: 0;
@@ -51,11 +50,10 @@
 	flex-direction: column;
 }
 
-/* Close Button */
 .close {
 	position: absolute;
-	top: 0;
-	left: 0;
+	top: 3vw;
+	left: 3vw;
 	background: none;
 	border: none;
 	cursor: pointer;
@@ -67,6 +65,7 @@
 	font-size: 44px;
 	font-weight: 300;
 	line-height: 1;
+	z-index: 1;
 }
 
 .close > span {
@@ -78,10 +77,9 @@
 	border-radius: 50%;
 	outline: 3px solid dodgerblue;
 }
-/* Menu List */
 .menuList {
 	list-style: none;
-	margin: 0;
+	margin: 0 0 0 10vw;
 	padding: 0;
 	display: flex;
 	justify-content: center;
@@ -89,20 +87,20 @@
 	flex-direction: column;
 	height: calc(100svh - 40px);
 	width: 100%;
+	position: relative;
 }
 
 .link {
 	display: block;
-	text-align: center;
-	width: 100%;
+	width: 40vw;
 	gap: 12px;
 	color: #000;
 	text-decoration: none;
 	font-weight: 500;
 	text-transform: uppercase;
-	padding: 16px 0;
+	padding: 10px 0;
 	position: relative;
-	font-size: 18px;
+	font-size: 4vh;
 }
 
 .link:hover {
@@ -116,6 +114,27 @@
 .externalIcon {
 	flex-shrink: 0;
 	opacity: 0.6;
+}
+
+.logo {
+	position: absolute;
+	top: 50%;
+	right: -350px;
+	transform: translateY(-50%);
+	width: 500px;
+	height: 500px;
+}
+
+.logo img {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+}
+
+@media (min-width: 500px) {
+	.logo {
+		right: -250px;
+	}
 }
 
 @media (prefers-reduced-motion: reduce) {

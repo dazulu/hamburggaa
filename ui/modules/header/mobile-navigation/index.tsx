@@ -6,12 +6,13 @@ import Image from "next/image";
 import { useLocale } from "next-intl";
 
 import { Link, usePathname } from "@/i18n/routing";
+import { Logo } from "@/ui/logo";
 import { getInternalLinkSlug } from "@/utils/navigation";
 
 import styles from "./styles.module.css";
 import type { BurgerMenuProps } from "./types";
 
-export const BurgerMenu = ({ navigationLinksCollection }: BurgerMenuProps) => {
+export const BurgerMenu = ({ navigationLinksCollection, asset }: BurgerMenuProps) => {
 	const [isOpen, setIsOpen] = useState(false);
 	const dialogRef = useRef<HTMLDialogElement>(null);
 	const locale = useLocale();
@@ -145,6 +146,11 @@ export const BurgerMenu = ({ navigationLinksCollection }: BurgerMenuProps) => {
 							})}
 						</ul>
 					</nav>
+					<Logo
+						static
+						asset={asset}
+						className={styles.logo}
+					/>
 				</div>
 			</dialog>
 		</div>
