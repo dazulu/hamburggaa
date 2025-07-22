@@ -28,9 +28,15 @@ export const BurgerMenu = ({ navigationLinksCollection, asset }: BurgerMenuProps
 
 		if (isOpen) {
 			dialog.showModal();
+			document.body.style.overflow = "hidden";
 		} else {
 			dialog.close();
+			document.body.style.overflow = "";
 		}
+
+		return () => {
+			document.body.style.overflow = "";
+		};
 	}, [isOpen]);
 
 	// Handle responsive behavior - close dialog if burger button is hidden by CSS
