@@ -1,5 +1,5 @@
-import { BurgerMenu } from "@/ui/burger-menu";
 import { Logo } from "@/ui/logo";
+import { BurgerMenu } from "@/ui/modules/header/mobile-navigation";
 
 import { LanguageSwitcher } from "./language-switcher";
 import { HeaderNavigation } from "./navigation";

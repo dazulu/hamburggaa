@@ -73,7 +73,7 @@ export const BurgerMenu = ({ navigationLinksCollection }: BurgerMenuProps) => {
 					xmlns="http://www.w3.org/2000/svg"
 					fill="none"
 					stroke="#000"
-					stroke-width=".42"
+					strokeWidth=".42"
 					viewBox="-2.8 -2.8 33.6 33.6"
 				>
 					<g fill="#000">
