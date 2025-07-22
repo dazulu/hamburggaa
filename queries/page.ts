@@ -146,6 +146,9 @@ export const query = `
               }
               imagesCollection(limit: 10) {
                 items {
+                  sys {
+                    id
+                  }
                   description
                   url
                   width
