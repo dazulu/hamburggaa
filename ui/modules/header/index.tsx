@@ -10,9 +10,7 @@ import styles from "./styles.module.css";
 export const ModuleHeader = async ({ module }: { module: Header }) => {
 	return (
 		<ScrollHeader>
-			<span className={styles.logo}>
-				<Logo />
-			</span>
+			<Logo className={styles.logo} />
 			<div>
 				<BurgerMenu navigationLinksCollection={module.navigationLinksCollection} />
 				<HeaderNavigation navigationLinksCollection={module.navigationLinksCollection} />

@@ -59,8 +59,12 @@
 	position: absolute;
 	left: 50%;
 	transform: translateX(-50%);
-	top: -70%;
+	top: -81%;
 	z-index: 1;
+}
+
+.logo img {
+	width: 120px;
 }
 
 @container (min-width: 1024px) {
@@ -70,5 +74,8 @@
 	}
 	.logo {
 		top: -40%;
+	}
+	.logo img {
+		width: 140px;
 	}
 }

@@ -1,3 +1,9 @@
 .logo {
-	position: abosolute;
+	display: block;
+	line-height: 0;
+	position: relative;
+}
+
+.logo img {
+	object-fit: contain;
 }

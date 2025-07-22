@@ -7,18 +7,23 @@ import type { ConfigCollection } from "@/types/contentful";
 
 import styles from "./styles.module.css";
 
-export const Logo = async ({ size = "sm" }: { size?: "sm" | "lg" }) => {
+interface LogoProps {
+	className?: string;
+	baseResolutionWidth?: number;
+}
+
+export const Logo = async ({ className, baseResolutionWidth = 400 }: LogoProps) => {
 	const data = await getData<ConfigCollection>({ query });
 	const { logo } = data.configCollection.items[0];
 	const { url } = logo;
 
-	const isSmall = size === "sm";
-	const src = isSmall ? `${url}?fm=png&w=180&q=90` : `${url}?fm=png&w=280&q=90`;
+	// Use configurable resolution for better quality at various sizes
+	const src = `${url}?fm=png&w=${baseResolutionWidth}&q=90`;
 
 	return (
 		<Link
 			href="/"
-			className={styles.logo}
+			className={`${styles.logo} ${className || ""}`}
 		>
 			<Image
 				priority
