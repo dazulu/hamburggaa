@@ -1,0 +1,125 @@
+.container {
+	display: flex;
+	align-items: center;
+	height: var(--header-height);
+	padding-left: 15px;
+}
+
+@media (min-width: 1040px) {
+	.container {
+		display: none;
+	}
+}
+
+.burgerButton {
+	border-radius: 50%;
+	background: none;
+	border: none;
+	cursor: pointer;
+	padding: 0;
+	display: flex;
+	width: 36px;
+	height: 36px;
+}
+
+.burgerButton:focus {
+	border-radius: 50%;
+	outline: 3px solid dodgerblue;
+}
+
+/* Mobile Menu Dialog */
+.dialog {
+	border: none;
+	margin: 0;
+	padding: 0;
+	background: transparent;
+	max-width: none;
+	max-height: none;
+	width: 100%;
+	height: 100%;
+}
+
+.dialogContent {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-color: white;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+}
+
+/* Close Button */
+.close {
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: none;
+	border: none;
+	cursor: pointer;
+	padding: 0;
+	border-radius: 50%;
+	width: 44px;
+	height: 44px;
+	font-family: var(--font-heading);
+	font-size: 44px;
+	font-weight: 300;
+	line-height: 1;
+}
+
+.close > span {
+	position: relative;
+	top: -4px;
+}
+
+.close:focus-visible {
+	border-radius: 50%;
+	outline: 3px solid dodgerblue;
+}
+/* Menu List */
+.menuList {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	justify-content: center;
+	flex: 1;
+	flex-direction: column;
+	height: calc(100svh - 40px);
+	width: 100%;
+}
+
+.link {
+	display: block;
+	text-align: center;
+	width: 100%;
+	gap: 12px;
+	color: #000;
+	text-decoration: none;
+	font-weight: 500;
+	text-transform: uppercase;
+	padding: 16px 0;
+	position: relative;
+	font-size: 18px;
+}
+
+.link:hover {
+	color: var(--primary);
+}
+
+.link[data-current] {
+	color: var(--primary);
+}
+
+.externalIcon {
+	flex-shrink: 0;
+	opacity: 0.6;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.dialogContent {
+		transition: none;
+	}
+}

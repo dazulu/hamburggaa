@@ -61,3 +61,10 @@
 		flex: 1;
 	}
 }
+
+/* Hide navigation on mobile */
+@media (max-width: 1039px) {
+	.list {
+		display: none;
+	}
+}
