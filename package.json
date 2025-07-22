@@ -27,7 +27,7 @@
 			"yarn lint"
 		],
 		"*.@(ts|tsx|css)": [
-			"biome:write"
+			"yarn biome"
 		]
 	},
 	"dependencies": {
