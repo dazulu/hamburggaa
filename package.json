@@ -4,7 +4,6 @@
 	"private": true,
 	"author": "Adrian Payne <pro.hamburg.europe@gaa.ie>",
 	"scripts": {
-		"precommit": "yarn biome:write",
 		"predev": "yarn generate-types",
 		"dev": "next dev --turbopack",
 		"prebuild": "yarn generate-types",
@@ -28,7 +27,7 @@
 			"yarn lint"
 		],
 		"*.@(ts|tsx|css)": [
-			"yarn biome"
+			"biome:write"
 		]
 	},
 	"dependencies": {
