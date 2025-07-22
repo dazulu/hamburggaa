@@ -6,11 +6,7 @@ import { getData } from "@/services/get-data";
 import type { ConfigCollection } from "@/types/contentful";
 
 import styles from "./styles.module.css";
-
-interface LogoProps {
-	className?: string;
-	baseResolutionWidth?: number;
-}
+import type { LogoProps } from "./types";
 
 export const Logo = async ({ className, baseResolutionWidth = 400 }: LogoProps) => {
 	const data = await getData<ConfigCollection>({ query });

@@ -4,16 +4,12 @@ import Image from "next/image";
 import { useLocale } from "next-intl";
 
 import { Link, usePathname } from "@/i18n/routing";
-import type { HeaderNavigationLinksCollection } from "@/types/contentful";
 import { getInternalLinkSlug } from "@/utils/navigation";
 
 import styles from "./styles.module.css";
+import type { HeaderNavigationProps } from "./types";
 
-export const HeaderNavigation = ({
-	navigationLinksCollection,
-}: {
-	navigationLinksCollection: HeaderNavigationLinksCollection;
-}): React.ReactElement => {
+export const HeaderNavigation = ({ navigationLinksCollection }: HeaderNavigationProps): React.ReactElement => {
 	const locale = useLocale();
 	const pathname = usePathname();
 

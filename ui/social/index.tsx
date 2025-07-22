@@ -4,6 +4,7 @@ import type { ConfigCollection } from "@/types/contentful";
 import { SocialMediaType } from "@/types/navigation";
 
 import styles from "./styles.module.css";
+import type { SocialIconsProps } from "./types";
 
 const getIconPath = (type: SocialMediaType) => {
 	switch (type) {
@@ -30,7 +31,7 @@ const getIconPath = (type: SocialMediaType) => {
 	}
 };
 
-export const SocialIcons = async ({ type = "horizontal" }: { type?: "horizontal" | "vertical" }) => {
+export const SocialIcons = async ({ type = "horizontal" }: SocialIconsProps) => {
 	const data = await getData<ConfigCollection>({ query });
 	const links = data.configCollection.items?.[0].socialMediaLinksCollection.items?.filter(Boolean) || [];
 

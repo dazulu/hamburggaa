@@ -6,14 +6,10 @@ import Image from "next/image";
 import { useLocale } from "next-intl";
 
 import { Link, usePathname } from "@/i18n/routing";
-import type { HeaderNavigationLinksCollection } from "@/types/contentful";
 import { getInternalLinkSlug } from "@/utils/navigation";
 
 import styles from "./styles.module.css";
-
-interface BurgerMenuProps {
-	navigationLinksCollection: HeaderNavigationLinksCollection;
-}
+import type { BurgerMenuProps } from "./types";
 
 export const BurgerMenu = ({ navigationLinksCollection }: BurgerMenuProps) => {
 	const [isOpen, setIsOpen] = useState(false);
