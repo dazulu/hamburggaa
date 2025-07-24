@@ -2,8 +2,7 @@
 
 import { useEffect } from "react";
 
-import Link from "next/link";
-
+import { Link } from "@/i18n/routing";
 import styles from "@/styles/error.module.css";
 
 export default function Error({ error }: { error: Error & { digest?: string } }) {
