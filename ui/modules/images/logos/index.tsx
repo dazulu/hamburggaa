@@ -4,6 +4,7 @@ import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import Image from "next/image";
 
 import type { Images } from "@/types/contentful";
+import { createRichTextRenderOptions } from "@/utils/rich-text-renderer";
 
 import styles from "./styles.module.css";
 
@@ -11,11 +12,13 @@ export const ImagesDisplayTypeLogos = ({ module }: { module: Images }) => {
 	const { headline, text, imagesCollection } = module;
 	const logos = imagesCollection?.items?.filter(Boolean) || [];
 
+	const renderOptions = createRichTextRenderOptions(text?.links);
+
 	return (
 		<section className={styles.container}>
 			<div className={styles.header}>
 				{headline && <h2>{headline}</h2>}
-				{text && <div className={styles.text}>{documentToReactComponents(text.json)}</div>}
+				{text && <div className={styles.text}>{documentToReactComponents(text.json, renderOptions)}</div>}
 			</div>
 
 			{logos.length > 0 && (

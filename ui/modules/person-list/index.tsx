@@ -2,15 +2,19 @@ import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import Image from "next/image";
 
 import type { PersonList } from "@/types/contentful";
+import { createRichTextRenderOptions } from "@/utils/rich-text-renderer";
 
 import styles from "./styles.module.css";
 
 export const ModulePersonList = ({ module }: { module: PersonList }) => {
 	const { headline, text, peopleCollection } = module;
+
+	const renderOptions = createRichTextRenderOptions(text?.links);
+
 	return (
 		<div className={styles.container}>
 			<h2>{headline}</h2>
-			{text ? documentToReactComponents(text.json) : null}
+			{text ? documentToReactComponents(text.json, renderOptions) : null}
 			{peopleCollection.items?.length && (
 				<ul className={styles.people}>
 					{peopleCollection.items.map((person) => (

@@ -1,18 +1,19 @@
-import React from "react";
-
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 
 import type { Faqs } from "@/types/contentful";
+import { createRichTextRenderOptions } from "@/utils/rich-text-renderer";
 
 import styles from "./styles.module.css";
 
 export const ModuleFaq = ({ module }: { module: Faqs }) => {
 	const { sys, title, description, questions } = module;
 
+	const renderOptions = createRichTextRenderOptions(description?.links);
+
 	return (
 		<div className={styles.container}>
 			<h2>{title}</h2>
-			{documentToReactComponents(description.json)}
+			{documentToReactComponents(description.json, renderOptions)}
 			<div className={styles.questions}>
 				{questions.map(({ id, key: question, value: answer }, index) => (
 					<details

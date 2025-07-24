@@ -17,6 +17,17 @@ export const query = `
     slug
   }
 
+  fragment EntryLinkFields on Entry {
+    sys {
+      id
+    }
+    __typename
+    ... on Page {
+      ...PageLinkFields
+    }
+  }
+
+  
 
   query($slug: String!, $locale: String!) {
     pageCollection(where: { slug: $slug }, limit: 1, locale: $locale) {
@@ -79,6 +90,16 @@ export const query = `
               title
               description {
                 json
+                links {
+                  entries {
+                    inline {
+                      ...EntryLinkFields
+                    }
+                    hyperlink {
+                      ...EntryLinkFields
+                    }
+                  }
+                }
               }
               questions
             }
@@ -89,6 +110,16 @@ export const query = `
               headline
               text {
                 json
+                links {
+                  entries {
+                    inline {
+                      ...EntryLinkFields
+                    }
+                    hyperlink {
+                      ...EntryLinkFields
+                    }
+                  }
+                }
               }
               image {
                 description
@@ -112,6 +143,16 @@ export const query = `
               headline
               text {
                 json
+                links {
+                  entries {
+                    inline {
+                      ...EntryLinkFields
+                    }
+                    hyperlink {
+                      ...EntryLinkFields
+                    }
+                  }
+                }
               }
               image {
                 description
@@ -134,7 +175,18 @@ export const query = `
               }
               text {
                 json
+                links {
+                  entries {
+                    inline {
+                      ...EntryLinkFields
+                    }
+                    hyperlink {
+                      ...EntryLinkFields
+                    }
+                  }
+                }
               }
+              centerText
             }
             ... on Images {
               sys {
@@ -143,6 +195,16 @@ export const query = `
               headline
               text {
                 json
+                links {
+                  entries {
+                    inline {
+                      ...EntryLinkFields
+                    }
+                    hyperlink {
+                      ...EntryLinkFields
+                    }
+                  }
+                }
               }
               imagesCollection(limit: 10) {
                 items {
@@ -177,6 +239,16 @@ export const query = `
               headline
               text {
                 json
+                links {
+                  entries {
+                    inline {
+                      ...EntryLinkFields
+                    }
+                    hyperlink {
+                      ...EntryLinkFields
+                    }
+                  }
+                }
               }
               peopleCollection(limit: 10) {
                 items {
