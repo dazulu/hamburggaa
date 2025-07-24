@@ -7,7 +7,6 @@ import { getInternalLinkSlug } from "@/utils/navigation";
 import styles from "./styles.module.css";
 
 export const ButtonLink = async (item: ImageTextCallToActionLink) => {
-	console.log(item);
 	// Internal Nextjs routing links
 	if (item.__typename === "Page") {
 		const href = getInternalLinkSlug(item);
