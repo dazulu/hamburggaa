@@ -1,2 +1,13 @@
 .container {
+	/* Base container styles */
+}
+
+.centered {
+	text-align: center;
+}
+
+.centered ul,
+.centered ol {
+	display: inline-block;
+	text-align: left;
 }
