@@ -3,7 +3,7 @@ body {
 	box-sizing: border-box;
 	font-family: var(--font-body), -apple-system, sans-serif;
 	font-weight: 300;
-	font-size: 17px;
+	font-size: 18px;
 	margin: 0;
 }
 
@@ -28,6 +28,10 @@ textarea {
 		outline: 3px solid dodgerblue;
 		outline-offset: 2px;
 	}
+}
+
+h1 {
+	font-size: 48px;
 }
 
 h1,
