@@ -4,6 +4,7 @@
 	list-style: none;
 	margin: 0;
 	padding: 0;
+	z-index: 1;
 }
 
 .horizontal {
@@ -12,9 +13,14 @@
 }
 
 .vertical {
+	position: relative;
+	top: 100px;
 	display: flex;
 	flex-direction: column;
 	gap: 18px;
+	@media (min-width: 600px) {
+		top: 0;
+	}
 }
 
 .link {
