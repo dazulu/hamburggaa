@@ -1,7 +1,7 @@
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 
+import { createRichTextRenderOptions } from "@/components/rich-text-renderer";
 import type { Text } from "@/types/contentful";
-import { createRichTextRenderOptions } from "@/utils/rich-text-renderer";
 
 import styles from "./styles.module.css";
 

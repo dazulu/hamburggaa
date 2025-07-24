@@ -1,8 +1,8 @@
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import Image from "next/image";
 
+import { createRichTextRenderOptions } from "@/components/rich-text-renderer";
 import type { PersonList } from "@/types/contentful";
-import { createRichTextRenderOptions } from "@/utils/rich-text-renderer";
 
 import styles from "./styles.module.css";
 
