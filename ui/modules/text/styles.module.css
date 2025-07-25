@@ -6,6 +6,10 @@
 		margin-top: var(--module-spacing-l);
 		margin-bottom: var(--module-spacing-l);
 	}
+
+	h1 {
+		margin-bottom: 1.5rem;
+	}
 }
 
 .centered {
