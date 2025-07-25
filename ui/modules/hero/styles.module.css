@@ -46,7 +46,7 @@
 	display: flex;
 	justify-content: flex-end;
 	text-align: right;
-
+	line-height: 1;
 	color: #fff;
 	font-size: 20vw;
 
