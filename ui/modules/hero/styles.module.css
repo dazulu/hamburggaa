@@ -37,17 +37,33 @@
 	text-align: right;
 
 	color: #fff;
-	font-size: 70px;
-	line-height: 70px;
+	font-size: 20vw;
 
 	width: 1px;
 	z-index: 1;
+
+	@media (min-width: 800px) {
+		font-size: 140px;
+	}
 }
 
-@media (min-width: 800px) {
-	.headline {
-		font-size: 140px;
-		line-height: 130px;
+.visualHeadline {
+	position: absolute;
+	right: -10vw;
+	bottom: -1vw;
+	font-size: 40vw;
+	font-family: var(--font-headline);
+	text-transform: uppercase;
+	opacity: 0.25;
+	line-height: 1;
+	width: max-content;
+
+	@media (min-width: 800px) {
+		font-size: 30vw;
+	}
+
+	@media (min-width: 1040px) {
+		font-size: 20vw;
 	}
 }
 

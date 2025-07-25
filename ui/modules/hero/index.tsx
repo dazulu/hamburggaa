@@ -21,6 +21,14 @@ export const ModuleHero = ({ module }: { module: Hero }) => {
 			)}
 			<div className={styles.content}>
 				{headline && <h1 className={styles.headline}>{module.headline}</h1>}
+				{headline && (
+					<span
+						aria-hidden="true"
+						className={`${styles.headline} ${styles.visualHeadline}`}
+					>
+						{module.headline}
+					</span>
+				)}
 				{callToActionLink && <ButtonLink {...callToActionLink} />}
 			</div>
 		</div>
