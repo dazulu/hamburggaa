@@ -32,6 +32,13 @@ textarea {
 
 h1 {
 	font-size: 48px;
+	line-height: 1;
+}
+/* If supported, trim vertical space from font, else rely on less accurate line-height: 1 */
+@supports (text-box: trim-both cap alphabetic) {
+	h1 {
+		text-box: trim-both cap alphabetic;
+	}
 }
 
 h1,
