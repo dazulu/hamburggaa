@@ -8,9 +8,12 @@
 	--radius-xl: 28px;
 
 	--sidebar-width: 275px;
-	--base-padding: 10px;
+	--base-spacing: 10px;
+
+	--module-spacing-s: 32px;
+	--module-spacing-l: 64px;
 
 	@media (min-width: 800px) {
-		--base-padding: 16px;
+		--base-spacing: 16px;
 	}
 }

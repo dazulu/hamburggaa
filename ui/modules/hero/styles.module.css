@@ -9,10 +9,10 @@
 	justify-content: flex-end;
 
 	position: absolute;
-	top: var(--base-padding);
-	left: var(--base-padding);
-	bottom: var(--base-padding);
-	right: var(--base-padding);
+	top: var(--base-spacing);
+	left: var(--base-spacing);
+	bottom: var(--base-spacing);
+	right: var(--base-spacing);
 }
 
 .full {
