@@ -1,2 +1,35 @@
 .button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 4px;
+
+	border: 2px solid var(--primary);
+	border-radius: 32px;
+	padding: 16px 48px;
+
+	font-size: 18px;
+	font-weight: 500;
+	line-height: 1;
+
+	cursor: pointer;
+	text-decoration: none;
+
+	@media screen and (min-width: 600px) {
+		display: inline-flex;
+	}
+}
+
+.button:focus-visible {
+	border-radius: 32px;
+}
+
+.filled {
+	background-color: var(--primary);
+	color: #fff;
+}
+
+.outlined {
+	background-color: transparent;
+	color: var(--primary);
 }
