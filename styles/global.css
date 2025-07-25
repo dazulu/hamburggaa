@@ -86,3 +86,13 @@ dd {
 		padding: 0;
 	}
 }
+
+.global-module-spacing {
+	margin-top: var(--module-spacing-s);
+	margin-bottom: var(--module-spacing-s);
+
+	@media screen and (min-width: 1044px) {
+		margin-top: var(--module-spacing-l);
+		margin-bottom: var(--module-spacing-l);
+	}
+}

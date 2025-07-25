@@ -11,7 +11,7 @@ export const ModuleFaq = ({ module }: { module: Faqs }) => {
 	const renderOptions = createRichTextRenderOptions(description?.links);
 
 	return (
-		<div className={styles.container}>
+		<div className={`${styles.container} global-contain-width global-module-spacing`}>
 			<h2>{title}</h2>
 			{documentToReactComponents(description.json, renderOptions)}
 			<div className={styles.questions}>

@@ -12,7 +12,7 @@ export const ModulePersonList = ({ module }: { module: PersonList }) => {
 	const renderOptions = createRichTextRenderOptions(text?.links);
 
 	return (
-		<div className={styles.container}>
+		<div className={`${styles.container} global-contain-width global-module-spacing`}>
 			<h2>{headline}</h2>
 			{text ? documentToReactComponents(text.json, renderOptions) : null}
 			{peopleCollection.items?.length && (

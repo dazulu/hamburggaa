@@ -13,7 +13,7 @@ export const ImagesDisplayTypeCollage = ({ module }: { module: Images }) => {
 	const renderOptions = createRichTextRenderOptions(text?.links);
 
 	return (
-		<>
+		<section className={`global-module-spacing`}>
 			<div className={styles.text}>
 				{headline && <h2>{headline}</h2>}
 				{text && documentToReactComponents(text.json, renderOptions)}
@@ -21,6 +21,6 @@ export const ImagesDisplayTypeCollage = ({ module }: { module: Images }) => {
 			<pre>
 				<code>{JSON.stringify(module, null, 2)}</code>
 			</pre>
-		</>
+		</section>
 	);
 };

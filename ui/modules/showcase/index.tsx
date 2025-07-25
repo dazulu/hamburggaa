@@ -13,7 +13,7 @@ export const ModuleShowcase = ({ module }: { module: Showcase }) => {
 	const renderOptions = createRichTextRenderOptions(text?.links);
 
 	return (
-		<div className={styles.container}>
+		<div className={`${styles.container} global-module-spacing`}>
 			{headline && <p className={styles.headline}>{headline}</p>}
 			<div className={styles.content}>
 				{text && documentToReactComponents(text.json, renderOptions)}{" "}

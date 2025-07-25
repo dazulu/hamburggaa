@@ -13,7 +13,7 @@ export const ModuleImageText = ({ module }: { module: ImageText }) => {
 	const renderOptions = createRichTextRenderOptions(text?.links);
 
 	return (
-		<div className={styles.container}>
+		<div className={`${styles.container} global-contain-width global-module-spacing`}>
 			{documentToReactComponents(text.json, renderOptions)}
 			{image && (
 				<Image

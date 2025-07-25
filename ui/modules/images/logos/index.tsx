@@ -15,7 +15,7 @@ export const ImagesDisplayTypeLogos = ({ module }: { module: Images }) => {
 	const renderOptions = createRichTextRenderOptions(text?.links);
 
 	return (
-		<section className={styles.container}>
+		<section className={`${styles.container} global-contain-width global-module-spacing`}>
 			<div className={styles.header}>
 				{headline && <h2>{headline}</h2>}
 				{text && <div className={styles.text}>{documentToReactComponents(text.json, renderOptions)}</div>}

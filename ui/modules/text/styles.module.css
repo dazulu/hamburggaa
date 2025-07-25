@@ -1,12 +1,4 @@
 .container {
-	margin-top: var(--module-spacing-s);
-	margin-bottom: var(--module-spacing-s);
-
-	@media screen and (min-width: 1044px) {
-		margin-top: var(--module-spacing-l);
-		margin-bottom: var(--module-spacing-l);
-	}
-
 	h1 {
 		margin-bottom: 1.5rem;
 	}
