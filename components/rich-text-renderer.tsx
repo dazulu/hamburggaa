@@ -15,6 +15,9 @@ interface RichTextLinks {
 }
 
 export const createRichTextRenderOptions = (links?: RichTextLinks): Options => ({
+	renderText: (text: string) => {
+		return text.replace(/&shy;/g, "\u00AD");
+	},
 	renderNode: {
 		[INLINES.HYPERLINK]: (node: Inline, children: React.ReactNode) => {
 			const { uri } = node.data;

@@ -31,8 +31,8 @@ textarea {
 }
 
 h1 {
-	font-size: 48px;
-	line-height: 1;
+	font-size: 44px;
+	line-height: 1.1;
 }
 /* If supported, trim vertical space from font, else rely on less accurate line-height: 1 */
 @supports (text-box: trim-both cap alphabetic) {
