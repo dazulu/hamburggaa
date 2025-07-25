@@ -76,3 +76,13 @@ dt {
 dd {
 	margin: 0;
 }
+
+.global-contain-width {
+	max-width: 1000px;
+	margin: 0 auto;
+	padding: 0 calc(var(--base-spacing) * 2);
+
+	@media screen and (min-width: 1000px) {
+		padding: 0;
+	}
+}

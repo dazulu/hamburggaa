@@ -12,7 +12,7 @@ export const ModuleText = ({ module }: { module: Text }) => {
 	const renderOptions = createRichTextRenderOptions(text?.links);
 
 	return (
-		<div className={`${styles.container} ${centeredClassName}`}>
+		<div className={`${styles.container} ${centeredClassName} global-contain-width`}>
 			{text && documentToReactComponents(text.json, renderOptions)}
 		</div>
 	);
