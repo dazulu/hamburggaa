@@ -77,6 +77,19 @@ dd {
 	margin: 0;
 }
 
+p a {
+	color: inherit;
+	text-decoration: underline;
+	text-underline-offset: 4px;
+	transition: all 0.175s ease-out;
+	text-decoration-skip-ink: auto;
+	text-decoration-color: var(--primary);
+
+	&:hover {
+		text-underline-offset: 6px;
+	}
+}
+
 .global-contain-width {
 	max-width: 1000px;
 	margin: 0 auto;
