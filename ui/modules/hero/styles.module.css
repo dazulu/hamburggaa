@@ -1,19 +1,6 @@
 .container {
 	position: relative;
 	overflow: hidden;
-	clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
-
-	&::after {
-		content: "";
-		position: absolute;
-		right: 0;
-		bottom: 0;
-		background-color: red;
-		width: 200px;
-		height: 80px;
-		clip-path: polygon(100% 0, 0 45%, 100% 100%);
-		z-index: 1;
-	}
 }
 
 .content {
