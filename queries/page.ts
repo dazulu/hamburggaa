@@ -136,6 +136,12 @@ export const query = `
                 }
               }
             }
+            ... on FollowUs {
+              sys {
+                id
+              }
+              headline
+            }
             ... on Showcase {
               sys {
                 id
