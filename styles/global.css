@@ -95,7 +95,17 @@ p a {
 	margin: 0 auto;
 	padding: 0 calc(var(--base-spacing) * 2);
 
-	@media screen and (min-width: 1000px) {
+	@media screen and (min-width: 1044px) {
+		padding: 0;
+	}
+}
+
+.global-full-width > div {
+	max-width: 1000px;
+	margin: 0 auto;
+	padding: 0 calc(var(--base-spacing) * 2);
+
+	@media screen and (min-width: 1044px) {
 		padding: 0;
 	}
 }
