@@ -8,6 +8,7 @@ import { ModuleHero } from "./hero";
 import { ModuleImageText } from "./image-text";
 import { ModuleImages } from "./images";
 import { ModulePersonList } from "./person-list";
+import { ModuleQuote } from "./Quote";
 import { ModuleShowcase } from "./showcase";
 import { ModuleText } from "./text";
 
@@ -20,6 +21,7 @@ const moduleMapping = {
 	Images: ModuleImages,
 	ImageText: ModuleImageText,
 	PersonList: ModulePersonList,
+	Quote: ModuleQuote,
 	Showcase: ModuleShowcase,
 	Text: ModuleText,
 };

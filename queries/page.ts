@@ -136,6 +136,25 @@ export const query = `
                 }
               }
             }
+            ... on Quote {
+              sys {
+                id
+              }
+              quoteText
+                person {
+                sys {
+                  id
+                }
+                name
+                role
+                image {
+                  description
+                  url
+                  width
+                  height
+                }
+              }
+            }
             ... on FollowUs {
               sys {
                 id
