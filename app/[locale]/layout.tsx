@@ -10,8 +10,8 @@ import { setRequestLocale } from "next-intl/server";
 import { CSSVariables } from "@/components/css-variables";
 import { routing } from "@/i18n/routing";
 import { query } from "@/queries/config";
-import { bodyFont, headlineFont } from "@/services/fonts";
 import { getData } from "@/services/get-data";
+import { bodyFont, headlineFont } from "@/styles/fonts";
 import type { ConfigCollection } from "@/types/contentful";
 import { BoxShadowToggler } from "@/utils/debug";
 
