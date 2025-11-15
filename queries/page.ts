@@ -27,7 +27,19 @@ export const query = `
     }
   }
 
-  
+  fragment PersonLinkFields on Person {
+    sys {
+      id
+    }
+    name
+    role
+    image {
+      description
+      url
+      width
+      height
+    }
+  }
 
   query($slug: String!, $locale: String!) {
     pageCollection(where: { slug: $slug }, limit: 1, locale: $locale) {
@@ -141,18 +153,8 @@ export const query = `
                 id
               }
               quoteText
-                person {
-                sys {
-                  id
-                }
-                name
-                role
-                image {
-                  description
-                  url
-                  width
-                  height
-                }
+              person {
+                ...PersonLinkFields
               }
             }
             ... on FollowUs {
@@ -245,17 +247,7 @@ export const query = `
               displayType
             }
             ... on Person {
-              sys {
-                id
-              }
-              name
-              role
-              image {
-                description
-                url
-                width
-                height
-              }
+              ...PersonLinkFields
             }
             ... on PersonList {
               sys {
@@ -277,17 +269,7 @@ export const query = `
               }
               peopleCollection(limit: 10) {
                 items {
-                  sys {
-                    id
-                  }
-                  name
-                  role
-                  image {
-                    description
-                    url
-                    width
-                    height
-                  }
+                  ...PersonLinkFields
                 }
               }
             }
