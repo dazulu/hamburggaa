@@ -54,7 +54,13 @@ Create a `.env.local` file in the root directory:
 ```env
 CONTENTFUL_SPACE_ID=your_space_id
 CONTENTFUL_ACCESS_TOKEN=your_access_token
+
+# Optional: Monitor GraphQL query complexity
+# CONTENTFUL_LOG_COMPLEXITY=true
 ```
+
+**Optional Environment Variables:**
+- `CONTENTFUL_LOG_COMPLEXITY` - Set to `true` to log GraphQL query complexity in the console. Useful for debugging and ensuring queries stay under Contentful's 11,000 complexity limit.
 
 ### Installation & Development
 

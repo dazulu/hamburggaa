@@ -18,6 +18,13 @@ export const getData = async <T>({
 			},
 		);
 
+		if (process.env.CONTENTFUL_LOG_COMPLEXITY === "true") {
+			const queryCost = response.headers.get("X-Contentful-Graphql-Query-Cost");
+			if (queryCost) {
+				console.info(`GraphQL complexity: ${queryCost}/11000`);
+			}
+		}
+
 		if (!response.ok) {
 			const errorText = await response.text();
 			console.error("Contentful API Error Response:", errorText);
