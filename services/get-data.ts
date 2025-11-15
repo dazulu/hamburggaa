@@ -19,16 +19,17 @@ export const getData = async <T>({
 		);
 
 		if (!response.ok) {
-			throw new Error(`Contentful API error: ${response.status} ${response.statusText}`);
+			const errorText = await response.text();
+			console.error("Contentful API Error Response:", errorText);
+			throw new Error(`Contentful API error: ${response.status} ${response.statusText} - ${errorText}`);
 		}
 
 		const json = await response.json();
 
 		if (json.errors) {
-			// These are not necessarily fatal errors so we log them
-			console.warn(`GraphQL errors: ${JSON.stringify(json.errors)}`);
+			console.error("GraphQL errors:", JSON.stringify(json.errors, null, 2));
+			throw new Error(`GraphQL errors: ${JSON.stringify(json.errors)}`);
 		}
-
 		if (!json.data) {
 			throw new Error("No data returned from Contentful API");
 		}
