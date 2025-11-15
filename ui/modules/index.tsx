@@ -8,7 +8,7 @@ import { ModuleHero } from "./hero";
 import { ModuleImageText } from "./image-text";
 import { ModuleImages } from "./images";
 import { ModulePersonList } from "./person-list";
-import { ModuleQuote } from "./Quote";
+import { ModuleQuote } from "./quote";
 import { ModuleShowcase } from "./showcase";
 import { ModuleText } from "./text";
 

@@ -6,7 +6,7 @@ import styles from "./styles.module.css";
 
 export const ModuleQuote = ({ module }: { module: Quote }) => {
 	const { quoteText, person } = module;
-	const { name, role, image } = person;
+	const { name, role, image } = person || {};
 
 	return (
 		<figure className={`${styles.container} global-contain-width global-module-spacing`}>
@@ -22,21 +22,21 @@ export const ModuleQuote = ({ module }: { module: Quote }) => {
 				</svg>
 				<p className={styles.quoteText}>{quoteText}</p>
 			</blockquote>
-			<figcaption className={styles.attribution}>
-				{image.url && (
+			{person && (
+				<figcaption className={styles.attribution}>
 					<div className={styles.imageWrapper}>
 						<Image
 							fill
-							src={`${image.url}?fit=fill&w=160&fm=avif&q=75`}
+							src={`${image.url}?fit=crop&w=160&fm=avif&q=75&f=faces`}
 							alt={image.description || name}
 						/>
 					</div>
-				)}
-				<div className={styles.personInfo}>
-					<cite className={styles.name}>{name}</cite>
-					{role && <span className={styles.role}>{role}</span>}
-				</div>
-			</figcaption>
+					<div className={styles.personInfo}>
+						<cite className={styles.name}>{name}</cite>
+						{role && <span className={styles.role}>{role}</span>}
+					</div>
+				</figcaption>
+			)}
 		</figure>
 	);
 };
