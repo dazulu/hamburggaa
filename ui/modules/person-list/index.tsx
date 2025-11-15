@@ -7,14 +7,14 @@ import type { PersonList } from "@/types/contentful";
 import styles from "./styles.module.css";
 
 export const ModulePersonList = ({ module }: { module: PersonList }) => {
-	const { headline, text, peopleCollection } = module;
+	const { headline, richTextContent, peopleCollection } = module;
 
-	const renderOptions = createRichTextRenderOptions(text?.links);
+	const renderOptions = createRichTextRenderOptions(richTextContent?.links);
 
 	return (
 		<div className={`${styles.container} global-contain-width global-module-spacing`}>
 			<h2>{headline}</h2>
-			{text ? documentToReactComponents(text.json, renderOptions) : null}
+			{richTextContent ? documentToReactComponents(richTextContent.json, renderOptions) : null}
 			{peopleCollection.items?.length && (
 				<ul className={styles.people}>
 					{peopleCollection.items.map((person) => (

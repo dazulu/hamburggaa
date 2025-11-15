@@ -56,7 +56,7 @@ export const query = `
           width
           height
         }
-        modulesCollection(limit: 10) {
+        modulesCollection(limit: 20) {
           items {
             __typename
             ... on Header {
@@ -100,7 +100,7 @@ export const query = `
                 id
               }
               title
-              description {
+              richTextContent {
                 json
                 links {
                   entries {
@@ -120,7 +120,7 @@ export const query = `
                 id
               }
               headline
-              text {
+              richTextContent {
                 json
                 links {
                   entries {
@@ -168,7 +168,7 @@ export const query = `
                 id
               }
               headline
-              text {
+              richTextContent {
                 json
                 links {
                   entries {
@@ -200,7 +200,7 @@ export const query = `
               sys {
                 id
               }
-              text {
+              richTextContent {
                 json
                 links {
                   entries {
@@ -220,7 +220,7 @@ export const query = `
                 id
               }
               headline
-              text {
+              richTextContent {
                 json
                 links {
                   entries {
@@ -254,7 +254,7 @@ export const query = `
                 id
               }
               headline
-              text {
+              richTextContent {
                 json
                 links {
                   entries {

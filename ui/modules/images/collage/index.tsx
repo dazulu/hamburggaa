@@ -8,15 +8,15 @@ import type { Images } from "@/types/contentful";
 import styles from "./styles.module.css";
 
 export const ImagesDisplayTypeCollage = ({ module }: { module: Images }) => {
-	const { headline, text } = module;
+	const { headline, richTextContent } = module;
 
-	const renderOptions = createRichTextRenderOptions(text?.links);
+	const renderOptions = createRichTextRenderOptions(richTextContent?.links);
 
 	return (
 		<section className={`global-module-spacing`}>
 			<div className={styles.text}>
 				{headline && <h2>{headline}</h2>}
-				{text && documentToReactComponents(text.json, renderOptions)}
+				{richTextContent && documentToReactComponents(richTextContent.json, renderOptions)}
 			</div>
 			<pre>
 				<code>{JSON.stringify(module, null, 2)}</code>

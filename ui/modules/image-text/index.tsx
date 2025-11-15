@@ -8,13 +8,13 @@ import { ButtonLink } from "@/ui/button-link";
 import styles from "./styles.module.css";
 
 export const ModuleImageText = ({ module }: { module: ImageText }) => {
-	const { image, text, callToActionLink } = module;
+	const { image, richTextContent, callToActionLink } = module;
 
-	const renderOptions = createRichTextRenderOptions(text?.links);
+	const renderOptions = createRichTextRenderOptions(richTextContent?.links);
 
 	return (
 		<div className={`${styles.container} global-contain-width global-module-spacing`}>
-			{documentToReactComponents(text.json, renderOptions)}
+			{documentToReactComponents(richTextContent.json, renderOptions)}
 			{image && (
 				<Image
 					alt={image.description || ""}

@@ -9,16 +9,18 @@ import type { Images } from "@/types/contentful";
 import styles from "./styles.module.css";
 
 export const ImagesDisplayTypeLogos = ({ module }: { module: Images }) => {
-	const { headline, text, imagesCollection } = module;
+	const { headline, richTextContent, imagesCollection } = module;
 	const logos = imagesCollection?.items?.filter(Boolean) || [];
 
-	const renderOptions = createRichTextRenderOptions(text?.links);
+	const renderOptions = createRichTextRenderOptions(richTextContent?.links);
 
 	return (
 		<section className={`${styles.container} global-contain-width global-module-spacing`}>
 			<div className={styles.header}>
 				{headline && <h2>{headline}</h2>}
-				{text && <div className={styles.text}>{documentToReactComponents(text.json, renderOptions)}</div>}
+				{richTextContent && (
+					<div className={styles.text}>{documentToReactComponents(richTextContent.json, renderOptions)}</div>
+				)}
 			</div>
 
 			{logos.length > 0 && (

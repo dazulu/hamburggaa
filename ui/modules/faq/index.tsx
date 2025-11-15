@@ -6,15 +6,15 @@ import type { Faqs } from "@/types/contentful";
 import styles from "./styles.module.css";
 
 export const ModuleFaq = ({ module }: { module: Faqs }) => {
-	const { sys, title, description, questions } = module;
+	const { sys, title, richTextContent, questions } = module;
 
-	const renderOptions = createRichTextRenderOptions(description?.links);
+	const renderOptions = createRichTextRenderOptions(richTextContent?.links);
 
 	return (
 		<div className={`${styles.container} global-full-width`}>
 			<div>
 				<h2 className={styles.title}>{title}</h2>
-				{documentToReactComponents(description.json, renderOptions)}
+				{documentToReactComponents(richTextContent.json, renderOptions)}
 				<div className={styles.questions}>
 					{questions.map(({ id, key: question, value: answer }, index) => (
 						<details

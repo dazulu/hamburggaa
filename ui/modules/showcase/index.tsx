@@ -8,15 +8,15 @@ import { ButtonLink } from "@/ui/button-link";
 import styles from "./styles.module.css";
 
 export const ModuleShowcase = ({ module }: { module: Showcase }) => {
-	const { callToActionLink, headline, image, text } = module;
+	const { callToActionLink, headline, image, richTextContent } = module;
 
-	const renderOptions = createRichTextRenderOptions(text?.links);
+	const renderOptions = createRichTextRenderOptions(richTextContent?.links);
 
 	return (
 		<div className={`${styles.container} global-module-spacing`}>
 			{headline && <p className={styles.headline}>{headline}</p>}
 			<div className={styles.content}>
-				{text && documentToReactComponents(text.json, renderOptions)}{" "}
+				{richTextContent && documentToReactComponents(richTextContent.json, renderOptions)}{" "}
 				{callToActionLink && <ButtonLink {...callToActionLink} />}
 			</div>
 			{image && (
