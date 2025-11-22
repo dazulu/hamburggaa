@@ -14,16 +14,25 @@ export const ModuleImageText = ({ module }: { module: ImageText }) => {
 
 	return (
 		<div className={`${styles.container} global-contain-width global-module-spacing`}>
-			{documentToReactComponents(richTextContent.json, renderOptions)}
+			<div className={styles.textContent}>
+				{documentToReactComponents(richTextContent.json, renderOptions)}
+				{callToActionLink && (
+					<ButtonLink
+						className={styles.button}
+						{...callToActionLink}
+					/>
+				)}
+			</div>
 			{image && (
-				<Image
-					alt={image.description || ""}
-					src={image.url}
-					width={image.width}
-					height={image.height}
-				/>
+				<div className={styles.imageWrapper}>
+					<Image
+						alt={image.description || ""}
+						src={image.url}
+						width={image.width}
+						height={image.height}
+					/>
+				</div>
 			)}
-			{callToActionLink && <ButtonLink {...callToActionLink} />}
 		</div>
 	);
 };
