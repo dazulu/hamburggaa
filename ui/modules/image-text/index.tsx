@@ -8,12 +8,14 @@ import { ButtonLink } from "@/ui/button-link";
 import styles from "./styles.module.css";
 
 export const ModuleImageText = ({ module }: { module: ImageText }) => {
-	const { image, richTextContent, callToActionLink } = module;
+	const { image, richTextContent, callToActionLink, shouldFlip } = module;
 
 	const renderOptions = createRichTextRenderOptions(richTextContent?.links);
 
+	const flipClassName = shouldFlip ? styles.flip : "";
+
 	return (
-		<div className={`${styles.container} global-contain-width global-module-spacing`}>
+		<div className={`${styles.container} ${flipClassName} global-contain-width global-module-spacing`}>
 			<div className={styles.textContent}>
 				{documentToReactComponents(richTextContent.json, renderOptions)}
 				{callToActionLink && (
