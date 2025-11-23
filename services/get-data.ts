@@ -14,7 +14,7 @@ export const getData = async <T>({
 					"content-type": "application/json",
 					Authorization: `Bearer ${process.env.CONTENTFUL_ACCESS_TOKEN}`,
 				},
-				body: JSON.stringify({ query, variables }),
+				body: JSON.stringify({ query, variables, preview: false }),
 			},
 		);
 
@@ -34,9 +34,19 @@ export const getData = async <T>({
 		const json = await response.json();
 
 		if (json.errors) {
-			console.error("GraphQL errors:", JSON.stringify(json.errors, null, 2));
-			throw new Error(`GraphQL errors: ${JSON.stringify(json.errors)}`);
+			const hasUnresolvableLinks = json.errors.some(
+				(error: { extensions?: { contentful?: { code?: string } } }) =>
+					error.extensions?.contentful?.code === "UNRESOLVABLE_LINK",
+			);
+
+			if (hasUnresolvableLinks) {
+				console.warn("GraphQL unresolvable link warnings (draft content):", JSON.stringify(json.errors, null, 2));
+			} else {
+				console.error("GraphQL errors:", JSON.stringify(json.errors, null, 2));
+				throw new Error(`GraphQL errors: ${JSON.stringify(json.errors)}`);
+			}
 		}
+
 		if (!json.data) {
 			throw new Error("No data returned from Contentful API");
 		}
