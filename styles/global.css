@@ -55,7 +55,6 @@ h5 {
 	font-family: var(--font-headline);
 	text-transform: uppercase;
 	text-wrap: pretty;
-	margin: 0;
 }
 
 h1,

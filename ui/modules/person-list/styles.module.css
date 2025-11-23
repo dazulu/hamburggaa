@@ -1,39 +1,82 @@
 .container {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+
+.textContent {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
 }
 
 .people {
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
-
 	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-	gap: 1rem;
+	gap: 24px;
+
+	@media (min-width: 550px) {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	@media (min-width: 768px) {
+		grid-template-columns: repeat(3, 1fr);
+	}
+
+	@media (min-width: 1024px) {
+		grid-template-columns: repeat(4, 1fr);
+	}
 }
 
-.person {
-}
-
-.imageWrapper {
-	border-radius: 50%;
-	position: relative;
+.personCard {
+	border-radius: 24px;
 	overflow: hidden;
-	width: 150px;
-	height: 150px;
-}
-
-.person figure {
-	display: flex;
-	flex-direction: column-reverse;
-	align-items: center;
+	color: #ffffff;
+	position: relative;
 	margin: 0;
 }
 
-.person figcaption {
-	order: -1;
-	text-align: center;
+.imageWrapper {
+	position: relative;
+	width: 100%;
+	aspect-ratio: 1;
+
+	&::after {
+		content: "";
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		height: 80%;
+		background: linear-gradient(to bottom, transparent, rgb(15, 26, 32));
+		pointer-events: none;
+	}
+
+	> img {
+		object-fit: cover;
+	}
+
+	@media (min-width: 550px) {
+		aspect-ratio: 3 / 5;
+	}
 }
 
-.person img {
-	object-fit: cover;
+.personInfo {
+	padding: 18px;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+
+.personName {
+	font-weight: 600;
+	margin: 0;
+}
+
+.personRole {
+	margin: 0;
+	font-size: 0.9em;
 }

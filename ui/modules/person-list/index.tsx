@@ -13,20 +13,15 @@ export const ModulePersonList = ({ module }: { module: PersonList }) => {
 
 	return (
 		<div className={`${styles.container} global-contain-width global-module-spacing`}>
-			<h2>{headline}</h2>
-			{richTextContent ? documentToReactComponents(richTextContent.json, renderOptions) : null}
+			<div className={styles.textContent}>
+				<h2>{headline}</h2>
+				{richTextContent ? documentToReactComponents(richTextContent.json, renderOptions) : null}
+			</div>
 			{peopleCollection.items?.length && (
 				<ul className={styles.people}>
 					{peopleCollection.items.map((person) => (
-						<li
-							key={person.sys.id}
-							className={styles.person}
-						>
-							<figure>
-								<figcaption>
-									<p>{person.name}</p>
-									<p>{person.role}</p>
-								</figcaption>
+						<li key={person.sys.id}>
+							<figure className={styles.personCard}>
 								{person.image && (
 									<div className={styles.imageWrapper}>
 										<Image
@@ -36,6 +31,10 @@ export const ModulePersonList = ({ module }: { module: PersonList }) => {
 										/>
 									</div>
 								)}
+								<figcaption className={styles.personInfo}>
+									<p className={styles.personName}>{person.name}</p>
+									<p className={styles.personRole}>{person.role}</p>
+								</figcaption>
 							</figure>
 						</li>
 					))}
