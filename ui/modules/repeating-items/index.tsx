@@ -1,12 +1,12 @@
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 
 import { createRichTextRenderOptions } from "@/components/rich-text-renderer";
-import type { Faqs } from "@/types/contentful";
+import type { RepeatingItems } from "@/types/contentful";
 
 import styles from "./styles.module.css";
 
-export const ModuleFaq = ({ module }: { module: Faqs }) => {
-	const { sys, title, richTextContent, questions } = module;
+export const ModuleRepeatingItems = ({ module }: { module: RepeatingItems }) => {
+	const { sys, title, richTextContent, items } = module;
 
 	const renderOptions = createRichTextRenderOptions(richTextContent?.links);
 
@@ -16,10 +16,10 @@ export const ModuleFaq = ({ module }: { module: Faqs }) => {
 				<h2 className={styles.title}>{title}</h2>
 				{documentToReactComponents(richTextContent.json, renderOptions)}
 				<div className={styles.questions}>
-					{questions.map(({ id, key: question, value: answer }, index) => (
+					{items.map(({ id, key: question, value: answer }, index) => (
 						<details
 							key={id}
-							name={`faq_${sys.id}`}
+							name={`item_${sys.id}`}
 							open={index === 0}
 							className={styles.details}
 						>

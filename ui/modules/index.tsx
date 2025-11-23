@@ -1,6 +1,5 @@
 import type { PageModulesItem } from "@/types/contentful";
 
-import { ModuleFaq } from "./faq";
 import { ModuleFollowUs } from "./follow-us";
 import { ModuleFooter } from "./footer";
 import { ModuleHeader } from "./header";
@@ -9,11 +8,11 @@ import { ModuleImageText } from "./image-text";
 import { ModuleImages } from "./images";
 import { ModulePersonList } from "./person-list";
 import { ModuleQuote } from "./quote";
+import { ModuleRepeatingItems } from "./repeating-items";
 import { ModuleShowcase } from "./showcase";
 import { ModuleText } from "./text";
 
 const moduleMapping = {
-	Faqs: ModuleFaq,
 	FollowUs: ModuleFollowUs,
 	Footer: ModuleFooter,
 	Header: ModuleHeader,
@@ -22,6 +21,7 @@ const moduleMapping = {
 	ImageText: ModuleImageText,
 	PersonList: ModulePersonList,
 	Quote: ModuleQuote,
+	RepeatingItems: ModuleRepeatingItems,
 	Showcase: ModuleShowcase,
 	Text: ModuleText,
 };

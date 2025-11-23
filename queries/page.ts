@@ -95,7 +95,7 @@ export const query = `
               }
               type
             }
-            ... on Faqs {
+            ... on RepeatingItems {
               sys {
                 id
               }
@@ -113,7 +113,7 @@ export const query = `
                   }
                 }
               }
-              questions
+              items
             }
             ... on ImageText {
               sys {
