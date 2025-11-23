@@ -113,6 +113,7 @@ export const query = `
                   }
                 }
               }
+              displayType
               items
             }
             ... on ImageText {
