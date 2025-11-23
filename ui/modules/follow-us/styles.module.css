@@ -7,4 +7,5 @@
 .headline {
 	margin-bottom: var(--base-spacing);
 	text-align: center;
+	hyphens: auto;
 }
