@@ -1,5 +1,6 @@
 import type { RepeatingItems } from "@/types/contentful";
 
+import { RepeatingItemsDisplayTypeFacts } from "./facts";
 import { RepeatingItemsDisplayTypeQuestions } from "./questions";
 import styles from "./styles.module.css";
 
@@ -7,7 +8,8 @@ const getComponentByDisplayType = (displayType: string) => {
 	switch (displayType) {
 		case "questions":
 			return RepeatingItemsDisplayTypeQuestions;
-		case "faqs":
+		case "facts":
+			return RepeatingItemsDisplayTypeFacts;
 		default:
 			return null;
 	}
