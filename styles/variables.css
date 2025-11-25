@@ -12,6 +12,7 @@
 
 	--module-spacing-s: 32px;
 	--module-spacing-l: 80px;
+	--module-spacing-xl: 120px;
 
 	@media (min-width: 800px) {
 		--base-spacing: 16px;
