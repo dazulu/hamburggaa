@@ -4,6 +4,7 @@
 	padding-top: var(--module-spacing-xl);
 	padding-bottom: var(--module-spacing-xl);
 
+	overflow: hidden;
 	position: relative;
 
 	> div {
