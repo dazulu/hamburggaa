@@ -18,15 +18,25 @@
 
 .full {
 	height: 100vh;
+	/* biome-ignore lint/suspicious/noDuplicateProperties: this is a fallback */
+	height: 100svh;
+
 	@media (min-width: 1044px) {
 		height: 80vh;
+		/* biome-ignore lint/suspicious/noDuplicateProperties: this is a fallback */
+		height: 80svh;
 	}
 }
 
 .reduced {
 	height: 100vh;
+	/* biome-ignore lint/suspicious/noDuplicateProperties: this is a fallback */
+	height: 100svh;
+
 	@media (min-width: 1044px) {
 		height: 60vh;
+		/* biome-ignore lint/suspicious/noDuplicateProperties: this is a fallback */
+		height: 60svh;
 	}
 }
 
