@@ -2,23 +2,28 @@ import Image from "next/image";
 
 import type { Hero } from "@/types/contentful";
 import { ButtonLink } from "@/ui/button-link";
+import { Video } from "@/ui/modules/video";
 
 import styles from "./styles.module.css";
 
 export const ModuleHero = ({ module }: { module: Hero }) => {
-	const { headline, image, callToActionLink, type } = module;
+	const { headline, media, callToActionLink, type } = module;
+
+	const isImage = media?.contentType?.startsWith("image/");
+	const isVideo = media?.contentType?.startsWith("video/");
 
 	return (
 		<div className={`${styles.container} ${styles[type]}`}>
-			{image && (
+			{isImage && media.url && (
 				<Image
 					fill
 					priority
-					alt={image.description || ""}
+					alt={media.description || ""}
 					className={styles.image}
-					src={image.url}
+					src={media.url}
 				/>
 			)}
+			{isVideo && media.url && <Video media={media} />}
 			<div className={styles.content}>
 				{headline && <h1 className={styles.headline}>{module.headline}</h1>}
 				{headline && (

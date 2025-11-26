@@ -1,6 +1,7 @@
 .container {
 	position: relative;
 	overflow: hidden;
+	/* clip-path: polygon(100% 0, 100% 75%, 60% 82%, 0 70%, 0 0); */
 }
 
 .content {

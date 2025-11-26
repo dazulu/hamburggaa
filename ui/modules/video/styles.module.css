@@ -1,0 +1,40 @@
+.videoContainer {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.video {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.playPauseButton {
+	position: absolute;
+	bottom: 24px;
+	right: 24px;
+	width: 48px;
+	height: 48px;
+	border-radius: 50%;
+	background: rgba(0, 0, 0, 1);
+	border: 2px solid rgba(255, 255, 255, 0.8);
+	color: #ffffff;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 10;
+	border-color: #ffffff;
+	transition: opacity 0.3s ease;
+
+	&:focus-visible {
+		border-radius: 50%;
+		outline: 3px solid dodgerblue;
+	}
+}

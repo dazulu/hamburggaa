@@ -79,7 +79,8 @@ export const query = `
                 id
               }
               headline
-              image {
+              media {
+                contentType
                 description
                 url
                 width
