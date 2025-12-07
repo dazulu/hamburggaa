@@ -33,7 +33,7 @@
 	"dependencies": {
 		"@contentful/rich-text-react-renderer": "^15.6.2",
 		"@formatjs/intl-localematcher": "^0.2.32",
-		"next": "^15.2.3",
+		"next": "15.5.7",
 		"next-intl": "4",
 		"react": "^19.0.0",
 		"react-dom": "^19.0.0",
