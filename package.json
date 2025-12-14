@@ -1,66 +1,66 @@
 {
-	"name": "club-website",
-	"version": "1.0.0",
-	"private": true,
-	"author": "Adrian Payne <pro.hamburg.europe@gaa.ie>",
-	"scripts": {
-		"predev": "yarn generate-types",
-		"dev": "next dev --turbopack",
-		"prebuild": "yarn generate-types",
-		"build": "next build",
-		"start": "next start",
-		"type-check": "tsc --pretty --noEmit",
-		"lint": "eslint . --ext ts --ext tsx",
-		"test-all": "yarn type-check && yarn biome",
-		"generate-types": "graphql-codegen",
-		"biome": "biome check --diagnostic-level=error",
-		"biome:write": "biome check --write --diagnostic-level=error"
-	},
-	"husky": {
-		"hooks": {
-			"pre-commit": "lint-staged",
-			"pre-push": "yarn run type-check"
-		}
-	},
-	"lint-staged": {
-		"*.@(ts|tsx)": [
-			"yarn lint"
-		],
-		"*.@(ts|tsx|css)": [
-			"yarn biome"
-		]
-	},
-	"dependencies": {
-		"@contentful/rich-text-react-renderer": "^15.6.2",
-		"@formatjs/intl-localematcher": "^0.2.32",
-		"next": "15.5.7",
-		"next-intl": "4",
-		"react": "^19.0.0",
-		"react-dom": "^19.0.0",
-		"sharp": "^0.33.3"
-	},
-	"devDependencies": {
-		"@biomejs/biome": "2.1.2",
-		"@graphql-codegen/cli": "^1.21.3",
-		"@graphql-codegen/typescript": "^1.21.1",
-		"@graphql-codegen/typescript-operations": "^1.17.15",
-		"@types/node": "^14.14.25",
-		"@types/react": "npm:types-react@19.0.0-rc.1",
-		"@types/react-dom": "npm:types-react-dom@19.0.0-rc.1",
-		"@typescript-eslint/eslint-plugin": "^4.14.2",
-		"@typescript-eslint/parser": "^8.13.0",
-		"dotenv": "^8.2.0",
-		"eslint": "^7.19.0",
-		"eslint-config-biome": "^1.9.4",
-		"eslint-config-next": "^14.2.3",
-		"eslint-plugin-react": "^7.19.0",
-		"graphql": "^15.5.0",
-		"husky": "^4.2.3",
-		"lint-staged": "^10.0.10",
-		"typescript": "5.6.3"
-	},
-	"resolutions": {
-		"@types/react": "npm:types-react@19.0.0-rc.1",
-		"@types/react-dom": "npm:types-react-dom@19.0.0-rc.1"
-	}
+  "name": "club-website",
+  "version": "1.0.0",
+  "private": true,
+  "author": "Adrian Payne <pro.hamburg.europe@gaa.ie>",
+  "scripts": {
+    "predev": "yarn generate-types",
+    "dev": "next dev --turbopack",
+    "prebuild": "yarn generate-types",
+    "build": "next build",
+    "start": "next start",
+    "type-check": "tsc --pretty --noEmit",
+    "lint": "eslint . --ext ts --ext tsx",
+    "test-all": "yarn type-check && yarn biome",
+    "generate-types": "graphql-codegen",
+    "biome": "biome check --diagnostic-level=error",
+    "biome:write": "biome check --write --diagnostic-level=error"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "yarn run type-check"
+    }
+  },
+  "lint-staged": {
+    "*.@(ts|tsx)": [
+      "yarn lint"
+    ],
+    "*.@(ts|tsx|css)": [
+      "yarn biome"
+    ]
+  },
+  "dependencies": {
+    "@contentful/rich-text-react-renderer": "^15.6.2",
+    "@formatjs/intl-localematcher": "^0.2.32",
+    "next": "15.5.9",
+    "next-intl": "4",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "sharp": "^0.33.3"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.1.2",
+    "@graphql-codegen/cli": "^1.21.3",
+    "@graphql-codegen/typescript": "^1.21.1",
+    "@graphql-codegen/typescript-operations": "^1.17.15",
+    "@types/node": "^14.14.25",
+    "@types/react": "npm:types-react@19.0.0-rc.1",
+    "@types/react-dom": "npm:types-react-dom@19.0.0-rc.1",
+    "@typescript-eslint/eslint-plugin": "^4.14.2",
+    "@typescript-eslint/parser": "^8.13.0",
+    "dotenv": "^8.2.0",
+    "eslint": "^7.19.0",
+    "eslint-config-biome": "^1.9.4",
+    "eslint-config-next": "^14.2.3",
+    "eslint-plugin-react": "^7.19.0",
+    "graphql": "^15.5.0",
+    "husky": "^4.2.3",
+    "lint-staged": "^10.0.10",
+    "typescript": "5.6.3"
+  },
+  "resolutions": {
+    "@types/react": "npm:types-react@19.0.0-rc.1",
+    "@types/react-dom": "npm:types-react-dom@19.0.0-rc.1"
+  }
 }
