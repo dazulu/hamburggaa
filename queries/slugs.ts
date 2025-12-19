@@ -1,7 +1,8 @@
 export const query = `
   query {
-    en: pageCollection(limit: 100, locale: "en") {
+    enPages: pageCollection(limit: 100, locale: "en") {
       items {
+        __typename
         slug
         sys {
           id
@@ -9,8 +10,29 @@ export const query = `
         }
       }
     }
-    de: pageCollection(limit: 100, locale: "de") {
+    dePages: pageCollection(limit: 100, locale: "de") {
       items {
+        __typename
+        slug
+        sys {
+          id
+          locale
+        }
+      }
+    }
+    enBlogPosts: blogPostCollection(limit: 100, locale: "en") {
+      items {
+        __typename
+        slug
+        sys {
+          id
+          locale
+        }
+      }
+    }
+    deBlogPosts: blogPostCollection(limit: 100, locale: "de") {
+      items {
+        __typename
         slug
         sys {
           id

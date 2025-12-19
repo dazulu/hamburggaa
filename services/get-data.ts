@@ -4,7 +4,7 @@ export const getData = async <T>({
 }: {
 	query: string;
 	variables?: Record<string, string | string[] | number | number[]>;
-}): Promise<{ [key: string]: T }> => {
+}): Promise<T> => {
 	try {
 		const response = await fetch(
 			`https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}/environments/master`,

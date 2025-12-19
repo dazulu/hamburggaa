@@ -1,6 +1,6 @@
 import { getLocale } from "next-intl/server";
 
-import SharedPage from "@/app/shared-page";
+import SharedPage from "@/app/renderer";
 import { LOCALES } from "@/i18n/locales";
 
 export async function generateStaticParams() {

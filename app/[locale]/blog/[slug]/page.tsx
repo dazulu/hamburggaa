@@ -1,9 +1,10 @@
 import { getLocale } from "next-intl/server";
 
-import PageRenderer from "@/app/renderer";
 import { LOCALES } from "@/i18n/locales";
-import { query } from "@/queries/static-params";
-import type { Page as ContentfulPage } from "@/types/contentful";
+import { staticParamsQuery } from "@/queries/blog-post";
+import type { BlogPost as ContentfulBlogPost } from "@/types/contentful";
+
+import PageRenderer from "./renderer";
 
 async function getData(locale: string) {
 	try {
@@ -16,7 +17,7 @@ async function getData(locale: string) {
 					Authorization: `Bearer ${process.env.CONTENTFUL_ACCESS_TOKEN}`,
 				},
 				body: JSON.stringify({
-					query,
+					query: staticParamsQuery,
 					variables: { locale },
 				}),
 			},
@@ -24,8 +25,8 @@ async function getData(locale: string) {
 
 		const { data } = await response.json();
 
-		const staticParams = data.pageCollection.items
-			.filter((item: ContentfulPage) => Boolean(item?.slug))
+		const staticParams = data.blogPostCollection.items
+			.filter((item: ContentfulBlogPost) => Boolean(item?.slug))
 			.reduce((acc, { slug }) => {
 				return [...acc, { locale, slug }];
 			}, []);
