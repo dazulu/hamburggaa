@@ -13,7 +13,7 @@ import type { ModuleHeaderProps } from "./types";
 
 export const ModuleHeader = async ({ module }: ModuleHeaderProps) => {
 	// Fetch logo data once for both Logo component and BurgerMenu
-	const logoData = await getData<ConfigCollection>({ query });
+	const logoData = await getData<{ configCollection: ConfigCollection }>({ query });
 	const logo = logoData.configCollection.items[0].logo;
 
 	const allPageSlugs = await getAllSlugs();

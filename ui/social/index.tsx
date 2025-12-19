@@ -32,7 +32,7 @@ const getIconPath = (type: SocialMediaType) => {
 };
 
 export const SocialIcons = async ({ type = "horizontal" }: SocialIconsProps) => {
-	const data = await getData<ConfigCollection>({ query });
+	const data = await getData<{ configCollection: ConfigCollection }>({ query });
 	const links = data.configCollection.items?.[0].socialMediaLinksCollection.items?.filter(Boolean) || [];
 
 	return (

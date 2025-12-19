@@ -21,7 +21,7 @@ type Props = {
 };
 
 export default async function RootLayout({ children, params }: Props) {
-	const data = await getData<ConfigCollection>({ query });
+	const data = await getData<{ configCollection: ConfigCollection }>({ query });
 	const { primaryColour, secondaryColour } = data.configCollection.items[0];
 
 	const { locale } = await params;
