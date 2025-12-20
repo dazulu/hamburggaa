@@ -34,8 +34,34 @@ export const BlogPost = async ({ post, header, footer }: BlogPostProps) => {
 	const readingTime = Math.ceil(getReadingTimeFromRichText(content.json));
 	const readingTimeText = locale === "en" ? `${readingTime} min read` : `${readingTime} Min. lesen`;
 
+	const jsonLd = {
+		"@context": "https://schema.org",
+		"@type": "BlogPosting",
+		headline,
+		description: hook || undefined,
+		image: image?.url ? [image.url] : undefined,
+		datePublished: sys.firstPublishedAt,
+		dateModified: sys.firstPublishedAt,
+		author: author
+			? {
+					"@type": "Person",
+					name: author.name,
+					image: author.image?.url,
+				}
+			: undefined,
+		publisher: {
+			"@type": "Organization",
+			name: "Hamburg GAA",
+		},
+	};
+
 	return (
 		<div className={styles.wrapper}>
+			<script
+				type="application/ld+json"
+				// biome-ignore lint/security/noDangerouslySetInnerHtml: required for JSON-LD
+				dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+			/>
 			<ModuleHeader module={header} />
 			<article className={styles.container}>
 				<header className={styles.header}>
