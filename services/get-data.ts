@@ -15,6 +15,10 @@ export const getData = async <T>({
 					Authorization: `Bearer ${process.env.CONTENTFUL_ACCESS_TOKEN}`,
 				},
 				body: JSON.stringify({ query, variables, preview: false }),
+				// next: {
+				// 	// Cache for 1 hour in production
+				// 	revalidate: process.env.NODE_ENV === "production" ? 3600 : 0,
+				// },
 			},
 		);
 
