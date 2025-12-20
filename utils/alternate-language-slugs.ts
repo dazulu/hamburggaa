@@ -58,7 +58,6 @@ export function getAlternateSlug(
 	allPageSlugs: AllSlugs,
 ): string {
 	for (const localeMap of Object.values(allPageSlugs)) {
-		console.log("Locale Map:", localeMap, currentSlug, localeMap[currentLocale]);
 		if (localeMap[currentLocale] === currentSlug) {
 			const alternateSlug = localeMap[targetLocale];
 			return alternateSlug === "ROOT" ? "/" : `/${alternateSlug}`;

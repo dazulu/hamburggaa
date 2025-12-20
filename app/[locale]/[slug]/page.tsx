@@ -31,7 +31,7 @@ async function getData(locale: string) {
 			}, []);
 
 		return staticParams;
-	} catch (_error) {
+	} catch {
 		console.error("Failed to fetch data for generateStaticParams");
 		return [];
 	}
