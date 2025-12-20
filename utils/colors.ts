@@ -11,7 +11,7 @@ export const generateTagColors = (tagName: string) => {
 		"Gaelic Athletics Association (GAA)": 200, // Light Blue
 		Ireland: 140, // Indigo
 		"Press Releases": 305, // Deep Purple
-		"Social Events": 350, // Pink
+		Social: 350, // Pink
 		Sponsorship: 165, // Teal
 		Tournaments: 10, // Red
 	};
