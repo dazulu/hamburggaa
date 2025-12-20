@@ -57,11 +57,12 @@ export const BlogPost = async ({ post, header, footer }: BlogPostProps) => {
 
 				<div className={styles.hero}>
 					<Image
-						src={image.url}
-						alt={image.description || headline || ""}
-						width={1200}
-						height={500}
+						fill
+						priority
+						alt={image.description || ""}
 						className={styles.heroImage}
+						objectFit="cover"
+						src={image.url}
 					/>
 				</div>
 
