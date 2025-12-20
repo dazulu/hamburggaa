@@ -5,6 +5,9 @@ const withNextIntl = createNextIntlPlugin();
 const nextConfig = {
   generateBuildId: () => "build",
   devIndicators: false,
+  experimental: {
+    typedRoutes: false,
+  },
   images: {
     remotePatterns: [
       {
