@@ -121,11 +121,10 @@
 }
 
 .label {
-	color: var(--secondary);
-	outline: 1px solid var(--secondary);
 	padding: 3px 12px;
 	border-radius: var(--radius-md);
 	font-size: 14px;
+	font-weight: 500;
 }
 
 .publishedDate {
