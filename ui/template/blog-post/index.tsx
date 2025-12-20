@@ -56,7 +56,7 @@ export const BlogPost = async ({ post, header, footer }: BlogPostProps) => {
 	};
 
 	return (
-		<div className={styles.wrapper}>
+		<div className={`${styles.wrapper} global-top-gradient`}>
 			<script
 				type="application/ld+json"
 				// biome-ignore lint/security/noDangerouslySetInnerHtml: required for JSON-LD
