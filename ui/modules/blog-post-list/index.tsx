@@ -8,7 +8,7 @@ import styles from "./styles.module.css";
 
 export const ModuleBlogPostList = async ({ module }: { module: BlogPostList }) => {
 	const locale = await getLocale();
-	const { numPosts = 3, filterByLabelsCollection } = module;
+	const { headline, numPosts = 3, filterByLabelsCollection } = module;
 
 	const labelIds =
 		filterByLabelsCollection?.items
@@ -37,7 +37,7 @@ export const ModuleBlogPostList = async ({ module }: { module: BlogPostList }) =
 
 	return (
 		<div className={`${styles.container} global-contain-width global-module-spacing`}>
-			<h2>ModuleBlogPostList</h2>
+			{headline && <h2>{headline}</h2>}
 			<pre>
 				<code>{JSON.stringify(posts, null, 2)}</code>
 			</pre>

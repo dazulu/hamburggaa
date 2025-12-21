@@ -163,6 +163,7 @@ export const query = `
               sys {
                 id
               }
+              headline
               filterByLabelsCollection {
                 items {
                   sys {
