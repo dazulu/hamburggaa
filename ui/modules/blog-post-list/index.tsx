@@ -29,7 +29,7 @@ export const ModuleBlogPostList = async ({ module }: { module: BlogPostList }) =
 		},
 	});
 
-	const posts = data.blogPostCollection.items.filter((item): item is NonNullable<typeof item> => !!item);
+	const posts = data.blogPostCollection.items.filter(Boolean);
 
 	if (posts.length === 0) {
 		return null;
