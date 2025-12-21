@@ -159,6 +159,19 @@ export const query = `
                 ...PersonLinkFields
               }
             }
+            ... on BlogPostList {
+              sys {
+                id
+              }
+              filterByLabelsCollection {
+                items {
+                  sys {
+                    id
+                  }
+                }
+              }
+              numPosts
+            }
             ... on FollowUs {
               sys {
                 id

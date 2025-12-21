@@ -3,7 +3,8 @@ export const getData = async <T>({
 	variables = {},
 }: {
 	query: string;
-	variables?: Record<string, string | string[] | number | number[]>;
+	// biome-ignore lint/suspicious/noExplicitAny: not worth typing this
+	variables?: any;
 }): Promise<T> => {
 	try {
 		const response = await fetch(
