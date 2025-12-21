@@ -2,14 +2,6 @@
 	container-type: inline-size;
 }
 
-.container {
-	margin-top: 200px;
-
-	@media (min-width: 1044px) {
-		margin-top: 230px;
-	}
-}
-
 .header {
 	text-align: center;
 	max-width: 70ch;
@@ -125,17 +117,6 @@
 	@media (min-width: 768px) {
 		justify-content: flex-end;
 	}
-}
-
-.label {
-	padding: 3px 12px;
-	border-radius: var(--radius-md);
-	font-size: 14px;
-	font-weight: 500;
-	background-color: var(--label-color);
-	color: color-mix(in oklch, var(--label-color), black 70%); /* Fallback */
-	/* biome-ignore lint/suspicious/noDuplicateProperties: using a fallback pattern */
-	color: oklch(from var(--label-color) 0.4 0.12 h); /* Preferred */
 }
 
 .publishedDate {

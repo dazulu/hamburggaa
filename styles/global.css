@@ -126,6 +126,12 @@ p a {
 	}
 }
 .global-top-gradient {
+	margin-top: 200px;
+
+	@media (min-width: 1044px) {
+		margin-top: 230px;
+	}
+
 	&::before {
 		content: "";
 		position: absolute;
