@@ -9,14 +9,26 @@ import { Label } from "@/ui/label";
 
 import styles from "./styles.module.css";
 
-export const ModuleBlogPostList = async ({ module }: { module: BlogPostList }) => {
-	const locale = await getLocale();
-	const { headline, numPosts = 3, filterByLabelsCollection } = module;
+export type CustomBlogPostListProps = {
+	headline?: string;
+	labelIds: string[];
+	numPosts?: number;
+};
 
-	const labelIds =
-		filterByLabelsCollection?.items
-			.filter((item): item is NonNullable<typeof item> => !!item?.sys?.id)
-			.map((item) => item.sys.id) || [];
+export const ModuleBlogPostList = async ({ module }: { module: BlogPostList | CustomBlogPostListProps }) => {
+	const locale = await getLocale();
+
+	const { headline, numPosts = 3 } = module;
+	let labelIds: string[] = [];
+
+	if ("filterByLabelsCollection" in module) {
+		labelIds =
+			module.filterByLabelsCollection?.items
+				.filter((item): item is NonNullable<typeof item> => !!item?.sys?.id)
+				.map((item) => item.sys.id) || [];
+	} else if ("labelIds" in module) {
+		labelIds = module.labelIds || [];
+	}
 
 	const where: BlogPostFilter = {};
 	if (labelIds.length > 0) {
@@ -39,7 +51,7 @@ export const ModuleBlogPostList = async ({ module }: { module: BlogPostList }) =
 	}
 
 	return (
-		<div className={`${styles.container} global-contain-width global-module-spacing global-top-gradient`}>
+		<div className={`${styles.container} global-contain-width global-module-spacing`}>
 			{headline && <h2 className={styles.headline}>{headline}</h2>}
 
 			<div className={styles.posts}>

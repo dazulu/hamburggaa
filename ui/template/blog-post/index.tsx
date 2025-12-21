@@ -1,3 +1,4 @@
+import { Module } from "module";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import Image from "next/image";
 import { getLocale } from "next-intl/server";
@@ -5,6 +6,7 @@ import { getLocale } from "next-intl/server";
 import { createRichTextRenderOptions } from "@/components/rich-text-renderer";
 import type { BlogPost as BlogPostType, Footer, Header } from "@/types/contentful";
 import { Label } from "@/ui/label";
+import { ModuleBlogPostList } from "@/ui/modules/blog-post-list";
 import { ModuleFooter } from "@/ui/modules/footer";
 import { ModuleHeader } from "@/ui/modules/header";
 import { getReadingTimeFromRichText } from "@/utils/reading-time";
@@ -53,6 +55,12 @@ export const BlogPost = async ({ post, header, footer }: BlogPostProps) => {
 			"@type": "Organization",
 			name: "Hamburg GAA",
 		},
+	};
+
+	const moduleBlogPostListProps = {
+		headline: locale === "en" ? "You might also like" : "Das könnte dich auch interessieren",
+		labelIds: labelsCollection?.items?.map((label) => label.sys.id) || [],
+		numPosts: 3,
 	};
 
 	return (
@@ -136,8 +144,9 @@ export const BlogPost = async ({ post, header, footer }: BlogPostProps) => {
 					</div>
 
 					{content && <div className={styles.content}>{documentToReactComponents(content.json, renderOptions)}</div>}
-					<ModuleFooter module={footer} />
 				</article>
+				<ModuleBlogPostList module={moduleBlogPostListProps} />
+				<ModuleFooter module={footer} />
 			</div>
 		</div>
 	);

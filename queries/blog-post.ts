@@ -119,6 +119,9 @@ export const query = `
         }
         labelsCollection {
           items {
+            sys {
+              id
+            }
             name
             color
           }
