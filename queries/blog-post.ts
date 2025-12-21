@@ -117,14 +117,14 @@ export const query = `
             }
           }
         }
+        labelsCollection {
+          items {
+            name
+            color
+          }
+        }
         author {
           ...PersonLinkFields
-        }
-        contentfulMetadata {
-          tags {
-            id
-            name
-          }
         }
       }
     }

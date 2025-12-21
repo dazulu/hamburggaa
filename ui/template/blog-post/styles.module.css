@@ -128,6 +128,10 @@
 	border-radius: var(--radius-md);
 	font-size: 14px;
 	font-weight: 500;
+	background-color: var(--label-color);
+	color: color-mix(in oklch, var(--label-color), black 70%); /* Fallback */
+	/* biome-ignore lint/suspicious/noDuplicateProperties: using a fallback pattern */
+	color: oklch(from var(--label-color) 0.4 0.12 h); /* Preferred */
 }
 
 .publishedDate {

@@ -6,7 +6,6 @@ import { createRichTextRenderOptions } from "@/components/rich-text-renderer";
 import type { BlogPost as BlogPostType, Footer, Header } from "@/types/contentful";
 import { ModuleFooter } from "@/ui/modules/footer";
 import { ModuleHeader } from "@/ui/modules/header";
-import { generateTagColors } from "@/utils/colors";
 import { getReadingTimeFromRichText } from "@/utils/reading-time";
 
 import styles from "./styles.module.css";
@@ -18,7 +17,7 @@ type BlogPostProps = {
 };
 
 export const BlogPost = async ({ post, header, footer }: BlogPostProps) => {
-	const { headline, hook, image, content, author, contentfulMetadata, sys } = post;
+	const { headline, hook, image, content, labelsCollection, author, sys } = post;
 
 	const locale = await getLocale();
 	const publishedDate = sys.firstPublishedAt
@@ -114,20 +113,19 @@ export const BlogPost = async ({ post, header, footer }: BlogPostProps) => {
 
 					<div className={styles.metadata}>
 						<div className={styles.publishedDate}>{publishedDate}</div>
-						{contentfulMetadata.tags?.length > 0 && (
+						{labelsCollection?.items?.length > 0 && (
 							<ul
 								aria-label={locale === "en" ? "Post labels" : "Beitrags-Labels"}
 								className={styles.labels}
 							>
-								{contentfulMetadata.tags.map((tag) => {
-									const style = generateTagColors(tag.name);
+								{labelsCollection.items?.map(({ name, color }) => {
 									return (
 										<li
-											key={tag.id}
+											key={name}
 											className={styles.label}
-											style={style}
+											style={{ "--label-color": color.value } as React.CSSProperties}
 										>
-											{tag.name}
+											{name}
 										</li>
 									);
 								})}
