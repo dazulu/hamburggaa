@@ -9,7 +9,8 @@ import { Label } from "@/ui/label";
 
 import styles from "./styles.module.css";
 
-export type CustomBlogPostListProps = {
+// Custom props type to support both CMS-driven and hardcoded module props (Blog Post)
+type CustomBlogPostListProps = {
 	headline?: string;
 	labelIds: string[];
 	numPosts?: number;
