@@ -16,11 +16,23 @@ export const query = `
           width
           height
         }
+        labelsCollection {
+          items {
+            name
+            color
+          }
+        }
         author {
           sys {
             id
           }
           name
+          image {
+            description
+            url
+            width
+            height
+          }
         }
       }
     }
