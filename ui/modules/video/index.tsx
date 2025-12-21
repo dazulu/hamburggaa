@@ -4,8 +4,8 @@ import { useEffect, useRef, useState } from "react";
 
 import { useLocale } from "next-intl";
 
+import { i18n } from "@/i18n/translations";
 import type { Asset } from "@/types/contentful";
-import { Locale } from "@/types/i18n";
 
 import styles from "./styles.module.css";
 
@@ -34,10 +34,7 @@ export const Video = ({ media, className }: VideoProps) => {
 	};
 
 	const getLanguageLabel = () => {
-		if (activeLocale === Locale.EN) {
-			return isPlaying ? "Pause video" : "Play video";
-		}
-		return isPlaying ? "Video pausieren" : "Video abspielen";
+		return isPlaying ? i18n[activeLocale].video.pause : i18n[activeLocale].video.play;
 	};
 
 	useEffect(() => {

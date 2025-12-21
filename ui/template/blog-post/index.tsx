@@ -1,9 +1,9 @@
-import { Module } from "module";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import Image from "next/image";
 import { getLocale } from "next-intl/server";
 
 import { createRichTextRenderOptions } from "@/components/rich-text-renderer";
+import { i18n } from "@/i18n/translations";
 import type { BlogPost as BlogPostType, Footer, Header } from "@/types/contentful";
 import { Label } from "@/ui/label";
 import { ModuleBlogPostList } from "@/ui/modules/blog-post-list";
@@ -34,7 +34,7 @@ export const BlogPost = async ({ post, header, footer }: BlogPostProps) => {
 	const renderOptions = createRichTextRenderOptions(content?.links);
 
 	const readingTime = Math.ceil(getReadingTimeFromRichText(content.json));
-	const readingTimeText = locale === "en" ? `${readingTime} min read` : `${readingTime} Min. lesen`;
+	const readingTimeText = `${readingTime} ${i18n[locale].blogPost.readingTimeSuffix}`;
 
 	const jsonLd = {
 		"@context": "https://schema.org",
@@ -59,7 +59,7 @@ export const BlogPost = async ({ post, header, footer }: BlogPostProps) => {
 
 	const labelIds = labelsCollection?.items?.map((label) => label.sys.id).filter(Boolean);
 	const moduleBlogPostListProps = {
-		headline: locale === "en" ? "You might also like" : "Das könnte dich auch interessieren",
+		headline: i18n[locale].blogPost.youMightAlsoLike,
 		labelIds,
 		numPosts: 3,
 		originatingPostSysId: sys.id,
@@ -127,7 +127,7 @@ export const BlogPost = async ({ post, header, footer }: BlogPostProps) => {
 							<div className={styles.publishedDate}>{publishedDate}</div>
 							{labelsCollection?.items?.length > 0 && (
 								<ul
-									aria-label={locale === "en" ? "Post labels" : "Beitrags-Labels"}
+									aria-label={i18n[locale].blogPost.postLabels}
 									className={styles.labels}
 								>
 									{labelsCollection.items?.map(({ name, color }) => {

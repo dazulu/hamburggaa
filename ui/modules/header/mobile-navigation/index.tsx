@@ -6,6 +6,7 @@ import Image from "next/image";
 import { useLocale } from "next-intl";
 
 import { Link, usePathname } from "@/i18n/routing";
+import { i18n } from "@/i18n/translations";
 import { Logo } from "@/ui/logo";
 import { getInternalLinkSlug } from "@/utils/navigation";
 
@@ -71,7 +72,7 @@ export const BurgerMenu = ({ navigationLinksCollection, asset }: BurgerMenuProps
 				type="button"
 				className={styles.burgerButton}
 				onClick={() => setIsOpen(!isOpen)}
-				aria-label={isOpen ? "Close menu" : "Open menu"}
+				aria-label={isOpen ? i18n[locale].mobileNavigation.closeMenu : i18n[locale].mobileNavigation.openMenu}
 				aria-expanded={isOpen}
 				aria-controls="mobile-menu-dialog"
 			>
