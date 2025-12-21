@@ -14,6 +14,7 @@ type CustomBlogPostListProps = {
 	headline?: string;
 	labelIds: string[];
 	numPosts?: number;
+	originatingPostSysId?: string;
 };
 
 export const ModuleBlogPostList = async ({ module }: { module: BlogPostList | CustomBlogPostListProps }) => {
@@ -32,8 +33,18 @@ export const ModuleBlogPostList = async ({ module }: { module: BlogPostList | Cu
 	}
 
 	const where: BlogPostFilter = {};
+
 	if (labelIds.length > 0) {
-		where.labels = { sys: { id_in: labelIds } };
+		where.labels = {
+			sys: { id_in: labelIds },
+		};
+	}
+
+	// For the list shown on a blog post, exclude the current post from the results
+	if ("originatingPostSysId" in module && module.originatingPostSysId) {
+		where.sys = {
+			id_not: module.originatingPostSysId,
+		};
 	}
 
 	const data = await getData<{ blogPostCollection: BlogPostCollection }>({

@@ -57,10 +57,12 @@ export const BlogPost = async ({ post, header, footer }: BlogPostProps) => {
 		},
 	};
 
+	const labelIds = labelsCollection?.items?.map((label) => label.sys.id).filter(Boolean);
 	const moduleBlogPostListProps = {
 		headline: locale === "en" ? "You might also like" : "Das könnte dich auch interessieren",
-		labelIds: labelsCollection?.items?.map((label) => label.sys.id) || [],
+		labelIds,
 		numPosts: 3,
+		originatingPostSysId: sys.id,
 	};
 
 	return (
@@ -145,7 +147,7 @@ export const BlogPost = async ({ post, header, footer }: BlogPostProps) => {
 
 					{content && <div className={styles.content}>{documentToReactComponents(content.json, renderOptions)}</div>}
 				</article>
-				<ModuleBlogPostList module={moduleBlogPostListProps} />
+				{labelIds.length > 0 && <ModuleBlogPostList module={moduleBlogPostListProps} />}
 				<ModuleFooter module={footer} />
 			</div>
 		</div>
