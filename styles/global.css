@@ -3,7 +3,7 @@ body {
 	box-sizing: border-box;
 	font-family: var(--font-body), -apple-system, sans-serif;
 	font-weight: 300;
-	font-size: 20px;
+	font-size: 1.2rem;
 	margin: 0;
 	overflow-x: hidden;
 }
@@ -54,7 +54,6 @@ h3,
 h4,
 h5 {
 	font-family: var(--font-headline);
-	text-transform: uppercase;
 	text-wrap: pretty;
 }
 
