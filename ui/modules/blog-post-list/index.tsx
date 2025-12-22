@@ -69,7 +69,7 @@ export const ModuleBlogPostList = async ({ module }: { module: BlogPostList | Cu
 		<div className={`${styles.container} global-contain-width global-module-spacing`}>
 			{headline && <h2 className={styles.headline}>{headline}</h2>}
 
-			<div className={styles.posts}>
+			<ul className={styles.posts}>
 				{posts.map((post) => {
 					const date = new Date(post.sys.firstPublishedAt);
 					const formattedDate = new Intl.DateTimeFormat(locale, {
@@ -81,17 +81,13 @@ export const ModuleBlogPostList = async ({ module }: { module: BlogPostList | Cu
 					const { sys, headline, hook, slug, author, image, labelsCollection } = post;
 
 					return (
-						<Link
-							key={sys.id}
-							href={`/blog/${slug}`}
-							className={styles.cardLink}
-						>
+						<li key={sys.id}>
 							<article className={styles.card}>
 								{image && (
 									<div className={styles.imageWrapper}>
 										<Image
 											src={image.url}
-											alt={image.description || post.headline || ""}
+											alt={image.description || ""}
 											width={600}
 											height={400}
 											className={styles.image}
@@ -105,7 +101,7 @@ export const ModuleBlogPostList = async ({ module }: { module: BlogPostList | Cu
 												{author.image && (
 													<Image
 														src={author.image.url}
-														alt={author.name}
+														alt=""
 														width={24}
 														height={24}
 														className={styles.authorImage}
@@ -116,25 +112,33 @@ export const ModuleBlogPostList = async ({ module }: { module: BlogPostList | Cu
 										)}
 										<time dateTime={sys.firstPublishedAt}>{formattedDate}</time>
 									</div>
-									<h3 className={styles.title}>{headline}</h3>
+									<h3 className={styles.title}>
+										<Link
+											href={`/blog/${slug}`}
+											className={styles.cardLink}
+										>
+											{headline}
+										</Link>
+									</h3>
 									{hook && <p className={styles.hook}>{hook}</p>}
 									{labelsCollection?.items?.length > 0 && (
-										<div className={styles.labels}>
+										<ul className={styles.labels}>
 											{labelsCollection.items.map((label) => (
-												<Label
-													key={label.name}
-													name={label.name}
-													color={label.color.value}
-												/>
+												<li key={label.name}>
+													<Label
+														name={label.name}
+														color={label.color.value}
+													/>
+												</li>
 											))}
-										</div>
+										</ul>
 									)}
 								</div>
 							</article>
-						</Link>
+						</li>
 					);
 				})}
-			</div>
+			</ul>
 		</div>
 	);
 };

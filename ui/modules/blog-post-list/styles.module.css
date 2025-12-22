@@ -9,6 +9,9 @@
 	display: grid;
 	grid-template-columns: 1fr;
 	gap: var(--module-spacing-s);
+	list-style: none;
+	padding: 0;
+	margin: 0;
 }
 
 @media (min-width: 600px) {
@@ -26,13 +29,23 @@
 .cardLink {
 	text-decoration: none;
 	color: inherit;
-	display: block;
+}
+
+.cardLink::after {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 1;
 }
 
 .card {
 	display: flex;
 	flex-direction: column;
 	height: 100%;
+	position: relative;
 }
 
 .imageWrapper {
@@ -51,11 +64,11 @@
 	transition: transform 0.3s ease;
 }
 
-.cardLink:hover .image {
+.card:hover .image {
 	transform: scale(1.05);
 }
 
-.cardLink:hover .title {
+.card:hover .title {
 	text-decoration: underline;
 }
 
@@ -106,4 +119,6 @@
 	flex-wrap: wrap;
 	gap: 8px;
 	margin-top: auto;
+	list-style: none;
+	padding: 0;
 }
