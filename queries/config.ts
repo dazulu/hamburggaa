@@ -8,6 +8,9 @@ export const query = `
         name
         emailAddress
         phoneNumber
+        foundingYear
+        location
+        activities
         logo {
           description
           url

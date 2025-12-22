@@ -6,6 +6,7 @@ import { query } from "@/queries/blog-post-list";
 import { getData } from "@/services/get-data";
 import type { BlogPostCollection, BlogPostFilter, BlogPostList } from "@/types/contentful";
 import { Label } from "@/ui/label";
+import { getOrganizationSchema } from "@/utils/organization-schema";
 
 import styles from "./styles.module.css";
 
@@ -65,6 +66,8 @@ export const ModuleBlogPostList = async ({ module }: { module: BlogPostList | Cu
 		return null;
 	}
 
+	const organizationSchema = await getOrganizationSchema(locale);
+
 	const jsonLd = {
 		"@context": "https://schema.org",
 		"@type": "Blog",
@@ -74,25 +77,13 @@ export const ModuleBlogPostList = async ({ module }: { module: BlogPostList | Cu
 			description: post.hook,
 			image: post.image?.url ? `${post.image.url}?w=1600&fit=fill&fm=jpg` : undefined,
 			datePublished: post.sys.firstPublishedAt,
-			author: post.author
-				? {
-						"@type": "Person",
-						name: post.author.name,
-						image: post.author.image?.url ? `${post.author.image.url}?w=200&h=200&fit=fill&fm=jpg` : undefined,
-					}
-				: undefined,
-			url: `${process.env.NEXT_PUBLIC_SITE_URL}/${locale}/blog/${post.slug}`,
-			publisher: {
-				"@type": "SportsOrganization",
-				name: "Hamburg GAA",
-				foundingDate: "2015",
-				sport: "Gaelic Football, Hurling, Camogie",
-				location: "Hamburg, Germany",
-				logo: {
-					"@type": "ImageObject",
-					url: `${process.env.NEXT_PUBLIC_SITE_URL}/logo.png`,
-				},
+			author: {
+				"@type": "Person",
+				name: post.author.name,
+				image: post.author.image?.url ? `${post.author.image.url}?w=200&h=200&fit=fill&fm=jpg` : undefined,
 			},
+			url: `${process.env.NEXT_PUBLIC_SITE_URL}/${locale}/blog/${post.slug}`,
+			publisher: organizationSchema,
 		})),
 	};
 

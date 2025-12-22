@@ -9,6 +9,7 @@ import { Label } from "@/ui/label";
 import { ModuleBlogPostList } from "@/ui/modules/blog-post-list";
 import { ModuleFooter } from "@/ui/modules/footer";
 import { ModuleHeader } from "@/ui/modules/header";
+import { getOrganizationSchema } from "@/utils/organization-schema";
 import { getReadingTimeFromRichText } from "@/utils/reading-time";
 
 import styles from "./styles.module.css";
@@ -36,6 +37,8 @@ export const BlogPost = async ({ post, header, footer }: BlogPostProps) => {
 	const readingTime = Math.ceil(getReadingTimeFromRichText(content.json));
 	const readingTimeText = `${readingTime} ${i18n[locale].blogPost.readingTimeSuffix}`;
 
+	const organizationSchema = await getOrganizationSchema(locale);
+
 	const jsonLd = {
 		"@context": "https://schema.org",
 		"@type": "BlogPosting",
@@ -51,10 +54,7 @@ export const BlogPost = async ({ post, header, footer }: BlogPostProps) => {
 					image: author.image?.url,
 				}
 			: undefined,
-		publisher: {
-			"@type": "Organization",
-			name: "Hamburg GAA",
-		},
+		publisher: organizationSchema,
 	};
 
 	const labelIds = labelsCollection?.items?.map((label) => label.sys.id).filter(Boolean);
