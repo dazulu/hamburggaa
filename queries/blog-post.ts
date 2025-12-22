@@ -94,6 +94,7 @@ export const query = `
         sys {
           id
           firstPublishedAt
+          publishedAt
         }
         headline
         hook
