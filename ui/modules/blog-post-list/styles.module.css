@@ -4,11 +4,14 @@
 .header {
 	display: flex;
 	flex-direction: column;
+	align-items: center;
+	text-align: center;
 	gap: 16px;
 	margin-bottom: var(--module-spacing-s);
 }
 
 .intro {
+	margin: 0 auto;
 	max-width: 70ch;
 }
 
