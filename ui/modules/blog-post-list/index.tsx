@@ -65,8 +65,44 @@ export const ModuleBlogPostList = async ({ module }: { module: BlogPostList | Cu
 		return null;
 	}
 
+	const jsonLd = {
+		"@context": "https://schema.org",
+		"@type": "Blog",
+		blogPost: posts.map((post) => ({
+			"@type": "BlogPosting",
+			headline: post.headline,
+			description: post.hook,
+			image: post.image?.url ? `${post.image.url}?w=1600&fit=fill&fm=jpg` : undefined,
+			datePublished: post.sys.firstPublishedAt,
+			author: post.author
+				? {
+						"@type": "Person",
+						name: post.author.name,
+						image: post.author.image?.url ? `${post.author.image.url}?w=200&h=200&fit=fill&fm=jpg` : undefined,
+					}
+				: undefined,
+			url: `${process.env.NEXT_PUBLIC_SITE_URL}/${locale}/blog/${post.slug}`,
+			publisher: {
+				"@type": "SportsOrganization",
+				name: "Hamburg GAA",
+				foundingDate: "2015",
+				sport: "Gaelic Football, Hurling, Camogie",
+				location: "Hamburg, Germany",
+				logo: {
+					"@type": "ImageObject",
+					url: `${process.env.NEXT_PUBLIC_SITE_URL}/logo.png`,
+				},
+			},
+		})),
+	};
+
 	return (
 		<div className={`${styles.container} global-contain-width global-module-spacing`}>
+			<script
+				type="application/ld+json"
+				// biome-ignore lint/security/noDangerouslySetInnerHtml: required for JSON-LD
+				dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+			/>
 			{headline && <h2 className={styles.headline}>{headline}</h2>}
 
 			<ul className={styles.posts}>
