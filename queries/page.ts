@@ -163,7 +163,10 @@ export const query = `
               sys {
                 id
               }
-              headline
+              headline             
+              richTextContent {
+                json
+              }
               filterByLabelsCollection {
                 items {
                   sys {

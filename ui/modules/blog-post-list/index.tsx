@@ -1,3 +1,5 @@
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import type { Document } from "@contentful/rich-text-types";
 import Image from "next/image";
 import { getLocale } from "next-intl/server";
 
@@ -26,6 +28,13 @@ export const ModuleBlogPostList = async ({ module }: { module: BlogPostList | Cu
 
 	const { headline, numPosts } = module;
 	let labelIds: string[] = [];
+	let description: React.ReactNode = null;
+
+	if ("richTextContent" in module && module.richTextContent?.json) {
+		description = (
+			<div className={styles.intro}>{documentToReactComponents(module.richTextContent.json as Document)}</div>
+		);
+	}
 
 	if ("filterByLabelsCollection" in module) {
 		labelIds =
@@ -94,8 +103,12 @@ export const ModuleBlogPostList = async ({ module }: { module: BlogPostList | Cu
 				// biome-ignore lint/security/noDangerouslySetInnerHtml: required for JSON-LD
 				dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
 			/>
-			{headline && <h2 className={styles.headline}>{headline}</h2>}
-
+			{(headline || description) && (
+				<div className={styles.header}>
+					{headline && <h2 className={styles.headline}>{headline}</h2>}
+					{description}
+				</div>
+			)}
 			<ul className={styles.posts}>
 				{posts.map((post) => {
 					const date = new Date(post.sys.firstPublishedAt);

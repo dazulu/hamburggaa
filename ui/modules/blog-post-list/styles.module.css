@@ -1,8 +1,15 @@
 .container {
 }
 
-.headline {
+.header {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
 	margin-bottom: var(--module-spacing-s);
+}
+
+.intro {
+	max-width: 70ch;
 }
 
 .posts {
