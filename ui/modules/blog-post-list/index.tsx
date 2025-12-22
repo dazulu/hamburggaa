@@ -17,10 +17,13 @@ type CustomBlogPostListProps = {
 	originatingPostSysId?: string;
 };
 
+// If this is reached, refactor with pagination
+const MAX_POSTS_TO_FETCH = 20;
+
 export const ModuleBlogPostList = async ({ module }: { module: BlogPostList | CustomBlogPostListProps }) => {
 	const locale = await getLocale();
 
-	const { headline, numPosts = 3 } = module;
+	const { headline, numPosts } = module;
 	let labelIds: string[] = [];
 
 	if ("filterByLabelsCollection" in module) {
@@ -50,7 +53,7 @@ export const ModuleBlogPostList = async ({ module }: { module: BlogPostList | Cu
 	const data = await getData<{ blogPostCollection: BlogPostCollection }>({
 		query,
 		variables: {
-			limit: numPosts || 3,
+			limit: numPosts || MAX_POSTS_TO_FETCH,
 			locale,
 			where,
 		},

@@ -61,7 +61,6 @@ export const BlogPost = async ({ post, header, footer }: BlogPostProps) => {
 	const moduleBlogPostListProps = {
 		headline: i18n[locale].blogPost.youMightAlsoLike,
 		labelIds,
-		numPosts: 3,
 		originatingPostSysId: sys.id,
 	};
 
