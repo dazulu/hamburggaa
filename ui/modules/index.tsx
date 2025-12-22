@@ -29,6 +29,8 @@ const moduleMapping = {
 };
 
 export const Modules = ({ modules }: { modules: PageModulesItem[] }) => {
+	let hasFoundFirstContentModule = false;
+
 	return modules.map((module, _index) => {
 		const ModuleComponent = moduleMapping[module.__typename];
 
@@ -42,6 +44,20 @@ export const Modules = ({ modules }: { modules: PageModulesItem[] }) => {
 					</code>
 				</pre>
 			);
+		}
+
+		if (module.__typename !== "Header" && !hasFoundFirstContentModule) {
+			hasFoundFirstContentModule = true;
+			if (module.__typename !== "Hero") {
+				return (
+					<div
+						key={module.sys.id}
+						className="global-top-gradient"
+					>
+						<ModuleComponent module={module} />
+					</div>
+				);
+			}
 		}
 
 		return (
