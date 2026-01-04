@@ -1,9 +1,13 @@
 body {
-	background-color: var(--light-background);
-	box-sizing: border-box;
+	background-color: oklch(1 0 175);
+	background-size: 200px;
+	background-image: url(data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTUwIDE1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8ZmlsdGVyIGlkPSJub2lzZUZpbHRlciI+CiAgICA8ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iMyIgbnVtT2N0YXZlcz0iMiIgcmVzdWx0PSJub2lzZSIgLz4KICAgIDxmZUNvbG9yTWF0cml4IHR5cGU9InNhdHVyYXRlIiB2YWx1ZXM9IjAiIHJlc3VsdD0iZ3JheXNjYWxlIiAvPgogICAgPGZlQ29tcG9uZW50VHJhbnNmZXI+CiAgICAgIDxmZUZ1bmNBIGluPSJncmF5c2NhbGUiIHR5cGU9ImxpbmVhciIgc2xvcGU9IjAuNCIgcmVzdWx0PSJ1cGRhdGVkIiAvPgogICAgPC9mZUNvbXBvbmVudFRyYW5zZmVyPgogICAgPGZlTWVyZ2U+CiAgICAgIDxmZU1lcmdlTm9kZSBpbj0ibm9pc2UiIC8+CiAgICAgIDxmZU1lcmdlTm9kZSBpbj0idXBkYXRlZCIgLz4KICAgIDwvZmVNZXJnZT4KICA8L2ZpbHRlcj4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBvcGFjaXR5PSIwLjE5IiBmaWx0ZXI9InVybCgjbm9pc2VGaWx0ZXIpIi8+Cjwvc3ZnPg==);
+
 	font-family: var(--font-body), -apple-system, sans-serif;
 	font-weight: 300;
 	font-size: 1.2rem;
+
+	box-sizing: border-box;
 	margin: 0;
 	overflow-x: hidden;
 }
