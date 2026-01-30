@@ -42,7 +42,8 @@
 			},
 			"suspicious": {
 				"noShadowRestrictedNames": "warn",
-				"noDuplicateProperties": "warn"
+				"noDuplicateProperties": "warn",
+				"noArrayIndexKey": "warn"
 			}
 		}
 	},
