@@ -20,7 +20,6 @@ export const ModuleHero = ({ module }: { module: Hero }) => {
 		type,
 	} = module;
 	const heroType = type as HeroType;
-	console.log(media);
 
 	// Limited to max 3 images
 	const images = media.filter((item) => item.contentType?.startsWith("image/")).slice(0, MAX_IMAGES);
@@ -30,8 +29,9 @@ export const ModuleHero = ({ module }: { module: Hero }) => {
 		return (
 			<div className={`global-top-gradient ${styles.bigText}`}>
 				<BigText
-					text={"HAMBURG GAA"}
+					text={headline}
 					component="h1"
+					image={images[0]}
 				/>
 			</div>
 		);
