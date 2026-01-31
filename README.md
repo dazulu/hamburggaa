@@ -1,12 +1,12 @@
 # Hamburg GAA Club Website
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/bc1594ee-13a6-4cf8-bd60-512bcf1ef417/deploy-status)](https://app.netlify.com/sites/kind-shannon-a2568b/deploys)
-[![Built with Next.js](https://img.shields.io/badge/-Next.js%2015-000000?style=flat&logo=next.js)](https://nextjs.org/)
+[![Built with Next.js](https://img.shields.io/badge/-Next.js%20-000000?style=flat&logo=next.js)](https://nextjs.org/)
 [![Checked with Biome](https://img.shields.io/badge/-Biome-60a5fa?style=flat&logo=biome&logoColor=white)](https://biomejs.dev)
 [![Powered by Contentful](https://img.shields.io/badge/-Contentful-2478CC?style=flat&logo=contentful&logoColor=white)](https://www.contentful.com/)
 [![Powered by TypeScript](https://img.shields.io/badge/-TypeScript-007ACC?style=flat&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Powered by GraphQL](https://img.shields.io/badge/-GraphQL-E10098?style=flat&logo=graphql&logoColor=white)](https://graphql.org/)
-[![Node.js](https://img.shields.io/badge/Node.js%2021+-339933?style=flat&logo=node.js&logoColor=white)](https://nodejs.org/)
+[![Node.js](https://img.shields.io/badge/Node.js%20-339933?style=flat&logo=node.js&logoColor=white)](https://nodejs.org/)
 
 The official website for Hamburg GAA (Gaelic Athletic Association) Club - showcasing club information, events, and community content for Gaelic sports enthusiasts in Hamburg, Germany.
 
@@ -25,26 +25,26 @@ This is a statically-generated website built with **Next.js App Router** and pow
 ## Tech Stack
 
 **Frontend:**
-- Next.js 15 (App Router)
-- React 19
+- Next.js v16+ (App Router)
+- React 19+
 - TypeScript
 - CSS Modules
 
 **Content & Data:**
 - Contentful (Headless CMS)
 - GraphQL with auto-generated types
-- next-intl for internationalization
+- `next-intl` for internationalization
 
 **Development:**
 - Biome (linting/formatting)
-- GraphQL Code Generator
-- Turbopack (fast builds)
+- GraphQL Codegen
+- Turbopack
 
 ## Getting Started
 
 ### Prerequisites
 
-- Node.js 21+ and Yarn (see `.nvmrc` for exact version)
+- Node.js 24+ and Yarn (see `.nvmrc` for exact version)
 - Contentful account with space ID and access token
 
 ### Environment Setup
