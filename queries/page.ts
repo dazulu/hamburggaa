@@ -79,12 +79,14 @@ export const query = `
                 id
               }
               headline
-              media {
-                contentType
-                description
-                url
-                width
-                height
+              mediaCollection {
+                items {
+                  contentType
+                  description
+                  url
+                  width
+                  height
+                }
               }
               callToActionLink {
                 ... on Page {

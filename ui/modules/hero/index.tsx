@@ -8,14 +8,23 @@ import { Video } from "@/ui/modules/video";
 import styles from "./styles.module.css";
 
 // Defined in Contentful "Hero" module content type
-type HeroType = "full" | "reduced" | "bigText" | "split";
+type HeroType = "full" | "reduced" | "bigText";
+
+const MAX_IMAGES = 3;
 
 export const ModuleHero = ({ module }: { module: Hero }) => {
-	const { headline, media, callToActionLink, type } = module;
+	const {
+		headline,
+		mediaCollection: { items: media = [] },
+		callToActionLink,
+		type,
+	} = module;
 	const heroType = type as HeroType;
+	console.log(media);
 
-	const isImage = media?.contentType?.startsWith("image/");
-	const isVideo = media?.contentType?.startsWith("video/");
+	// Limited to max 3 images
+	const images = media.filter((item) => item.contentType?.startsWith("image/")).slice(0, MAX_IMAGES);
+	const video = media.filter((item) => item.contentType?.startsWith("video/")).shift();
 
 	if (heroType === "bigText") {
 		return (
@@ -30,26 +39,27 @@ export const ModuleHero = ({ module }: { module: Hero }) => {
 
 	return (
 		<div className={`${styles.container} ${styles[heroType]}`}>
-			{isImage && media.url && (
-				<Image
-					fill
-					priority
-					alt={media.description || ""}
-					className={styles.image}
-					src={media.url}
-				/>
+			{images.length >= 1 && (
+				<div className={`${styles.images} ${styles[`imageCount${images.length}`]}`}>
+					{images.map((image, index) => (
+						<div
+							// biome-ignore lint/suspicious/noArrayIndexKey: it's grand like
+							key={index}
+						>
+							<Image
+								fill
+								priority
+								alt={image.description || ""}
+								className={styles.image}
+								src={image.url}
+							/>
+						</div>
+					))}
+				</div>
 			)}
-			{isVideo && media.url && <Video media={media} />}
+			{video && images.length === 0 && <Video media={video} />}
 			<div className={styles.content}>
 				{headline && <h1 className={styles.headline}>{module.headline}</h1>}
-				{headline && (
-					<span
-						aria-hidden="true"
-						className={`${styles.headline} ${styles.visualHeadline}`}
-					>
-						{module.headline}
-					</span>
-				)}
 				{callToActionLink && <ButtonLink {...callToActionLink} />}
 			</div>
 		</div>

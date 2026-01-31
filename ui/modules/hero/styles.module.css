@@ -1,6 +1,7 @@
 .container {
 	position: relative;
 	overflow: hidden;
+	/* This clip-path was a work in progress - might come back to it */
 	/* clip-path: polygon(100% 0, 100% 75%, 60% 82%, 0 70%, 0 0); */
 }
 
@@ -64,27 +65,48 @@
 	}
 }
 
-.visualHeadline {
+.images {
 	position: absolute;
-	right: -10vw;
-	bottom: -1vw;
-	font-size: 40vw;
-	font-family: var(--font-headline);
-	text-transform: uppercase;
-	opacity: 0.25;
-	line-height: 1;
-	width: max-content;
+	inset: 0;
 
-	@media (min-width: 800px) {
-		font-size: 30vw;
+	@media (min-width: 1044px) {
+		top: var(--base-spacing);
+		left: var(--base-spacing);
+		bottom: var(--base-spacing);
+		right: var(--base-spacing);
+		border-radius: var(--radius-xl);
+		overflow: hidden;
 	}
 
-	@media (min-width: 1040px) {
-		font-size: 20vw;
+	img {
+		object-fit: cover;
 	}
 }
 
-.image {
-	object-fit: cover;
-	position: absolute;
+.imageCount1 img {
+	/* TBD */
+}
+
+.imageCount2,
+.imageCount3 {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: var(--base-spacing);
+
+	div {
+		border-radius: var(--radius-xl);
+		position: relative;
+		overflow: hidden;
+	}
+
+	@media (min-width: 1024px) {
+		grid-template-columns: 4fr 8fr;
+	}
+}
+
+/* WIP: You were trying to figure out image layout for 2 or 3 images on mobile */
+.imageCount3 {
+	@media (min-width: 1024px) {
+		grid-template-columns: 1fr 1fr 1fr;
+	}
 }
