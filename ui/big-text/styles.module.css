@@ -1,0 +1,36 @@
+.container {
+	container-type: inline-size;
+	width: 100%;
+}
+
+.text {
+	font-family: var(--font-headline);
+	font-size: 24vw;
+	line-height: 1.05;
+	margin: 0;
+	text-align: center;
+}
+
+@container (min-width: 480px) {
+	.text {
+		font-size: 22vw;
+	}
+}
+
+@container (min-width: 768px) {
+	.text {
+		font-size: 20vw;
+	}
+}
+
+@container (min-width: 1024px) {
+	.text {
+		font-size: 18vw;
+	}
+}
+
+@container (min-width: 1280px) {
+	.text {
+		font-size: 16vw;
+	}
+}
