@@ -1,19 +1,35 @@
 import Image from "next/image";
 
 import type { Hero } from "@/types/contentful";
+import { BigText } from "@/ui/big-text";
 import { ButtonLink } from "@/ui/button-link";
 import { Video } from "@/ui/modules/video";
 
 import styles from "./styles.module.css";
 
+// Defined in Contentful "Hero" module content type
+type HeroType = "full" | "reduced" | "largeTextOnly" | "split";
+
 export const ModuleHero = ({ module }: { module: Hero }) => {
 	const { headline, media, callToActionLink, type } = module;
+	const heroType = type as HeroType;
 
 	const isImage = media?.contentType?.startsWith("image/");
 	const isVideo = media?.contentType?.startsWith("video/");
 
+	if (heroType === "largeTextOnly") {
+		return (
+			<div className={`global-top-gradient ${styles.largeTextOnly}`}>
+				<BigText
+					text={headline}
+					component="h1"
+				/>
+			</div>
+		);
+	}
+
 	return (
-		<div className={`${styles.container} ${styles[type]}`}>
+		<div className={`${styles.container} ${styles[heroType]}`}>
 			{isImage && media.url && (
 				<Image
 					fill

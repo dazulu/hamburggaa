@@ -40,6 +40,14 @@
 	}
 }
 
+.largeTextOnly {
+	margin-bottom: 100px;
+
+	@media (min-width: 1044px) {
+		margin-bottom: 150px;
+	}
+}
+
 .headline {
 	display: flex;
 	justify-content: flex-end;
