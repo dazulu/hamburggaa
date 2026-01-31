@@ -8,7 +8,7 @@ import { Video } from "@/ui/modules/video";
 import styles from "./styles.module.css";
 
 // Defined in Contentful "Hero" module content type
-type HeroType = "full" | "reduced" | "largeTextOnly" | "split";
+type HeroType = "full" | "reduced" | "bigText" | "split";
 
 export const ModuleHero = ({ module }: { module: Hero }) => {
 	const { headline, media, callToActionLink, type } = module;
@@ -17,11 +17,11 @@ export const ModuleHero = ({ module }: { module: Hero }) => {
 	const isImage = media?.contentType?.startsWith("image/");
 	const isVideo = media?.contentType?.startsWith("video/");
 
-	if (heroType === "largeTextOnly") {
+	if (heroType === "bigText") {
 		return (
-			<div className={`global-top-gradient ${styles.largeTextOnly}`}>
+			<div className={`global-top-gradient ${styles.bigText}`}>
 				<BigText
-					text={headline}
+					text={"HAMBURG GAA"}
 					component="h1"
 				/>
 			</div>

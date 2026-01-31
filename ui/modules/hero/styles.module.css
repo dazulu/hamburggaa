@@ -40,7 +40,7 @@
 	}
 }
 
-.largeTextOnly {
+.bigText {
 	margin-bottom: 100px;
 
 	@media (min-width: 1044px) {
