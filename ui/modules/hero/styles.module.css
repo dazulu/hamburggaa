@@ -88,7 +88,7 @@
 
 	animation: fadeOnScroll linear both;
 	animation-timeline: scroll(root block);
-	animation-range: 0% 18%;
+	animation-range: 0% 13%;
 
 	span {
 		border-right: 2px solid rgba(255 255 255 / 0.7);
@@ -113,6 +113,7 @@
 
 	@media (min-width: 1044px) {
 		bottom: 60px;
+		animation-range: 0% 18%;
 	}
 }
 
