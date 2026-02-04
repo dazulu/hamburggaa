@@ -4,6 +4,9 @@ import { useEffect, useRef } from "react";
 
 import styles from "./styles.module.css";
 
+// ToDo: When animation-timeline scroll hits wide support, we should phase this component out in favour of the pure CSS solution
+// https://caniuse.com/mdn-css_properties_animation-timeline_scroll
+
 export const ScrollHeader = ({ children }: { children: React.ReactNode }) => {
 	const headerRef = useRef<HTMLElement>(null);
 	const ticking = useRef(false);
