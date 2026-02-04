@@ -72,6 +72,59 @@
 	font-size: 20px;
 }
 
+.scrollIndicator {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 2px;
+
+	position: absolute;
+	bottom: 40px;
+	left: 50%;
+
+	transform: translateX(-50%);
+
+	z-index: 2;
+
+	animation: fadeOnScroll linear both;
+	animation-timeline: scroll(root block);
+	animation-range: 0% 18%;
+
+	span {
+		border-right: 2px solid rgba(255 255 255 / 0.7);
+		border-bottom: 2px solid rgba(255 255 255 / 0.7);
+		transform: rotate(45deg);
+
+		&:nth-child(1) {
+			width: 9px;
+			height: 9px;
+		}
+
+		&:nth-child(2) {
+			width: 13px;
+			height: 13px;
+		}
+
+		&:nth-child(3) {
+			width: 16px;
+			height: 16px;
+		}
+	}
+
+	@media (min-width: 1044px) {
+		bottom: 60px;
+	}
+}
+
+@keyframes fadeOnScroll {
+	from {
+		opacity: 1;
+	}
+	to {
+		opacity: 0;
+	}
+}
+
 .image {
 	position: absolute;
 	inset: 0;

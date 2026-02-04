@@ -52,11 +52,23 @@ export const ModuleHero = ({ module }: { module: Hero }) => {
 				</div>
 			)}
 			{video && images.length === 0 && <Video media={video} />}
+
 			<div className={styles.content}>
 				{headline && <h1 className={styles.headline}>{module.headline}</h1>}
 				{text && <p className={styles.text}>{text}</p>}
 				{callToActionLink && <ButtonLink {...callToActionLink} />}
 			</div>
+
+			{heroType === "full" && (
+				<div
+					aria-hidden="true"
+					className={styles.scrollIndicator}
+				>
+					<span />
+					<span />
+					<span />
+				</div>
+			)}
 		</div>
 	);
 };
