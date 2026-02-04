@@ -1,20 +1,26 @@
 .container {
+	display: grid;
+	place-items: center;
 	position: relative;
 	overflow: hidden;
+
 	/* This clip-path was a work in progress - might come back to it */
 	/* clip-path: polygon(100% 0, 100% 75%, 60% 82%, 0 70%, 0 0); */
 }
 
 .content {
 	display: flex;
-	align-items: flex-end;
-	justify-content: flex-end;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
 
-	position: absolute;
-	top: var(--base-spacing);
-	left: var(--base-spacing);
-	bottom: var(--base-spacing);
-	right: var(--base-spacing);
+	text-align: center;
+
+	position: relative;
+	height: 100%;
+	width: 60vw;
+
+	z-index: 1;
 }
 
 .full {
@@ -23,9 +29,9 @@
 	height: 100svh;
 
 	@media (min-width: 1044px) {
-		height: 80vh;
+		height: 100vh;
 		/* biome-ignore lint/suspicious/noDuplicateProperties: this is a fallback */
-		height: 80svh;
+		height: 100svh;
 	}
 }
 
@@ -35,9 +41,9 @@
 	height: 100svh;
 
 	@media (min-width: 1044px) {
-		height: 60vh;
+		height: 70vh;
 		/* biome-ignore lint/suspicious/noDuplicateProperties: this is a fallback */
-		height: 60svh;
+		height: 70svh;
 	}
 }
 
@@ -50,24 +56,41 @@
 }
 
 .headline {
-	display: flex;
-	justify-content: flex-end;
-	text-align: right;
 	line-height: 1;
 	color: #fff;
-	font-size: 20vw;
+	font-size: 12vw;
 
-	width: 1px;
 	z-index: 1;
 
 	@media (min-width: 800px) {
-		font-size: 140px;
+		font-size: 74px;
 	}
 }
 
-.images {
+.text {
+	color: #fff;
+	font-size: 20px;
+}
+
+.image {
 	position: absolute;
 	inset: 0;
+	overflow: hidden;
+
+	img {
+		object-fit: cover;
+	}
+
+	&::after {
+		content: "";
+		position: absolute;
+		inset: 0;
+		background:
+			radial-gradient(ellipse 120% 100% at 50% 100%, rgba(0 0 0 / 0.4) 0%, transparent 20%),
+			radial-gradient(ellipse 100% 80% at 0% 50%, rgba(0 0 0 / 0.2) 0%, transparent 100%),
+			radial-gradient(ellipse 100% 80% at 100% 50%, rgba(0 0 0 / 0.2) 0%, transparent 10%);
+		pointer-events: none;
+	}
 
 	@media (min-width: 1044px) {
 		top: var(--base-spacing);
@@ -75,38 +98,5 @@
 		bottom: var(--base-spacing);
 		right: var(--base-spacing);
 		border-radius: var(--radius-xl);
-		overflow: hidden;
-	}
-
-	img {
-		object-fit: cover;
-	}
-}
-
-.imageCount1 img {
-	/* TBD */
-}
-
-.imageCount2,
-.imageCount3 {
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	gap: var(--base-spacing);
-
-	div {
-		border-radius: var(--radius-xl);
-		position: relative;
-		overflow: hidden;
-	}
-
-	@media (min-width: 1024px) {
-		grid-template-columns: 4fr 8fr;
-	}
-}
-
-/* WIP: You were trying to figure out image layout for 2 or 3 images on mobile */
-.imageCount3 {
-	@media (min-width: 1024px) {
-		grid-template-columns: 1fr 1fr 1fr;
 	}
 }

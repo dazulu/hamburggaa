@@ -79,6 +79,7 @@ export const query = `
                 id
               }
               headline
+              text
               mediaCollection {
                 items {
                   contentType

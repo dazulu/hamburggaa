@@ -10,18 +10,20 @@ import styles from "./styles.module.css";
 // Defined in Contentful "Hero" module content type
 type HeroType = "full" | "reduced" | "bigText";
 
-const MAX_IMAGES = 3;
+// Limiting to one image with ability to support more later for different types of layouts
+const MAX_IMAGES = 1;
 
 export const ModuleHero = ({ module }: { module: Hero }) => {
 	const {
 		headline,
+		text,
 		mediaCollection: { items: media = [] },
 		callToActionLink,
 		type,
 	} = module;
+
 	const heroType = type as HeroType;
 
-	// Limited to max 3 images
 	const images = media.filter((item) => item.contentType?.startsWith("image/")).slice(0, MAX_IMAGES);
 	const video = media.filter((item) => item.contentType?.startsWith("video/")).shift();
 
@@ -40,26 +42,19 @@ export const ModuleHero = ({ module }: { module: Hero }) => {
 	return (
 		<div className={`${styles.container} ${styles[heroType]}`}>
 			{images.length >= 1 && (
-				<div className={`${styles.images} ${styles[`imageCount${images.length}`]}`}>
-					{images.map((image, index) => (
-						<div
-							// biome-ignore lint/suspicious/noArrayIndexKey: it's grand like
-							key={index}
-						>
-							<Image
-								fill
-								priority
-								alt={image.description || ""}
-								className={styles.image}
-								src={image.url}
-							/>
-						</div>
-					))}
+				<div className={styles.image}>
+					<Image
+						fill
+						priority
+						alt={images[0].description || ""}
+						src={images[0].url}
+					/>
 				</div>
 			)}
 			{video && images.length === 0 && <Video media={video} />}
 			<div className={styles.content}>
 				{headline && <h1 className={styles.headline}>{module.headline}</h1>}
+				{text && <p className={styles.text}>{text}</p>}
 				{callToActionLink && <ButtonLink {...callToActionLink} />}
 			</div>
 		</div>
