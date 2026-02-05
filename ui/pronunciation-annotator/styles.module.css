@@ -1,0 +1,38 @@
+.container {
+	display: inline;
+
+	audio {
+		display: none;
+	}
+}
+
+.phrase {
+	white-space: nowrap;
+}
+
+.button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	inline-size: 16px;
+	block-size: 16px;
+	margin-inline-start: 2px;
+	padding: 0;
+	border: none;
+	border-radius: var(--radius-xs);
+	background: transparent;
+	color: currentColor;
+	cursor: pointer;
+	vertical-align: middle;
+
+	&:focus-visible {
+		border-radius: 50%;
+		outline: 3px solid dodgerblue;
+	}
+
+	& svg {
+		inline-size: 16px;
+		block-size: 16px;
+		fill: currentColor;
+	}
+}

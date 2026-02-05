@@ -5,6 +5,7 @@ import { BigText } from "@/ui/big-text";
 import { ButtonLink } from "@/ui/button-link";
 import { HighlightPhrases } from "@/ui/highlight-phrases";
 import { Video } from "@/ui/modules/video";
+import { PronunciationAnnotator } from "@/ui/pronunciation-annotator";
 
 import styles from "./styles.module.css";
 
@@ -60,7 +61,11 @@ export const ModuleHero = ({ module }: { module: Hero }) => {
 						<HighlightPhrases text={module.headline} />
 					</h1>
 				)}
-				{text && <p className={styles.text}>{text}</p>}
+				{text && (
+					<p className={styles.text}>
+						<PronunciationAnnotator text={text} />
+					</p>
+				)}
 				{callToActionLink && <ButtonLink {...callToActionLink} />}
 			</div>
 
