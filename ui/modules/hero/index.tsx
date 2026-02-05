@@ -3,6 +3,7 @@ import Image from "next/image";
 import type { Hero } from "@/types/contentful";
 import { BigText } from "@/ui/big-text";
 import { ButtonLink } from "@/ui/button-link";
+import { HighlightPhrases } from "@/ui/highlight-phrases";
 import { Video } from "@/ui/modules/video";
 
 import styles from "./styles.module.css";
@@ -54,7 +55,11 @@ export const ModuleHero = ({ module }: { module: Hero }) => {
 			{video && images.length === 0 && <Video media={video} />}
 
 			<div className={styles.content}>
-				{headline && <h1 className={styles.headline}>{module.headline}</h1>}
+				{headline && (
+					<h1 className={styles.headline}>
+						<HighlightPhrases text={module.headline} />
+					</h1>
+				)}
 				{text && <p className={styles.text}>{text}</p>}
 				{callToActionLink && <ButtonLink {...callToActionLink} />}
 			</div>

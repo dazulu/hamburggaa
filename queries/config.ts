@@ -23,3 +23,13 @@ export const query = `
     }
   }
 `;
+
+export const highlightPhrasesQuery = `
+  query($locale: String) {
+    configCollection(limit: 1, locale: $locale) {
+      items {
+        highlightPhrases
+      }
+    }
+  }
+`;
