@@ -18,6 +18,10 @@ export const i18n = {
 			message: "We apologize for the inconvenience.",
 			returnHome: "Return to homepage",
 		},
+		languageSwitcher: {
+			switchLanguage: "Switch to English",
+		},
+		pronunciation: (phrase: string) => `Play pronunciation for "${phrase}"`,
 	},
 	de: {
 		blogPost: {
@@ -38,5 +42,9 @@ export const i18n = {
 			message: "Wir entschuldigen uns für die Unannehmlichkeiten.",
 			returnHome: "Zurück zur Startseite",
 		},
+		languageSwitcher: {
+			switchLanguage: "Auf Deutsch wechseln",
+		},
+		pronunciation: (phrase: string) => `Aussprache für „${phrase}" abspielen`,
 	},
 };

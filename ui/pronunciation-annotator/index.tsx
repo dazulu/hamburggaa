@@ -4,7 +4,7 @@ import { useRef } from "react";
 
 import { useLocale } from "use-intl";
 
-import { Locale } from "@/types/i18n";
+import { i18n } from "@/i18n/translations";
 
 import styles from "./styles.module.css";
 import type { PronunciationAnnotatorProps } from "./types";
@@ -30,9 +30,6 @@ export const PronunciationAnnotator = ({ text }: PronunciationAnnotatorProps) =>
 			});
 		}
 	};
-
-	const getLabel = (phrase: string) =>
-		locale === Locale.DE ? `Aussprache für „${phrase}“ abspielen` : `Play pronunciation for "${phrase}"`;
 
 	const pattern = new RegExp(`\\b(${PHRASES.join("|")})\\b`, "gi");
 	const parts = text.split(pattern);
@@ -61,7 +58,7 @@ export const PronunciationAnnotator = ({ text }: PronunciationAnnotatorProps) =>
 						<button
 							type="button"
 							className={styles.button}
-							aria-label={getLabel(part)}
+							aria-label={i18n[locale].pronunciation(part)}
 							onClick={play}
 						>
 							<svg
