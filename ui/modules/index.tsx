@@ -1,6 +1,7 @@
 import type { PageModulesItem } from "@/types/contentful";
 
 import { ModuleBlogPostList } from "./blog-post-list";
+import { ModuleColumns } from "./columns";
 import { ModuleFollowUs } from "./follow-us";
 import { ModuleFooter } from "./footer";
 import { ModuleHeader } from "./header";
@@ -15,6 +16,7 @@ import { ModuleText } from "./text";
 
 const moduleMapping = {
 	BlogPostList: ModuleBlogPostList,
+	Columns: ModuleColumns,
 	FollowUs: ModuleFollowUs,
 	Footer: ModuleFooter,
 	Header: ModuleHeader,

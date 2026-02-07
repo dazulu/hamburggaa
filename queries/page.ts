@@ -41,6 +41,40 @@ export const query = `
     }
   }
 
+  fragment ImageTextFields on ImageText {
+    sys {
+      id
+    }
+    headline
+    richTextContent {
+      json
+      links {
+        entries {
+          inline {
+            ...EntryLinkFields
+          }
+          hyperlink {
+            ...EntryLinkFields
+          }
+        }
+      }
+    }
+    image {
+      description
+      url
+      width
+      height
+    }
+    callToActionLink {
+      ... on Page {
+        ...PageLinkFields
+      }
+      ... on ExternalNavigationLink {
+        ...ExternalNavigationLinkFields
+      }
+    }
+  }
+
   query($slug: String!, $locale: String!) {
     pageCollection(where: { slug: $slug }, limit: 1, locale: $locale) {
       items{
@@ -121,37 +155,7 @@ export const query = `
               items
             }
             ... on ImageText {
-              sys {
-                id
-              }
-              headline
-              richTextContent {
-                json
-                links {
-                  entries {
-                    inline {
-                      ...EntryLinkFields
-                    }
-                    hyperlink {
-                      ...EntryLinkFields
-                    }
-                  }
-                }
-              }
-              image {
-                description
-                url
-                width
-                height
-              }
-              callToActionLink {
-                ... on Page {
-                  ...PageLinkFields
-                }
-                ... on ExternalNavigationLink {
-                  ...ExternalNavigationLinkFields
-                }
-              }
+              ...ImageTextFields
             }
             ... on Quote {
               sys {
@@ -294,6 +298,33 @@ export const query = `
                   ...PersonLinkFields
                 }
               }
+            }
+            ... on Columns {
+              sys {
+                id
+              }
+              headline
+              richTextContent {
+                json
+                links {
+                  entries {
+                    inline {
+                      ...EntryLinkFields
+                    }
+                    hyperlink {
+                      ...EntryLinkFields
+                    }
+                  }
+                }
+              }
+              entriesCollection(limit: 4) {
+                items {
+                  ... on ImageText {
+                    ...ImageTextFields
+                  }
+                }
+              }
+              displayType
             }
             ... on Footer {
               sys {
