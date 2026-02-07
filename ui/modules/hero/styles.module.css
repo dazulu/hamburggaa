@@ -28,6 +28,10 @@
 	/* biome-ignore lint/suspicious/noDuplicateProperties: this is a fallback */
 	height: 100svh;
 
+	max-width: 1440px;
+	width: 100%;
+	margin: 0 auto;
+
 	@media (min-width: 1044px) {
 		height: 100vh;
 		/* biome-ignore lint/suspicious/noDuplicateProperties: this is a fallback */

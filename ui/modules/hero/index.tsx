@@ -31,7 +31,7 @@ export const ModuleHero = ({ module }: { module: Hero }) => {
 
 	if (heroType === "bigText") {
 		return (
-			<div className={`global-top-gradient ${styles.bigText}`}>
+			<div className={`global-contain-width global-top-gradient ${styles.bigText}`}>
 				<BigText
 					text={headline}
 					component="h1"
