@@ -17,6 +17,14 @@
 	}
 }
 
+.intro {
+	margin-bottom: var(--module-spacing-s);
+
+	@media (min-width: 900px) {
+		text-align: center;
+	}
+}
+
 .verticalCard {
 	display: flex;
 	flex-direction: column;

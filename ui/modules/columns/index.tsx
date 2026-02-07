@@ -22,8 +22,10 @@ export const ModuleColumns = ({ module }: { module: Columns }) => {
 
 	return (
 		<section className={`global-contain-width global-module-spacing ${styles.container}`}>
-			{headline && <h2>{headline}</h2>}
-			{richTextContent && documentToReactComponents(richTextContent.json, renderOptions)}
+			<div className={styles.intro}>
+				{headline && <h2>{headline}</h2>}
+				{richTextContent && documentToReactComponents(richTextContent.json, renderOptions)}
+			</div>
 			<div
 				className={styles.columns}
 				style={{ "--max-columns": maxColumns } as React.CSSProperties}
