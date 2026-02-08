@@ -18,6 +18,7 @@ export const ModuleColumns = ({ module }: { module: Columns }) => {
 	const renderOptions = createRichTextRenderOptions(richTextContent?.links);
 
 	// Randomise order of entries so as not to give preference e.g. to teams or sport types
+	// This is a poor random sort but it's fine for this use case.
 	const entries = [...(entriesCollection?.items || [])].sort(() => Math.random() - 0.5);
 
 	return (
