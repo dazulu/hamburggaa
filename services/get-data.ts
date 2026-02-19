@@ -1,3 +1,10 @@
+const minifyQuery = (query: string) =>
+	// If this stops working, consider https://www.npmjs.com/package/gqlmin
+	query
+		.replace(/\s+/g, " ")
+		.replace(/\s*([{}(),:])\s*/g, "$1")
+		.trim();
+
 export const getData = async <T>({
 	query,
 	variables = {},
@@ -15,7 +22,7 @@ export const getData = async <T>({
 					"content-type": "application/json",
 					Authorization: `Bearer ${process.env.CONTENTFUL_ACCESS_TOKEN}`,
 				},
-				body: JSON.stringify({ query, variables, preview: false }),
+				body: JSON.stringify({ query: minifyQuery(query), variables, preview: false }),
 				// next: {
 				// 	// Cache for 1 hour in production
 				// 	revalidate: process.env.NODE_ENV === "production" ? 3600 : 0,
