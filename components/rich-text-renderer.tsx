@@ -5,6 +5,8 @@ import Image from "next/image";
 
 import { Link } from "@/i18n/routing";
 import type { Entry, Page } from "@/types/contentful";
+import { PronunciationAnnotator } from "@/ui/pronunciation-annotator";
+import { PRONUNCIATION_PATTERN } from "@/ui/pronunciation-annotator/constants";
 import { getInternalLinkSlug } from "@/utils/navigation";
 
 interface RichTextLinks {
@@ -14,9 +16,18 @@ interface RichTextLinks {
 	};
 }
 
-export const createRichTextRenderOptions = (links?: RichTextLinks): Options => ({
+export const createRichTextRenderOptions = (
+	links?: RichTextLinks,
+	{ disablePronunciation = false }: { disablePronunciation?: boolean } = {},
+): Options => ({
 	renderText: (text: string) => {
-		return text.replace(/&shy;/g, "\u00AD");
+		const processed = text.replace(/&shy;/g, "\u00AD");
+
+		if (disablePronunciation || !PRONUNCIATION_PATTERN.test(processed)) {
+			return processed;
+		}
+
+		return <PronunciationAnnotator text={processed} />;
 	},
 	renderNode: {
 		[INLINES.HYPERLINK]: (node: Inline, children: React.ReactNode) => {

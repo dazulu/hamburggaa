@@ -48,3 +48,6 @@ yarn-error.log*
 tsconfig.tsbuildinfo
 
 .github
+
+# Private docs
+docs/prds
