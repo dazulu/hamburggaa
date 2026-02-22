@@ -9,6 +9,7 @@ import { query } from "@/queries/blog-post-list";
 import { getData } from "@/services/get-data";
 import type { BlogPostCollection, BlogPostFilter, BlogPostList } from "@/types/contentful";
 import { Label } from "@/ui/label";
+import { BASE_URL } from "@/utils/constants";
 import { getOrganizationSchema } from "@/utils/organization-schema";
 
 import styles from "./styles.module.css";
@@ -76,7 +77,6 @@ export const ModuleBlogPostList = async ({ module }: { module: BlogPostList | Cu
 		return null;
 	}
 
-	const siteUrl = process.env.NEXT_PUBLIC_BASE_URL;
 	const isRelatedPosts = "originatingPostSysId" in module && Boolean(module.originatingPostSysId);
 
 	let jsonLd: Record<string, unknown> | null = null;
@@ -85,7 +85,7 @@ export const ModuleBlogPostList = async ({ module }: { module: BlogPostList | Cu
 		jsonLd = {
 			"@context": "https://schema.org",
 			"@type": "Blog",
-			url: `${siteUrl}/${locale}/blog`,
+			url: `${BASE_URL}/${locale}/blog`,
 			inLanguage: locale,
 			publisher: organizationSchema,
 			blogPost: posts.map((post) => ({
@@ -106,7 +106,7 @@ export const ModuleBlogPostList = async ({ module }: { module: BlogPostList | Cu
 					name: post.author.name,
 					image: post.author.image?.url ? `${post.author.image.url}?w=200&h=200&fit=fill&fm=jpg` : undefined,
 				},
-				url: `${siteUrl}/${locale}/blog/${post.slug}`,
+				url: `${BASE_URL}/${locale}/blog/${post.slug}`,
 			})),
 		};
 	}

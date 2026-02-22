@@ -4,6 +4,7 @@ import { query } from "@/queries/page";
 import { getData } from "@/services/get-data";
 import type { PageCollection } from "@/types/contentful";
 import Template from "@/ui/template/page";
+import { BASE_URL } from "@/utils/constants";
 import { getOrganizationSchema } from "@/utils/organization-schema";
 
 export default async function PageRenderer({ params: { locale, slug } }: { params: { locale: string; slug: string } }) {
@@ -14,9 +15,8 @@ export default async function PageRenderer({ params: { locale, slug } }: { param
 
 	const pageData = data.pageCollection.items[0];
 
-	const siteUrl = process.env.NEXT_PUBLIC_BASE_URL;
 	const isHomepage = slug === "ROOT";
-	const pageUrl = isHomepage ? `${siteUrl}/${locale}` : `${siteUrl}/${locale}/${slug}`;
+	const pageUrl = isHomepage ? `${BASE_URL}/${locale}` : `${BASE_URL}/${locale}/${slug}`;
 	const organizationSchema = await getOrganizationSchema(locale);
 
 	const webPageJsonLd = {
@@ -29,7 +29,7 @@ export default async function PageRenderer({ params: { locale, slug } }: { param
 		image: pageData.seoImage?.url || undefined,
 		publisher: organizationSchema,
 		...(isHomepage && {
-			mainEntity: { "@id": `${siteUrl}/#organization` },
+			mainEntity: { "@id": `${BASE_URL}/#organization` },
 		}),
 	};
 
@@ -42,7 +42,7 @@ export default async function PageRenderer({ params: { locale, slug } }: { param
 						"@type": "ListItem",
 						position: 1,
 						name: i18n[locale].breadcrumb.home,
-						item: `${siteUrl}/${locale}`,
+						item: `${BASE_URL}/${locale}`,
 					},
 					{
 						"@type": "ListItem",

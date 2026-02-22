@@ -11,6 +11,7 @@ import type {
 	HeaderCollection,
 } from "@/types/contentful";
 import { getAllSlugs, getAlternateSlug } from "@/utils/alternate-language-slugs";
+import { BASE_URL } from "@/utils/constants";
 
 import PageRenderer from "./renderer";
 
@@ -78,10 +79,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 	const alternateLocale = locale === "en" ? "de" : "en";
 	const alternateSlug = getAlternateSlug(currentPath, locale, alternateLocale, allSlugs);
 
-	const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://hamburggaa.de";
-
 	return {
-		metadataBase: new URL(baseUrl),
+		metadataBase: new URL(BASE_URL),
 		title: post.headline,
 		description: post.hook,
 		alternates: {

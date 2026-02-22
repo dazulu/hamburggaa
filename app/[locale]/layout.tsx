@@ -3,6 +3,7 @@ import "@/styles/variables.css";
 
 import type { ReactNode } from "react";
 
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { hasLocale, type Locale, NextIntlClientProvider } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
@@ -14,6 +15,13 @@ import { getData } from "@/services/get-data";
 import { bodyFont, headlineFont } from "@/styles/fonts";
 import type { ConfigCollection } from "@/types/contentful";
 import { BoxShadowToggler } from "@/utils/debug";
+
+export const metadata: Metadata = {
+	title: {
+		template: "%s | Hamburg GAA",
+		default: "Hamburg GAA | Hurling, Camogie and Gaelic Football club in Hamburg, Germany",
+	},
+};
 
 type Props = {
 	children: ReactNode;

@@ -1,6 +1,7 @@
 import { query } from "@/queries/config";
 import { getData } from "@/services/get-data";
 import type { ConfigCollection } from "@/types/contentful";
+import { BASE_URL } from "@/utils/constants";
 
 export async function getOrganizationSchema(locale: string) {
 	const data = await getData<{ configCollection: ConfigCollection }>({
@@ -16,9 +17,9 @@ export async function getOrganizationSchema(locale: string) {
 
 	return {
 		"@type": "SportsOrganization",
-		"@id": `${process.env.NEXT_PUBLIC_BASE_URL}/#organization`,
+		"@id": `${BASE_URL}/#organization`,
 		name: config.name,
-		url: process.env.NEXT_PUBLIC_BASE_URL,
+		url: BASE_URL,
 		foundingDate: config.foundingYear,
 		sport: config.activities?.join(", "),
 		location: config.location,

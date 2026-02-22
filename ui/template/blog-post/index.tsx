@@ -10,6 +10,7 @@ import { Label } from "@/ui/label";
 import { ModuleBlogPostList } from "@/ui/modules/blog-post-list";
 import { ModuleFooter } from "@/ui/modules/footer";
 import { ModuleHeader } from "@/ui/modules/header";
+import { BASE_URL } from "@/utils/constants";
 import { getOrganizationSchema } from "@/utils/organization-schema";
 import { getReadingTimeFromRichText, getWordCountFromRichText } from "@/utils/reading-time";
 
@@ -38,8 +39,7 @@ export const BlogPost = async ({ post, header, footer }: BlogPostProps) => {
 	const readingTime = Math.ceil(getReadingTimeFromRichText(content.json));
 	const readingTimeText = `${readingTime} ${i18n[locale].blogPost.readingTimeSuffix}`;
 
-	const siteUrl = process.env.NEXT_PUBLIC_BASE_URL;
-	const postUrl = `${siteUrl}/${locale}/blog/${slug}`;
+	const postUrl = `${BASE_URL}/${locale}/blog/${slug}`;
 	const organizationSchema = await getOrganizationSchema(locale);
 	const wordCount = getWordCountFromRichText(content.json);
 
@@ -90,13 +90,13 @@ export const BlogPost = async ({ post, header, footer }: BlogPostProps) => {
 				"@type": "ListItem",
 				position: 1,
 				name: i18n[locale].breadcrumb.home,
-				item: `${siteUrl}/${locale}`,
+				item: `${BASE_URL}/${locale}`,
 			},
 			{
 				"@type": "ListItem",
 				position: 2,
 				name: i18n[locale].breadcrumb.blog,
-				item: `${siteUrl}/${locale}/blog`,
+				item: `${BASE_URL}/${locale}/blog`,
 			},
 			{
 				"@type": "ListItem",

@@ -1,0 +1,24 @@
+# Hamburg GAA
+
+> Hamburg GAA is a Gaelic Athletic Association (GAA) club based in Hamburg, Germany, promoting Irish sports including Hurling, Camogie, and Gaelic Football.
+
+## About
+
+Hamburg GAA is a sports club in Hamburg, Germany, that brings together a diverse international community through traditional Irish sports. The club competes in European GAA competitions and welcomes players of all levels, from complete beginners to experienced players.
+
+## Sports
+
+- Hurling
+- Camogie
+- Gaelic Football
+
+## Languages
+
+The website is available in English and German (Deutsch).
+
+- English: https://www.hamburggaa.de/en
+- Deutsch: https://www.hamburggaa.de/de
+
+## Links
+
+- Website: https://www.hamburggaa.de
