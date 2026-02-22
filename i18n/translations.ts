@@ -5,6 +5,10 @@ export const i18n = {
 			youMightAlsoLike: "You might also like",
 			postLabels: "Post labels",
 		},
+		breadcrumb: {
+			home: "Home",
+			blog: "Blog",
+		},
 		mobileNavigation: {
 			openMenu: "Open menu",
 			closeMenu: "Close menu",
@@ -28,6 +32,10 @@ export const i18n = {
 			readingTimeSuffix: "Min. lesen",
 			youMightAlsoLike: "Das könnte dich auch interessieren",
 			postLabels: "Beitrags-Labels",
+		},
+		breadcrumb: {
+			home: "Startseite",
+			blog: "Blog",
 		},
 		mobileNavigation: {
 			openMenu: "Menü öffnen",

@@ -3,6 +3,7 @@ import type { Document } from "@contentful/rich-text-types";
 import Image from "next/image";
 import { getLocale } from "next-intl/server";
 
+import { JsonLd } from "@/components/json-ld";
 import { Link } from "@/i18n/routing";
 import { query } from "@/queries/blog-post-list";
 import { getData } from "@/services/get-data";
@@ -75,34 +76,44 @@ export const ModuleBlogPostList = async ({ module }: { module: BlogPostList | Cu
 		return null;
 	}
 
-	const organizationSchema = await getOrganizationSchema(locale);
+	const siteUrl = process.env.NEXT_PUBLIC_BASE_URL;
+	const isRelatedPosts = "originatingPostSysId" in module && Boolean(module.originatingPostSysId);
 
-	const jsonLd = {
-		"@context": "https://schema.org",
-		"@type": "Blog",
-		blogPost: posts.map((post) => ({
-			"@type": "BlogPosting",
-			headline: post.headline,
-			description: post.hook,
-			image: post.image?.url ? `${post.image.url}?w=1600&fit=fill&fm=jpg` : undefined,
-			datePublished: post.sys.firstPublishedAt,
-			author: {
-				"@type": "Person",
-				name: post.author.name,
-				image: post.author.image?.url ? `${post.author.image.url}?w=200&h=200&fit=fill&fm=jpg` : undefined,
-			},
-			url: `${process.env.NEXT_PUBLIC_SITE_URL}/${locale}/blog/${post.slug}`,
+	let jsonLd: Record<string, unknown> | null = null;
+	if (!isRelatedPosts) {
+		const organizationSchema = await getOrganizationSchema(locale);
+		jsonLd = {
+			"@context": "https://schema.org",
+			"@type": "Blog",
+			url: `${siteUrl}/${locale}/blog`,
+			inLanguage: locale,
 			publisher: organizationSchema,
-		})),
-	};
+			blogPost: posts.map((post) => ({
+				"@type": "BlogPosting",
+				headline: post.headline,
+				description: post.hook,
+				image: post.image?.url
+					? {
+							"@type": "ImageObject",
+							url: `${post.image.url}?w=1600&fit=fill&fm=jpg`,
+						}
+					: undefined,
+				datePublished: post.sys.firstPublishedAt,
+				dateModified: post.sys.publishedAt || post.sys.firstPublishedAt,
+				inLanguage: locale,
+				author: {
+					"@type": "Person",
+					name: post.author.name,
+					image: post.author.image?.url ? `${post.author.image.url}?w=200&h=200&fit=fill&fm=jpg` : undefined,
+				},
+				url: `${siteUrl}/${locale}/blog/${post.slug}`,
+			})),
+		};
+	}
 
 	return (
 		<div className={`${styles.container} global-contain-width global-module-spacing`}>
-			<script
-				type="application/ld+json"
-				// biome-ignore lint/security/noDangerouslySetInnerHtml: required for JSON-LD
-				dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-			/>
+			{jsonLd && <JsonLd data={jsonLd} />}
 			{(headline || description) && (
 				<div className={styles.header}>
 					{headline && <h2 className={styles.headline}>{headline}</h2>}

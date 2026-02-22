@@ -6,3 +6,8 @@ export const getReadingTimeFromRichText = (richText: Document) => {
 	const text = documentToPlainTextString(richText);
 	return Math.ceil(readingTime(text).minutes);
 };
+
+export const getWordCountFromRichText = (richText: Document) => {
+	const text = documentToPlainTextString(richText);
+	return readingTime(text).words;
+};

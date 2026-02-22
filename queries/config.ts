@@ -19,6 +19,11 @@ export const query = `
         }
         primaryColour
         secondaryColour
+        socialMediaLinksCollection {
+          items {
+            link
+          }
+        }
       }
     }
   }

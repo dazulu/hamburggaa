@@ -2,6 +2,7 @@ import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import Image from "next/image";
 import { getLocale } from "next-intl/server";
 
+import { JsonLd } from "@/components/json-ld";
 import { createRichTextRenderOptions } from "@/components/rich-text-renderer";
 import { i18n } from "@/i18n/translations";
 import type { BlogPost as BlogPostType, Footer, Header } from "@/types/contentful";
@@ -10,7 +11,7 @@ import { ModuleBlogPostList } from "@/ui/modules/blog-post-list";
 import { ModuleFooter } from "@/ui/modules/footer";
 import { ModuleHeader } from "@/ui/modules/header";
 import { getOrganizationSchema } from "@/utils/organization-schema";
-import { getReadingTimeFromRichText } from "@/utils/reading-time";
+import { getReadingTimeFromRichText, getWordCountFromRichText } from "@/utils/reading-time";
 
 import styles from "./styles.module.css";
 
@@ -21,7 +22,7 @@ type BlogPostProps = {
 };
 
 export const BlogPost = async ({ post, header, footer }: BlogPostProps) => {
-	const { headline, hook, image, content, labelsCollection, author, sys } = post;
+	const { headline, hook, slug, image, content, labelsCollection, author, sys } = post;
 
 	const locale = await getLocale();
 	const publishedDate = sys.firstPublishedAt
@@ -37,16 +38,33 @@ export const BlogPost = async ({ post, header, footer }: BlogPostProps) => {
 	const readingTime = Math.ceil(getReadingTimeFromRichText(content.json));
 	const readingTimeText = `${readingTime} ${i18n[locale].blogPost.readingTimeSuffix}`;
 
+	const siteUrl = process.env.NEXT_PUBLIC_BASE_URL;
+	const postUrl = `${siteUrl}/${locale}/blog/${slug}`;
 	const organizationSchema = await getOrganizationSchema(locale);
+	const wordCount = getWordCountFromRichText(content.json);
 
 	const jsonLd = {
 		"@context": "https://schema.org",
 		"@type": "BlogPosting",
+		mainEntityOfPage: {
+			"@type": "WebPage",
+			"@id": postUrl,
+		},
 		headline,
 		description: hook || undefined,
-		image: image?.url ? [image.url] : undefined,
+		image: image?.url
+			? {
+					"@type": "ImageObject",
+					url: image.url,
+					width: image.width || undefined,
+					height: image.height || undefined,
+				}
+			: undefined,
 		datePublished: sys.firstPublishedAt,
-		dateModified: sys.firstPublishedAt,
+		dateModified: sys.publishedAt || sys.firstPublishedAt,
+		wordCount,
+		inLanguage: locale,
+		url: postUrl,
 		author: author
 			? {
 					"@type": "Person",
@@ -64,15 +82,37 @@ export const BlogPost = async ({ post, header, footer }: BlogPostProps) => {
 		originatingPostSysId: sys.id,
 	};
 
+	const breadcrumbJsonLd = {
+		"@context": "https://schema.org",
+		"@type": "BreadcrumbList",
+		itemListElement: [
+			{
+				"@type": "ListItem",
+				position: 1,
+				name: i18n[locale].breadcrumb.home,
+				item: `${siteUrl}/${locale}`,
+			},
+			{
+				"@type": "ListItem",
+				position: 2,
+				name: i18n[locale].breadcrumb.blog,
+				item: `${siteUrl}/${locale}/blog`,
+			},
+			{
+				"@type": "ListItem",
+				position: 3,
+				name: headline,
+				item: postUrl,
+			},
+		],
+	};
+
 	return (
 		<div className={styles.wrapper}>
 			<ModuleHeader module={header} />
 			<div className="global-top-gradient">
-				<script
-					type="application/ld+json"
-					// biome-ignore lint/security/noDangerouslySetInnerHtml: required for JSON-LD
-					dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-				/>
+				<JsonLd data={jsonLd} />
+				<JsonLd data={breadcrumbJsonLd} />
 				<article className={styles.container}>
 					<header className={styles.header}>
 						<h1 className={styles.title}>{headline}</h1>
