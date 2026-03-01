@@ -1,0 +1,24 @@
+.button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 38px;
+	height: 38px;
+	border-radius: 50%;
+	border: none;
+	background: transparent;
+	cursor: pointer;
+	font-size: 18px;
+	outline: 3px solid transparent;
+	outline-offset: 3px;
+	transition: outline-color 125ms ease-out;
+
+	&:hover {
+		outline-color: dodgerblue;
+	}
+
+	&:focus-visible {
+		border-radius: 50%;
+		outline-offset: 3px;
+	}
+}
