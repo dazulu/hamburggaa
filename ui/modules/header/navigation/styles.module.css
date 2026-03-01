@@ -15,7 +15,7 @@
 	display: flex;
 	align-items: center;
 	gap: 4px;
-	color: #000;
+	color: var(--surface-foreground);
 	text-decoration: none;
 	font-family: var(--font-body);
 	font-size: 17px;

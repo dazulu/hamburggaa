@@ -1,6 +1,11 @@
 :root {
 	--light-background: #fdfdfd;
 
+	--background: oklch(1 0 0);
+	--foreground: #000;
+	--surface: #fff;
+	--surface-foreground: #000;
+
 	--radius-xs: 4px;
 	--radius-sm: 8px;
 	--radius-md: 12px;
@@ -17,4 +22,11 @@
 	@media (min-width: 800px) {
 		--base-spacing: 16px;
 	}
+}
+
+[data-theme="dark"] {
+	--background: oklch(0.15 0 0);
+	--foreground: #f0f0f0;
+	--surface: #1e1e1e;
+	--surface-foreground: #f0f0f0;
 }

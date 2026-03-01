@@ -30,7 +30,7 @@
 }
 
 .container > div {
-	background-color: white;
+	background-color: var(--surface);
 	height: var(--header-height);
 }
 

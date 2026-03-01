@@ -14,6 +14,7 @@ import { query } from "@/queries/config";
 import { getData } from "@/services/get-data";
 import { bodyFont, headlineFont } from "@/styles/fonts";
 import type { ConfigCollection } from "@/types/contentful";
+import { THEME_STORAGE_KEY } from "@/ui/modules/header/theme-toggle";
 import { BoxShadowToggler } from "@/utils/debug";
 
 export const metadata: Metadata = {
@@ -44,6 +45,15 @@ export default async function RootLayout({ children, params }: Props) {
 			lang={locale}
 			className={`${bodyFont.variable} ${headlineFont.variable}`}
 		>
+			<head>
+				{/* Inline script to set theme before first paint, preventing flash of wrong theme */}
+				<script
+					// biome-ignore lint/security/noDangerouslySetInnerHtml: required for inline theme init script
+					dangerouslySetInnerHTML={{
+						__html: `(function(){try{var t=localStorage.getItem('${THEME_STORAGE_KEY}');if(t==='dark'||(t==null&&window.matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();`,
+					}}
+				/>
+			</head>
 			<body>
 				<CSSVariables
 					primaryColour={primaryColour}

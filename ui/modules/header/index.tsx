@@ -9,6 +9,7 @@ import { LanguageSwitcher } from "./language-switcher";
 import { HeaderNavigation } from "./navigation";
 import { ScrollHeader } from "./scroll-handler";
 import styles from "./styles.module.css";
+import { ThemeToggle } from "./theme-toggle";
 import type { ModuleHeaderProps } from "./types";
 
 export const ModuleHeader = async ({ module }: ModuleHeaderProps) => {
@@ -32,6 +33,7 @@ export const ModuleHeader = async ({ module }: ModuleHeaderProps) => {
 				<HeaderNavigation navigationLinksCollection={module.navigationLinksCollection} />
 			</div>
 			<div>
+				<ThemeToggle />
 				<LanguageSwitcher allPageSlugs={allPageSlugs} />
 			</div>
 		</ScrollHeader>
